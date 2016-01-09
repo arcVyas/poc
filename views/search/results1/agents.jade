@@ -82,7 +82,9 @@ html
                           h4.card-title.text-xs-right Corie Barry
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * * * * *
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★★★★
                       li.list-group-item(style="background:lightgray;") Available in two weeks
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
@@ -96,7 +98,10 @@ html
                           h4.card-title.text-xs-right Hubert Joly
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * * * * *
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★★★★
+                        span(style="color:lightgray;font-size:15px")
                       li.list-group-item(style="background:lightgray;") Available tomorrow
                     p.card-footer(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
@@ -118,8 +123,13 @@ html
                           h4.card-title.text-xs-right Sharon McCollam
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * * * * *
-                      li.list-group-item(style="background:lightgreen;") Available Now
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★★★★
+                        span(style="color:lightgray;font-size:15px")
+                      li.list-group-item(style="background:lightgreen;") 
+                        | Available Now &nbsp;&nbsp;
+                        i.fa.fa-hand-paper-o
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
 
@@ -133,8 +143,13 @@ html
                           h4.card-title.text-xs-right &nbsp;&nbsp Shari Ballard
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * * * *
-                      li.list-group-item(style="background:lightgreen;") Available Now
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px") ★★★★
+                        span(style="color:lightgray;font-size:15px") ☆
+                      li.list-group-item(style="background:lightgreen;")
+                        | Available Now &nbsp;&nbsp;
+                        i.fa.fa-hand-paper-o
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
                   // card
@@ -147,8 +162,13 @@ html
                           h4.card-title.text-xs-right Matt Furman
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * * *
-                      li.list-group-item(style="background:lightgreen;") Available Now
+                      li.list-group-item 
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★★
+                        span(style="color:lightgray;font-size:15px")☆☆
+                      li.list-group-item(style="background:lightgreen;")
+                        | Available Now &nbsp;&nbsp;
+                        i.fa.fa-hand-paper-o
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
           br
@@ -168,11 +188,36 @@ html
                           h4.card-title.text-xs-right Mary Lou Kelley
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * * *
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★★
+                        span(style="color:lightgray;font-size:15px")☆☆
                       li.list-group-item(style="background:lightgray;") Available tomorrow
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
+                      
+                  // card
+                  .card
+                    .card-block
+                      .row
+                        .col-sm-4
+                          img(src='http://api.randomuser.me/portraits/men/4.jpg',class="img-rounded", width="100" height="100")
+                        .col-sm-8(style="vertical-align: middle;")
+                          .card-title.text-xs-right
+                            h4 Bob Peterson
+                            h6 Bob Installation 
+                            | Services
 
+                    ul.list-group.list-group-flush(style="font-size:12px")
+                      li.list-group-item Skill Level - Medium
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★★
+                        span(style="color:lightgray;font-size:15px")☆☆
+                      li.list-group-item(style="background:lightgray;") Available today 3pm
+                    p.card-footer.text-muted(align="center")
+                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
+                      
                   // card
                   .card
                     .card-block
@@ -184,25 +229,11 @@ html
                             h4 &nbsp;&nbsp; Mike Mohan
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * *
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★
+                        span(style="color:lightgray;font-size:15px")☆☆☆
                       li.list-group-item(style="background:lightgray;") Available on Jan 12 (Mon)
-                    p.card-footer.text-muted(align="center")
-                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
-                  // card
-                  .card
-                    .card-block
-                      .row
-                        .col-sm-4
-                          img(src='http://api.randomuser.me/portraits/men/4.jpg',class="img-rounded", width="100" height="100")
-                        .col-sm-8(style="vertical-align: middle;")
-                          .card-title.text-xs-right
-                            h4 John Doe
-                            h6 Bob Installation
-
-                    ul.list-group.list-group-flush(style="font-size:12px")
-                      li.list-group-item Skill Level - Medium
-                      li.list-group-item Rating - * * *
-                      li.list-group-item(style="background:lightgray;") Available today 3pm
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
 

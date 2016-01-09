@@ -6966,3 +6966,8 @@ table th[class*="col-"] {
   color: black;
   margin-bottom: 10px;
 }
+
+.rating > span:hover:before {
+   content: "\2605";
+   position: absolute;
+}
