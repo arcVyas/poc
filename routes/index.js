@@ -11,7 +11,7 @@ router.post('/login', function(req, res, next) {
 router.get('/schedule', function(req, res, next) {
   res.render('schedule', { title: 'Express' });
 });
-router.get('/search/results', function(req, res, next) {
+router.get('/scheduler-app/search', function(req, res, next) {
   //res.send ("Came in")
   res.render('./search/results', { title: 'Express' });
 });
