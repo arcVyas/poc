@@ -9,25 +9,21 @@ html
     link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css')
     link(href='//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css', rel='stylesheet')
     link(rel='stylesheet', href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')
-    link(rel='stylesheet', href='../../css/styles.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='../../../../css/styles.css')
   body.bg-faded
-    header#first
-      .header-content
-        .inner
-          input.form-control(type='text', placeholder='Tell us what you are looking for', style ="text-align:center;height:60px" x-webkit-speech)
-          hr
-          a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(href='#one') Search
+  
     nav#topNav.navbar.navbar-default.navbar-fixed-top
       .container
         button.navbar-toggler.hidden-md-up.pull-right(type='button', data-toggle='collapse', data-target='#collapsingNavbar')
           | ☰
-        a.navbar-brand.page-scroll(href='#first') Scheduler App
+        a.navbar-brand.page-scroll(href='/poc/scheduler-app/search') Scheduler App
         #collapsingNavbar.collapse.navbar-toggleable-sm
           ul.nav.navbar-nav
             li.nav-item
               a.nav-link.page-scroll(href='#') Shop Services
             li.nav-item
-              a.nav-link.page-scroll(href='#') My Services
+              a.nav-link.page-scroll(href='/poc/scheduler-app/reservations/r1234c') My Appointments
             li.nav-item
               a.nav-link.page-scroll(href='#') More
           ul.nav.navbar-nav.pull-right
@@ -36,75 +32,40 @@ html
             li.nav-item
               a.nav-link.page-scroll(data-toggle='modal', title='About', href='#aboutModal') About
 
-    section#one
-      .container.wow.fadeInUp
-        h2 Are you looking for this?
-        br
-        .bd-example
-          .card-deck-wrapper
-            .card-deck
-              .card
-                img.card-img-top.img-responsive(src='http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4346/4346501_sd.jpg;canvasHeight=120;canvasWidth=200', alt='Card image cap', style="width: 100%;")
-                .card-block
-                  h5.card-title Nest Thermostat Installation - Over phone
-                  p.card-text Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                  p.card-text.h3(align="right") $99.99
-                p.card-footer.text-muted(align="center")
-                  a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(href='#two') Schedule
-
-              .card
-                img.card-img-top.img-responsive(src='http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4346/4346501_sd.jpg;canvasHeight=120;canvasWidth=200', alt='Card image cap', style="width: 100%;")
-                .card-block
-                  h5.card-title Nest Thermostat Installation - Over Internet
-                  p.card-text Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                  p.card-text.h3(align="right") $129.99
-                p.card-footer.text-muted(align="center")
-                  button.btn.btn-lg.text-normal.btn-primary-outline Schedule
-
-              .card
-                img.card-img-top.img-responsive(src='http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4346/4346501_sd.jpg;canvasHeight=120;canvasWidth=200', alt='Card image cap', style="width: 100%;")
-                .card-block
-                  h5.card-title Nest Thermostat Installation - In Home
-                  p.card-text Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                  p.card-text.h3(align="right") $240.99
-                p.card-footer.text-muted(align="center")
-                  button.btn.btn-lg.text-normal.btn-primary-outline Schedule
-        br
-        .row.col-lg-12(align="center")
-          button.btn.btn-lg.text-normal.btn-primary-outline Search for more...
-      br
     section#two
       .container.wow.fadeInUp
         h4 We found below agents to install your Nest
         br
         .card-deck-wrapper
           .card-deck
-            .card(align="center", style="border-color:white;")
+            .card(align="center", style="border:none;")
               .checkbox
                 label
                   input(type="checkbox", checked="checked")
-                  |   My Favourites
-            .card(align="center", style="border-color:white;")
+                  |   My Favorites
+            .card(align="center", style="border:none;")
               .checkbox
                 label
                   input(type="checkbox", value="selected")
                   |   Only the ones available now
-            .card(align="center", style="border-color:white;")
-                .dropdown
-                  button#dropdownMenu1.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                    | Preffered Time slot
-                  .dropdown-menu(aria-labelledby='dropdownMenu1')
-                    a.dropdown-item No Preference
-                    a.dropdown-item Select Time Slot
-            .card(align="center", style="border-color:white;")
-                .dropdown
-                  button#dropdownMenu1.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                    | Sort By
-                  .dropdown-menu(aria-labelledby='dropdownMenu1')
-                    a.dropdown-item Rating
-                    a.dropdown-item Skill Level
+            .card(align="center", style="border:none;")
+              .dropdown
+                button#dropdownMenu1.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                  | Preferred Time slot
+                .dropdown-menu(aria-labelledby='dropdownMenu1')
+                  a.dropdown-item No Preference
+                  a.dropdown-item Select Time Slot
+            .card(align="center", style="border:none;")
+              .dropdown
+                button#dropdownMenu1.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                  | Sort By
+                .dropdown-menu(aria-labelledby='dropdownMenu1')
+                  a.dropdown-item Rating
+                  a.dropdown-item Skill Level
+            .card(align="right", style="border:none;")
+              a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(href='/poc/scheduler-app/search') 
+                i.fa.fa-search
           br
-
           .card
             .card-header(style="background:lightblue;")
               | Your favorites
@@ -121,7 +82,9 @@ html
                           h4.card-title.text-xs-right Corie Barry
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * * * * *
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★★★★
                       li.list-group-item(style="background:lightgray;") Available in two weeks
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
@@ -135,7 +98,10 @@ html
                           h4.card-title.text-xs-right Hubert Joly
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * * * * *
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★★★★
+                        span(style="color:lightgray;font-size:15px")
                       li.list-group-item(style="background:lightgray;") Available tomorrow
                     p.card-footer(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
@@ -147,21 +113,7 @@ html
             .card-block
               .card-deck-wrapper
                 .card-deck(align="center")
-                  // card
-                  .card
-                    .card-block
-                      .row
-                        .col-sm-4
-                          img(src='https://corporate.bestbuy.com/wp-content/uploads/2012/12/McCollam-Sharon.jpg',class="img-rounded", width="100" height="100")
-                        .col-sm-8(style="vertical-align: middle;")
-                          h4.card-title.text-xs-right Sharon McCollam
-                    ul.list-group.list-group-flush(style="font-size:12px")
-                      li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * * * * *
-                      li.list-group-item(style="background:lightgreen;") Available Now
-                    p.card-footer.text-muted(align="center")
-                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
-
+                  
                   // card
                   .card
                     .card-block
@@ -172,8 +124,13 @@ html
                           h4.card-title.text-xs-right &nbsp;&nbsp Shari Ballard
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * * * *
-                      li.list-group-item(style="background:lightgreen;") Available Now
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px") ★★★★
+                        span(style="color:lightgray;font-size:15px") ☆
+                      li.list-group-item(style="background:lightgreen;")
+                        | Available Now &nbsp;&nbsp;
+                        i.fa.fa-hand-paper-o
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
                   // card
@@ -186,8 +143,13 @@ html
                           h4.card-title.text-xs-right Matt Furman
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * * *
-                      li.list-group-item(style="background:lightgreen;") Available Now
+                      li.list-group-item 
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★★
+                        span(style="color:lightgray;font-size:15px")☆☆
+                      li.list-group-item(style="background:lightgreen;")
+                        | Available Now &nbsp;&nbsp;
+                        i.fa.fa-hand-paper-o
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
           br
@@ -202,16 +164,59 @@ html
                     .card-block
                       .row
                         .col-sm-4
+                          img(src='https://corporate.bestbuy.com/wp-content/uploads/2012/12/McCollam-Sharon.jpg',class="img-rounded", width="100" height="100")
+                        .col-sm-8(style="vertical-align: middle;")
+                          h4.card-title.text-xs-right Sharon McCollam
+                    ul.list-group.list-group-flush(style="font-size:12px")
+                      li.list-group-item Skill Level - Expert
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★★★★
+                        span(style="color:lightgray;font-size:15px")
+                      li.list-group-item(style="background:lightgray;") 
+                        | Available tomorrow &nbsp;&nbsp;
+                    p.card-footer.text-muted(align="center")
+                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
+                  // card
+                  .card
+                    .card-block
+                      .row
+                        .col-sm-4
                           img(src='https://corporate.bestbuy.com/wp-content/uploads/2014/04/Kelley_Mary-Lou_01.jpg',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
                           h4.card-title.text-xs-right Mary Lou Kelley
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * * *
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★★
+                        span(style="color:lightgray;font-size:15px")☆☆
                       li.list-group-item(style="background:lightgray;") Available tomorrow
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
+                      
+                  // card
+                  .card
+                    .card-block
+                      .row
+                        .col-sm-4
+                          img(src='http://api.randomuser.me/portraits/men/4.jpg',class="img-rounded", width="100" height="100")
+                        .col-sm-8(style="vertical-align: middle;")
+                          .card-title.text-xs-right
+                            h4 Bob Peterson
+                            h6 Bob Installation 
+                            | Services
 
+                    ul.list-group.list-group-flush(style="font-size:12px")
+                      li.list-group-item Skill Level - Medium
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★★
+                        span(style="color:lightgray;font-size:15px")☆☆
+                      li.list-group-item(style="background:lightgray;") Available today 3pm
+                    p.card-footer.text-muted(align="center")
+                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
+                .card-deck(align="center")      
                   // card
                   .card
                     .card-block
@@ -223,31 +228,17 @@ html
                             h4 &nbsp;&nbsp; Mike Mohan
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Skill Level - Expert
-                      li.list-group-item Rating - * *
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★
+                        span(style="color:lightgray;font-size:15px")☆☆☆
                       li.list-group-item(style="background:lightgray;") Available on Jan 12 (Mon)
-                    p.card-footer.text-muted(align="center")
-                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
-                  // card
-                  .card
-                    .card-block
-                      .row
-                        .col-sm-4
-                          img(src='http://api.randomuser.me/portraits/men/4.jpg',class="img-rounded", width="100" height="100")
-                        .col-sm-8(style="vertical-align: middle;")
-                          .card-title.text-xs-right
-                            h4 John Doe
-                            h6 Bob Installation
-
-                    ul.list-group.list-group-flush(style="font-size:12px")
-                      li.list-group-item Skill Level - Medium
-                      li.list-group-item Rating - * * *
-                      li.list-group-item(style="background:lightgray;") Available today 3pm
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
 
           br
           .row.col-lg-12(align="center")
-            button.btn.btn-lg.text-normal.btn-primary-outline Search for more...
+            a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(href='#two') Search Again
     footer#footer
       .container
         br
@@ -304,4 +295,4 @@ html
     script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js')
-    script(src='js/scripts.js')
+    script(src='./../../../js/scripts.js')
