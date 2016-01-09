@@ -13,6 +13,14 @@ router.get('/schedule', function(req, res, next) {
 });
 router.get('/scheduler-app/search', function(req, res, next) {
   //res.send ("Came in")
-  res.render('./search/results', { title: 'Express' });
+  res.render('./search/search', { title: 'Express' });
+});
+router.get('/scheduler-app/services', function(req, res, next) {
+  //res.send ("Came in")
+  res.render('./search/results1/services', { title: 'Express' });
+});
+router.get('/scheduler-app/services/*/agents', function(req, res, next) {
+  //res.send ("Came in")
+  res.render('./search/results1/agents', { title: 'Express' });
 });
 module.exports = router;
