@@ -14,9 +14,13 @@ html
     header#first
       .header-content
         .inner
-          input.form-control(type='text', placeholder='Tell us what you are looking for', style ="text-align:center;height:60px" x-webkit-speech)
+          input.form-control(type='text', placeholder='What can we help with?', style ="text-align:center;height:60px" x-webkit-speech)
           hr
           a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(href='./services') Search
+          br
+          br
+          a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(href='#one') Or Select
+          
     nav#topNav.navbar.navbar-default.navbar-fixed-top
       .container
         button.navbar-toggler.hidden-md-up.pull-right(type='button', data-toggle='collapse', data-target='#collapsingNavbar')
@@ -25,17 +29,56 @@ html
         #collapsingNavbar.collapse.navbar-toggleable-sm
           ul.nav.navbar-nav
             li.nav-item
-              a.nav-link.page-scroll(href='#') Shop Services
+              a.nav-link.page-scroll(href='/poc/scheduler-app/search#one') Shop Services
             li.nav-item
               a.nav-link.page-scroll(href='/poc/scheduler-app/reservations/r1234c') My Appointments
             li.nav-item
               a.nav-link.page-scroll(href='#') More
           ul.nav.navbar-nav.pull-right
             li.nav-item
-              a.nav-link.page-scroll(data-toggle='modal', title='Change Zip', href='#changeZipModal') Zip 55317 (Change)
+              a.nav-link.page-scroll(data-toggle='modal', title='Change Zip', href='#changeZipModal') Zip 10003 (Change)
             li.nav-item
               a.nav-link.page-scroll(data-toggle='modal', title='About', href='#aboutModal') About
-
+    section#one
+      .container.wow.fadeInUp
+        .card
+          .card-header
+            .row
+              .col-sm-6
+                span What type of service you are looking for?
+              .col-sm-6
+                
+          .card-block
+            br
+            .card-deck
+              a.card.card-inverse.card-info(href='')
+                .card-block
+                  .card-title.text-center PC/Mac Diagnostic 
+                  .card-text
+              a.card.card-inverse.card-info(href='')
+                .card-block
+                  .card-title.text-center Nest Installation
+                  .card-text
+                  .card-text
+              a.card.card-inverse.card-info(href='')
+                .card-block 
+                  .card-title.text-center Smart Home Design 
+                  .card-text
+            br
+            .card-deck
+              a.card.card-inverse.card-info(href='')
+                .card-block
+                  .card-title.text-center Appliance/TV
+                  .card-text
+              a.card.card-inverse.card-info(href='')
+                .card-block
+                  .card-title.text-center Auto Tech
+                  .card-text
+                  .card-text
+              a.card.card-inverse.card-info(href='')
+                .card-block 
+                  .card-title.text-center Drone Repair 
+                  .card-text
     footer#footer
       .container
         br

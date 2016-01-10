@@ -21,14 +21,14 @@ html
         #collapsingNavbar.collapse.navbar-toggleable-sm
           ul.nav.navbar-nav
             li.nav-item
-              a.nav-link.page-scroll(href='#') Shop Services
+              a.nav-link.page-scroll(href='/poc/scheduler-app/search#one') Shop Services
             li.nav-item
               a.nav-link.page-scroll(href='/poc/scheduler-app/reservations/r1234c') My Appointments
             li.nav-item
               a.nav-link.page-scroll(href='#') More
           ul.nav.navbar-nav.pull-right
             li.nav-item
-              a.nav-link.page-scroll(data-toggle='modal', title='Change Zip', href='#changeZipModal') Zip 55317 (Change)
+              a.nav-link.page-scroll(data-toggle='modal', title='Change Zip', href='#changeZipModal') Zip 10003 (Change)
             li.nav-item
               a.nav-link.page-scroll(data-toggle='modal', title='About', href='#aboutModal') About
 
@@ -73,56 +73,74 @@ html
               .card-deck-wrapper
                 .card-deck(align="center")
                   // card
-                  .card
+                  .card(id="agentCard1")
                     .card-block
                       .row
                         .col-sm-4
                           img(src='https://corporate.bestbuy.com/wp-content/uploads/2015/11/Corie-Barry-BBY2.jpg',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
-                          h4.card-title.text-xs-right Corie Barry
+                          h4.card-title.text-xs-right Agent Barry
                     ul.list-group.list-group-flush(style="font-size:12px")
-                      li.list-group-item Skill Level - Expert
+                      li.list-group-item Services Completed:  11,451
                       li.list-group-item
                         | Rating - 
                         span(style="color:#FFE200;font-size:15px")★★★★★
-                      li.list-group-item(style="background:lightgray;") Available in two weeks
+                      li.list-group-item(style="background:lightgray;") Available in 26 hours
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
                   // card
-                  .card
+                  .card(id="agentCard2")
                     .card-block
                       .row
                         .col-sm-4
                           img(src='https://corporate.bestbuy.com/wp-content/uploads/2012/10/Hubert-Joly-About-Best-Buy.jpg',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
-                          h4.card-title.text-xs-right Hubert Joly
+                          h4.card-title.text-xs-right Agent Joly
                     ul.list-group.list-group-flush(style="font-size:12px")
-                      li.list-group-item Skill Level - Expert
+                      li.list-group-item Services Completed:  11,451
                       li.list-group-item
                         | Rating - 
                         span(style="color:#FFE200;font-size:15px")★★★★★
                         span(style="color:lightgray;font-size:15px")
-                      li.list-group-item(style="background:lightgray;") Available tomorrow
+                      li.list-group-item(style="background:lightgray;") Available in 12 hours
                     p.card-footer(align="center")
+                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
+                  // card
+                  .card(id="agentCard4")
+                    .card-block
+                      .row
+                        .col-sm-4
+                          img(src='https://corporate.bestbuy.com/wp-content/uploads/2012/10/Ballard_Shari_Exec_01_092515_5x71.jpg',class="img-rounded", width="100" height="100")
+                        .col-sm-8(style="vertical-align: middle;")
+                          h4.card-title.text-xs-right &nbsp;&nbsp Agent Ballard
+                    ul.list-group.list-group-flush(style="font-size:12px")
+                      li.list-group-item Services Completed:  11,451
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px") ★★★★
+                        span(style="color:lightgray;font-size:15px") ☆
+                      li.list-group-item(style="background:lightgray;")
+                        | Available in 5 hours
+                    p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
 
           br
           .card
-            .card-header(style="background:lightgreen;")
-              | Available now
+            .card-header(id="availableCard-Header",style="background:lightgreen;")
+              | Available now (2)
             .card-block
               .card-deck-wrapper
                 .card-deck(align="center")
                   // card
-                  .card
+                  .card(id="agentCard3")
                     .card-block
                       .row
                         .col-sm-4
                           img(src='https://corporate.bestbuy.com/wp-content/uploads/2012/12/McCollam-Sharon.jpg',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
-                          h4.card-title.text-xs-right Sharon McCollam
+                          h4.card-title.text-xs-right Agent McCollam
                     ul.list-group.list-group-flush(style="font-size:12px")
-                      li.list-group-item Skill Level - Expert
+                      li.list-group-item Services Completed:  11,451
                       li.list-group-item
                         | Rating - 
                         span(style="color:#FFE200;font-size:15px")★★★★★
@@ -132,36 +150,16 @@ html
                         i.fa.fa-hand-paper-o
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='/poc/scheduler-app/reservations/r1234') Make Appointment
-
                   // card
-                  .card
-                    .card-block
-                      .row
-                        .col-sm-4
-                          img(src='https://corporate.bestbuy.com/wp-content/uploads/2012/10/Ballard_Shari_Exec_01_092515_5x71.jpg',class="img-rounded", width="100" height="100")
-                        .col-sm-8(style="vertical-align: middle;")
-                          h4.card-title.text-xs-right &nbsp;&nbsp Shari Ballard
-                    ul.list-group.list-group-flush(style="font-size:12px")
-                      li.list-group-item Skill Level - Expert
-                      li.list-group-item
-                        | Rating - 
-                        span(style="color:#FFE200;font-size:15px") ★★★★
-                        span(style="color:lightgray;font-size:15px") ☆
-                      li.list-group-item(style="background:lightgreen;")
-                        | Available Now &nbsp;&nbsp;
-                        i.fa.fa-hand-paper-o
-                    p.card-footer.text-muted(align="center")
-                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
-                  // card
-                  .card
+                  .card(id="agentCard5")
                     .card-block
                       .row
                         .col-sm-4
                           img(src='https://corporate.bestbuy.com/wp-content/uploads/static_page_images/exec-furman.jpg',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
-                          h4.card-title.text-xs-right Matt Furman
+                          h4.card-title.text-xs-right Agent Furman
                     ul.list-group.list-group-flush(style="font-size:12px")
-                      li.list-group-item Skill Level - Expert
+                      li.list-group-item Services Completed:  11,451
                       li.list-group-item 
                         | Rating - 
                         span(style="color:#FFE200;font-size:15px")★★★
@@ -171,23 +169,16 @@ html
                         i.fa.fa-hand-paper-o
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
-          br
-          .card
-            .card-header(style="background:cyan;")
-              | More Agents to choose from..
-            .card-block
-              .card-deck-wrapper
-                .card-deck(align="center")
                   // card
-                  .card
+                  .card(id="agentCard6")
                     .card-block
                       .row
                         .col-sm-4
                           img(src='https://corporate.bestbuy.com/wp-content/uploads/2014/04/Kelley_Mary-Lou_01.jpg',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
-                          h4.card-title.text-xs-right Mary Lou Kelley
+                          h4.card-title.text-xs-right Agent Mary Lou
                     ul.list-group.list-group-flush(style="font-size:12px")
-                      li.list-group-item Skill Level - Expert
+                      li.list-group-item Services Completed:  11,451
                       li.list-group-item
                         | Rating - 
                         span(style="color:#FFE200;font-size:15px")★★★
@@ -195,9 +186,17 @@ html
                       li.list-group-item(style="background:lightgray;") Available tomorrow
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
+          br
+          .card
+            .card-header(style="background:cyan;")
+              | More Agents to choose from..
+            .card-block
+              .card-deck-wrapper
+                .card-deck(align="center")
+                  
                       
                   // card
-                  .card
+                  .card(id="agentCard7")
                     .card-block
                       .row
                         .col-sm-4
@@ -207,9 +206,9 @@ html
                             h4 Bob Peterson
                             h6 Bob Installation 
                             | Services
-
+                            
                     ul.list-group.list-group-flush(style="font-size:12px")
-                      li.list-group-item Skill Level - Medium
+                      li.list-group-item Services Completed: 256
                       li.list-group-item
                         | Rating - 
                         span(style="color:#FFE200;font-size:15px")★★★
@@ -219,21 +218,43 @@ html
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
                       
                   // card
-                  .card
+                  .card(id="agentCard8")
                     .card-block
                       .row
                         .col-sm-4
                           img(src='https://corporate.bestbuy.com/wp-content/uploads/2014/04/Mohan_Mike_4.jpg',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
                           .card-title.text-xs-right
-                            h4 &nbsp;&nbsp; Mike Mohan
+                            h4 &nbsp;&nbsp; Agent Mike
                     ul.list-group.list-group-flush(style="font-size:12px")
-                      li.list-group-item Skill Level - Expert
+                      li.list-group-item Services Completed:  11,451
                       li.list-group-item
                         | Rating - 
                         span(style="color:#FFE200;font-size:15px")★★
                         span(style="color:lightgray;font-size:15px")☆☆☆
                       li.list-group-item(style="background:lightgray;") Available on Jan 12 (Mon)
+                    p.card-footer.text-muted(align="center")
+                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
+                  
+                  // card
+                  .card(id="agentCard7")
+                    .card-block
+                      .row
+                        .col-sm-4
+                          img(src='http://api.randomuser.me/portraits/men/5.jpg',class="img-rounded", width="100" height="100")
+                        .col-sm-8(style="vertical-align: middle;")
+                          .card-title.text-xs-right
+                            h4 Jeff Sandman
+                            h6 BT Tech Support 
+                            
+                            
+                    ul.list-group.list-group-flush(style="font-size:12px")
+                      li.list-group-item Services Completed: 1256
+                      li.list-group-item
+                        | Rating - 
+                        span(style="color:#FFE200;font-size:15px")★★
+                        span(style="color:lightgray;font-size:15px")☆☆☆
+                      li.list-group-item(style="background:lightgray;") Available today 3pm
                     p.card-footer.text-muted(align="center")
                       a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
 
@@ -297,3 +318,20 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js')
     script(src='/js/scripts.js')
+    script.
+      $( document ).ready(function() {
+        $("[id ^=agentCard]").css( "box-shadow", "10px 10px 5px grey");
+        $("#agentCard3").hide()
+        setTimeout(showAvailable,5000)
+      });
+      function showAvailable(){
+        $("#agentCard3").show()
+        $("#availableCard-Header").text("Available now (3)")
+      }
+      $("[id ^=agentCardxxxx]").hover(
+        function() {
+          $( this ).css( "box-shadow", "10px 10px 5px grey");
+        }, function() {
+          $( this ).css( "box-shadow", "none");
+        }
+      );
