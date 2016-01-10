@@ -1,0 +1,82 @@
+---
+  agents:
+    favorites:
+      -
+        id: 1
+        photolink: ""
+        name: "Agent Barry"
+        servicesCompleted: "11,451"
+        rating: 5
+        wait: 26
+      -
+        id: 2
+        photolink: ""
+        name: "Agent Joly"
+        servicesCompleted: "11,451"
+        rating: 5
+        wait: 12 
+      -
+        id: 3
+        photolink: ""
+        name: "Agent Ballard"
+        servicesCompleted: "11,451"
+        rating: 4
+        wait: 5
+        
+    availableNow:
+      -
+        id: 4
+        photolink: ""
+        name: "Agent McCollam"
+        servicesCompleted: "11,451"
+        rating: 5
+        wait: 0
+      -
+        id: 5
+        photolink: ""
+        name: "Agent Furman"
+        servicesCompleted: "11,451"
+        rating: 5
+        wait: 0
+      -
+        id: 6
+        photolink: ""
+        name: "Agent Mary Lou"
+        servicesCompleted: "11,451"
+        rating: 3
+        wait: 0 
+        
+    moreAgents:
+      -
+        id: 7
+        photolink: ""
+        name: "Bob Peterson"
+        vendor: "Bob Installations"
+        servicesCompleted: "256"
+        rating: 3
+        wait: 12
+      -
+        id: 8
+        photolink: ""
+        name: "Agent Mike"
+        servicesCompleted: "11,451"
+        rating: 2
+        wait: 12  
+      -
+        id: 9
+        photolink: ""
+        name: "Jeff Sandman"
+        vendor: "BT Tech Support"
+        servicesCompleted: "1256"
+        rating: 2
+        wait: 1
+  
+---
+  reservations:
+    -
+      id: 1
+      serviceId: 1
+      agentId: 4
+      stTime: 2016-01-15T14:00
+      endTime: 2016-01-16T15:00
+      status: "CONFIRMED"

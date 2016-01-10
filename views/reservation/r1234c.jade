@@ -11,7 +11,6 @@ html
     link(rel='stylesheet', href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='/css/styles.css')
-
   body.bg-faded
     
     nav#topNav.navbar.navbar-default.navbar-fixed-top
@@ -46,43 +45,47 @@ html
                 .col-sm-6(align="right")
                   span(text-align="right") ... $99.99
             br
-            .card-deck
-              .card
-                .card-header(style="background:lightblue;")
-                  | Customer
-                .card-block
-                  .card-title Ross Geller
-                  .card-text(align="left",style="font-size:12px;")
-                    | Greenwich Village
-                    br
-                    | Apt 20
-                    br
-                    | NY 10003
-                    br
-                    | 612-222-7657
-              .card
-                .card-header(style="background:lightblue;")
-                  | Agent
-                .card-block
-                  .card-title 
-                    img(src='https://corporate.bestbuy.com/wp-content/uploads/2012/12/McCollam-Sharon.jpg',class="img-rounded", width="50" height="50")
-                    | &nbsp;&nbsp; Agent McCollam
-                  .card-text(align="left",style="font-size:12px;") Bestbuy Geek Squad Agent
-                  .card-text(align="left",style="font-size:12px;") Services Completed: 11,451
-                  .card-text(align="left",style="font-size:12px;") 
-                    span(style="color:#FFE200;font-size:15px")★★★★★
-                  .card-text(align="left",style="font-size:12px;") Your last service with McCollam: Mar 13 2015
-              .card
-                .card-header(style="background:lightblue;")
-                  | Appointment
-                .card-block
-                  .card-title January 1, 2015 2pm - 3pm
-                  .card-text(align="right",style="font-size:12px;") 
-            br
-            .row-col-sm-12(align="right")
-              a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(id="rate", data-toggle='modal', title='Rate us', href='#rateUsModal') Rate us 
-              &nbsp;&nbsp;
-              a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(id="cancel", href='/poc/scheduler-app/search') Close
+            .row
+              .col-sm-4
+                .card
+                  .card-header(style="background:lightblue;")
+                    | Customer
+                  .card-block
+                    .card-title Ross Geller
+                    .card-text(align="left",style="font-size:12px;")
+                      | Greenwich Village
+                      br
+                      | Apt 20
+                      br
+                      | NY 10003
+                      br
+                      | 612-222-7657
+              .col-sm-4
+                .card
+                  .card-header(style="background:lightblue;")
+                    | Agent
+                  .card-block
+                    .card-title 
+                      img(src='https://corporate.bestbuy.com/wp-content/uploads/2012/12/McCollam-Sharon.jpg',class="img-rounded", width="50" height="50")
+                      | &nbsp;&nbsp; Agent McCollam
+                    .card-text(align="left",style="font-size:12px;") Bestbuy Geek Squad Agent
+                    .card-text(align="left",style="font-size:12px;") Services Completed: 11,451
+                    .card-text(align="left",style="font-size:12px;") 
+                      span(style="color:#FFE200;font-size:15px")★★★★★
+                    .card-text(align="left",style="font-size:12px;") This was you last service with McCollam
+              .col-sm-4
+                .card
+                  .card-header(style="background:lightblue;")
+                    | Appointment
+                  .card-block
+                    .card-title January 13, 2016 2pm - 3pm
+                      
+
+          .card-footer
+            .row
+              .col-sm-12(align="right")
+                a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(id="rate", data-toggle='modal', title='Rate us', href='#rateUsModal',style="margin: 10px;") Rate us 
+                a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(id="cancel", href='/poc/scheduler-app/search') Close
     footer#footer
       .container
         br
