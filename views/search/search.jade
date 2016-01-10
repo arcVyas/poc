@@ -49,36 +49,45 @@ html
               .col-sm-6
                 
           .card-block
-            br
-            .card-deck
-              a.card.card-inverse.card-info(href='')
-                .card-block
-                  .card-title.text-center PC/Mac Diagnostic 
-                  .card-text
-              a.card.card-inverse.card-info(href='')
-                .card-block
-                  .card-title.text-center Nest Installation
-                  .card-text
-                  .card-text
-              a.card.card-inverse.card-info(href='')
-                .card-block 
-                  .card-title.text-center Smart Home Design 
-                  .card-text
-            br
-            .card-deck
-              a.card.card-inverse.card-info(href='')
-                .card-block
-                  .card-title.text-center Appliance/TV
-                  .card-text
-              a.card.card-inverse.card-info(href='')
-                .card-block
-                  .card-title.text-center Auto Tech
-                  .card-text
-                  .card-text
-              a.card.card-inverse.card-info(href='')
-                .card-block 
-                  .card-title.text-center Drone Repair 
-                  .card-text
+            .row
+              .col-sm-4
+                a(href="#one", style="display:block")
+                  .card.card-inverse(style="background-color: #333; border-color: #333;")
+                    .card-block
+                      .card-title.text-center PC/Mac Diagnostic 
+              .col-sm-4
+                a(href="#one", style="display:block")
+                  .card.card-inverse(style="background-color: #333; border-color: #333;")
+                    .card-block
+                      .card-title.text-center Nest Thermostat Installation
+                      .card-text
+                      .card-text
+              .col-sm-4
+                a(href="#one", style="display:block")
+                  .card.card-inverse(style="background-color: #333; border-color: #333;")
+                    .card-block 
+                      .card-title.text-center Smart Home Design 
+                      .card-text
+            .row
+              .col-sm-4
+                a(href="#one", style="display:block")
+                  .card.card-inverse(style="background-color: #333; border-color: #333;")
+                    .card-block
+                      .card-title.text-center Appliance/TV
+                      .card-text
+              .col-sm-4
+                a(href="#one", style="display:block")
+                  .card.card-inverse(style="background-color: #333; border-color: #333;")
+                    .card-block
+                      .card-title.text-center Auto Tech
+                      .card-text
+                      .card-text
+              .col-sm-4
+                a(href="#one", style="display:block")
+                  .card.card-inverse(style="background-color: #333; border-color: #333;")
+                    .card-block 
+                      .card-title.text-center Drone Repair 
+                      .card-text
     footer#footer
       .container
         br
@@ -136,3 +145,9 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js')
     script(src='js/scripts.js')
+    script.
+      $( document ).ready(function() {
+        $(".card").css( "box-shadow", "10px 10px 5px lightgray");
+        
+        
+      });
