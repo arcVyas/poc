@@ -42,7 +42,7 @@ html
               .checkbox
                 label
                   input(type="checkbox", checked="checked")
-                  |   My Favorites
+                  |   Favorites
             .card(align="center", style="border:none;")
               .checkbox
                 label
@@ -68,7 +68,9 @@ html
           br
           .card
             .card-header(style="background:lightblue;")
-              | Your favorites
+              i.fa.fa-fw.fa-heart
+              | Favorites
+              
             .card-block
               .card-deck-wrapper
                 .card-deck(align="center")
@@ -80,6 +82,7 @@ html
                           img(src='https://corporate.bestbuy.com/wp-content/uploads/2015/11/Corie-Barry-BBY2.jpg',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
                           h4.card-title.text-xs-right Agent Barry
+                          i.fa.fa-fw.fa-heart
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Services Completed:  11,451
                       li.list-group-item
@@ -96,6 +99,7 @@ html
                           img(src='https://corporate.bestbuy.com/wp-content/uploads/2012/10/Hubert-Joly-About-Best-Buy.jpg',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
                           h4.card-title.text-xs-right Agent Joly
+                          i.fa.fa-fw.fa-heart
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Services Completed:  11,451
                       li.list-group-item
@@ -113,6 +117,7 @@ html
                           img(src='https://corporate.bestbuy.com/wp-content/uploads/2012/10/Ballard_Shari_Exec_01_092515_5x71.jpg',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
                           h4.card-title.text-xs-right &nbsp;&nbsp Agent Ballard
+                          i.fa.fa-fw.fa-heart
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Services Completed:  11,451
                       li.list-group-item
@@ -330,10 +335,10 @@ html
         $("#agentCard3").show()
         $("#availableCard-Header").text("Available now (3)")
       }
-      $("[id ^=agentCardxxxx]").hover(
+      $("[id ^=agentCardxxx]").hover(
         function() {
-          $( this ).css( "box-shadow", "10px 10px 5px grey");
-        }, function() {
           $( this ).css( "box-shadow", "none");
+        }, function() {
+          $( this ).css( "box-shadow", "20px 20px 5px grey");
         }
       );
