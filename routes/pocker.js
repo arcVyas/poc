@@ -2,8 +2,8 @@ var fs = require("fs");
 var moment = require('moment');
 var pocker= module.exports
 console.log("\n *START* \n");
-var agentFile=__dirname+"/../public/files/agentJson.json"
-var reservationFile=__dirname+"/../public/files/reservationJson.json"
+var agentFile="c:/poc-files/files/agentJson.json"
+var reservationFile="c:/poc-files/files/reservationJson.json"
 var agentJson = require(agentFile);
 var reservationJson = require(reservationFile);
 /*console.log(content.agents.availableNow[0].name)
@@ -73,7 +73,7 @@ pocker.createReservation = function(serviceId,agentId){
   var agent = agentJson.filter(function(r) {
     return r.id == agentId;
   });
-  
+
   console.log("found agent" + agent[0].name)
 
   var appointment={}
@@ -94,7 +94,7 @@ pocker.createReservation = function(serviceId,agentId){
   console.log(reservation)
   reservationJson.push(reservation)
   console.log("updated")
-  
+
   pocker.writeFile(reservationFile,reservationJson)
   return reservation["id"]
 }
@@ -111,9 +111,9 @@ pocker.updateReservation = function(id,status){
   console.log("found reservation" + reservation[0].appointment.status)
   reservation[0].appointment.status = status
   console.log("updated")
-  
+
   pocker.writeFile(reservationFile,reservationJson)
-  
+
   if(status=="confirmed"){
     var agentId = reservation[0].agent.id
     var agent = agentJson.filter(function(r) {

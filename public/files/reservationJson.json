@@ -28,5 +28,21 @@
             "status": "confirmed"
         },
         "id": 2
+    },
+    {
+        "agent": {
+            "id": 1,
+            "name": "Agent Barry",
+            "photolink": "https://corporate.bestbuy.com/wp-content/uploads/2015/11/Corie-Barry-BBY2.jpg",
+            "rating": 5,
+            "servicesCompleted": "11,451",
+            "wait": 27,
+            "favorite": true
+        },
+        "appointment": {
+            "date": "January 12th 2016, 11 am",
+            "status": "confirmed"
+        },
+        "id": 3
     }
 ]
