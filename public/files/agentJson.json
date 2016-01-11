@@ -1,0 +1,84 @@
+{
+  "agents": {
+    "availableNow": [
+      {
+        "id": 4,
+        "name": "Agent McCollam",
+        "photolink": "https://corporate.bestbuy.com/wp-content/uploads/2012/12/McCollam-Sharon.jpg",
+        "rating": 5,
+        "servicesCompleted": "11,451",
+        "wait": 0
+      },
+      {
+        "id": 5,
+        "name": "Agent Furman",
+        "photolink": "https://corporate.bestbuy.com/wp-content/uploads/static_page_images/exec-furman.jpg",
+        "rating": 5,
+        "servicesCompleted": "11,451",
+        "wait": 0
+      },  
+      {
+        "id": 6,
+        "name": "Agent Mary Lou",
+        "photolink": "https://corporate.bestbuy.com/wp-content/uploads/2014/04/Kelley_Mary-Lou_01.jpg",
+        "rating": 3,
+        "servicesCompleted": "11,451",
+        "wait": 0
+      }
+    ],
+    "favorites": [
+      {
+        "id": 1,
+        "name": "Agent Barry",
+        "photolink": "https://corporate.bestbuy.com/wp-content/uploads/2015/11/Corie-Barry-BBY2.jpg",
+        "rating": 5,
+        "servicesCompleted": "11,451",
+        "wait": 26
+      },
+      {
+        "id": 2,
+        "name": "Agent Joly",
+        "photolink": "https://corporate.bestbuy.com/wp-content/uploads/2012/10/Hubert-Joly-About-Best-Buy.jpg",
+        "rating": 5,
+        "servicesCompleted": "11,451",
+        "wait": 12
+      },
+      {
+        "id": 3,
+        "name": "Agent Ballard",
+        "photolink": "https://corporate.bestbuy.com/wp-content/uploads/2012/10/Ballard_Shari_Exec_01_092515_5x71.jpg",
+        "rating": 4,
+        "servicesCompleted": "11,451",
+        "wait": 5
+      }
+    ],
+    "moreAgents": [
+      {
+        "id": 7,
+        "name": "Bob Peterson",
+        "photolink": "http://api.randomuser.me/portraits/men/4.jpg",
+        "rating": 3,
+        "servicesCompleted": "256",
+        "vendor": "Bob Installations",
+        "wait": 12
+      },
+      {
+        "id": 8,
+        "name": "Agent Mike",
+        "photolink": "https://corporate.bestbuy.com/wp-content/uploads/2014/04/Mohan_Mike_4.jpg",
+        "rating": 2,
+        "servicesCompleted": "11,451",
+        "wait": 12
+      },
+      {
+        "id": 9,
+        "name": "Jeff Sandman",
+        "photolink": "http://api.randomuser.me/portraits/men/5.jpg",
+        "rating": 2,
+        "servicesCompleted": "1256",
+        "vendor": "BT Tech Support",
+        "wait": 1
+      }
+    ]
+  }
+}
