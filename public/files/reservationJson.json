@@ -9,8 +9,8 @@
             "servicesCompleted": "11,451"
         },
         "appointment": {
-            "date": "January 29 2016 2-3pm",
-            "status": "completed"
+            "date": "January 29 2016 2 pm",
+            "status": "confirmed"
         }
     },
     {
@@ -24,25 +24,9 @@
             "favorite": true
         },
         "appointment": {
-            "date": "January 12th 2016, 4 am",
-            "status": "confirmed"
+            "date": "January 08th 2016, 4 pm",
+            "status": "completed"
         },
         "id": 2
-    },
-    {
-        "agent": {
-            "id": 1,
-            "name": "Agent Barry",
-            "photolink": "https://corporate.bestbuy.com/wp-content/uploads/2015/11/Corie-Barry-BBY2.jpg",
-            "rating": 5,
-            "servicesCompleted": "11,451",
-            "wait": 27,
-            "favorite": true
-        },
-        "appointment": {
-            "date": "January 12th 2016, 11 am",
-            "status": "confirmed"
-        },
-        "id": 3
     }
 ]

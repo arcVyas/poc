@@ -97,10 +97,11 @@ html
                         .col-sm-4
                           img(src='#{agent.photolink}',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
-                          h4.card-title.text-xs-right
+                          h4.card-title.text-xs-right(style="font-size:16px")
                             | #{agent.name}
                             br
                             i.fa.fa-fw.fa-heart
+                          h6.text-xs-right(style="font-size:13px") #{agent.vendor}
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Services Completed:  #{agent.servicesCompleted}
                       li.list-group-item
@@ -117,7 +118,7 @@ html
         // AVAILABLE now
         .card
           .card-header(id="availableCard-Header",style="background:lightgreen;")
-            | Available now (2)
+            | Available now 
           .card-block
             .row
               each agent in agents.availableNow
@@ -128,7 +129,8 @@ html
                         .col-sm-4
                           img(src='#{agent.photolink}',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
-                          h4.card-title.text-xs-right #{agent.name}
+                          h4.card-title.text-xs-right(style="font-size:16px") #{agent.name}
+                          h6.text-xs-right(style="font-size:13px") #{agent.vendor}
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Services Completed:  #{agent.servicesCompleted}
                       li.list-group-item
@@ -156,8 +158,8 @@ html
                         .col-sm-4
                           img(src='#{agent.photolink}',class="img-rounded", width="100" height="100")
                         .col-sm-8(style="vertical-align: middle;")
-                          h4.card-title.text-xs-right #{agent.name}
-                          h6.text-xs-right #{agent.vendor}
+                          h4.card-title.text-xs-right(style="font-size:16px") #{agent.name}
+                          h6.text-xs-right(style="font-size:13px") #{agent.vendor}
                             
                     ul.list-group.list-group-flush(style="font-size:12px")
                       li.list-group-item Services Completed:  #{agent.servicesCompleted}

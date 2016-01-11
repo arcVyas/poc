@@ -1,18 +1,24 @@
 var fs = require("fs");
 var moment = require('moment');
 var pocker= module.exports
-console.log("\n *START* \n");
-var agentFile="c:/poc-files/files/agentJson.json"
-var reservationFile="c:/poc-files/files/reservationJson.json"
+
+var origAgentFile=__dirname+"/../public/files/agentJson.json"
+var origReservationFile=__dirname+"/../public/files/reservationJson.json"
+var agentFile=__dirname+"/../../../poc-files/files/agentJson.json"
+var reservationFile=__dirname+"/../../../poc-files/files/reservationJson.json"
 var agentJson = require(agentFile);
 var reservationJson = require(reservationFile);
+console.log("\n *Start: Files Name* \n");
+console.log("origAgentFile:"+origAgentFile)
+console.log("origReservationFile:"+origReservationFile)
+console.log("agentFile:"+agentFile)
+console.log("reservationFile:"+reservationFile)
 /*console.log(content.agents.availableNow[0].name)
 content.agents.availableNow[0].name = "Vyas Mohan"
 console.log("Output Content : \n"+ JSON.stringify(content));
 fs.writeFile('/Users/vyas/workspace/projects/vyas-node/poc/public/files/agentJson-1.json',JSON.stringify(content,null,4), function(err){
     if(err){console.log(err);}
 });*/
-console.log("\n *EXIT* \n");
 
 pocker.writeFile = function(file, jsonObj){
   console.log("writing file")
@@ -116,10 +122,29 @@ pocker.updateReservation = function(id,status){
 
   if(status=="confirmed"){
     var agentId = reservation[0].agent.id
-    var agent = agentJson.filter(function(r) {
-      return r.id == agentId;
-    });
-    agent[0].wait = agent[0].wait + 1
+    pocker.updateAgentWait(agentId)
   }
-  pocker.writeFile(agentFile,agentJson)
+}
+
+pocker.updateAgentWait = function(agentId,wait){
+  console.log(agentId + ":" + wait)
+  
+  var agent = agentJson.filter(function(r) {
+    return r.id == agentId;
+  });
+  if(agent.length>0){
+    if(!wait){
+      wait = agent[0].wait + 1
+    }
+    console.log('updating wait for agentId: '+agentId)
+    agent[0].wait = wait
+    pocker.writeFile(agentFile,agentJson)
+  }
+}
+
+pocker.resetFiles = function(){
+  var origAgentJson = require(origAgentFile);
+  var origReservationJson = require(origReservationFile);
+  pocker.writeFile(agentFile,origAgentJson)
+  pocker.writeFile(reservationFile,origReservationJson)
 }

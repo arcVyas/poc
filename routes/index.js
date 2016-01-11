@@ -51,7 +51,13 @@ router.get('/scheduler-app/reservations/r1234c', function(req, res, next) {
 router.get('/api/agents', function(req,res,next){
   res.send(pocker.getAgentsSorted(1))
 });
-
+router.post('/api/agents/:id/update', function(req,res,next){
+  var id = req.params.id
+  var what = req.query.what
+  var wait = (req.query.wait || 48)
+  pocker.updateAgentWait(id,wait)
+  res.send(200)
+});
 
 router.get('/api/reservations', function(req,res,next){
   res.send(pocker.getReservations(1))
@@ -77,6 +83,16 @@ router.post('/api/reservations/:id/complete', function(req,res,next){
   var id = req.params.id
   pocker.updateReservation(id,"completed")
   res.send(200)
+});
+
+router.post('/api/resetfiles', function(req,res,next){
+  var token = req.query.token
+  if("GTH8765-998TGDHRUN-FNU88123"==token){
+    pocker.resetFiles()
+    res.send(200)
+  }else{
+    res.send(400)
+  }
 });
 
 module.exports = router;
