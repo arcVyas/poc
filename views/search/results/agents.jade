@@ -11,7 +11,7 @@ html
     link(rel='stylesheet', href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='/css/styles.css')
-  body.bg-faded
+  body.bg-faded(id="body-agents")
   
     nav#topNav.navbar.navbar-default.navbar-fixed-top
       .container
@@ -23,7 +23,7 @@ html
             li.nav-item
               a.nav-link.page-scroll(href='/poc/scheduler-app/search#one') Shop Services
             li.nav-item
-              a.nav-link.page-scroll(href='/poc/scheduler-app/reservations/r1234c') My Appointments
+              a.nav-link.page-scroll(href='/poc/scheduler-app/reservations') My Appointments
             li.nav-item
               a.nav-link.page-scroll(href='#') More
           ul.nav.navbar-nav.pull-right
@@ -33,7 +33,7 @@ html
               a.nav-link.page-scroll(data-toggle='modal', title='About', href='#aboutModal') About
 
     section#two
-      .container.wow.fadeInUp
+      .container.wow.fadeInUp(id="main-container")
         h4 We found below agents to install your Nest
         - console.log("vyas:"+data)
         - var agents = data.agents
@@ -111,7 +111,7 @@ html
                           
                       li.list-group-item(style="background:lightgray;") Available in #{agent.wait} hours
                     p.card-footer.text-muted(align="center")
-                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='./make-appointment') Make Appointment
+                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='javascript:createReservationWrapper(#{agent.id})') Make Appointment
         br
         
         // AVAILABLE now
@@ -140,11 +140,7 @@ html
                         | Available Now &nbsp;&nbsp;
                         i.fa.fa-hand-paper-o
                     p.card-footer.text-muted(align="center")
-                      - var hrf=''
-                      - if(agent.id==4){
-                      -   hrf= '/poc/scheduler-app/reservations/r1234'
-                      - }
-                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='#{hrf}') Make Appointment
+                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='javascript:createReservationWrapper(#{agent.id})') Make Appointment
         br
         // More Agents
         .card
@@ -172,7 +168,7 @@ html
                         span(style="color:lightgray;font-size:15px",repeat="#{norating}") ☆
                       li.list-group-item(style="background:lightgray;") Available in #{agent.wait} hours
                     p.card-footer.text-muted(align="center")
-                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='') Make Appointment
+                      a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='javascript:createReservationWrapper(#{agent.id})') Make Appointment
 
         br
         .row.col-lg-12(align="center")
@@ -235,7 +231,10 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js')
     script(src='/js/scripts.js')
+    script(src='/js/spin.js')
     script.
+      var spinner
+      var newIdGenerated
       $( document ).ready(function() {
         $("[id ^=agentCard]").css( "box-shadow", "10px 10px 5px grey");
         $("#sneakInCard4").hide()
@@ -260,9 +259,64 @@ html
         });
           
       });
+      function startSpinner(tgt){
+        var opts = {
+          lines: 13 // The number of lines to draw
+        , length: 28 // The length of each line
+        , width: 14 // The line thickness
+        , radius: 42 // The radius of the inner circle
+        , scale: 1 // Scales overall size of the spinner
+        , corners: 1 // Corner roundness (0..1)
+        , color: '#000' // #rgb or #rrggbb or array of colors
+        , opacity: 0.25 // Opacity of the lines
+        , rotate: 0 // The rotation offset
+        , direction: 1 // 1: clockwise, -1: counterclockwise
+        , speed: 1 // Rounds per second
+        , trail: 80 // Afterglow percentage
+        , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+        , zIndex: 2e9 // The z-index (defaults to 2000000000)
+        , className: 'spinner' // The CSS class to assign to the spinner
+        , top: '50%' // Top position relative to parent
+        , left: '50%' // Left position relative to parent
+        , shadow: true // Whether to render a shadow
+        , hwaccel: false // Whether to use hardware acceleration
+        , position: 'absolute' // Element positioning
+        }
+        var target = document.getElementById(tgt)
+        if(spinner==null){
+          spinner= new Spinner(opts).spin(target)
+        }
+        else {
+          spinner.spin(target)
+        }
+      }
+      function createReservationWrapper(agentId){
+        newIdGenerated=0
+        startSpinner("agentCard"+agentId)
+        console.log("spin started")
+        createReservation(agentId)
+      }
+      function createReservation(agentId){
+        $.post("/poc/scheduler-app/reservations/create?agentId="+agentId,
+        {},
+        function(data, status){
+          console.log(data + ":" + status)
+          if(status=="success"){
+            newIdGenerated=data
+            setTimeout(redirect,2000)
+          }else {
+            console.log ("Brr.... Error")
+          }
+        });
+        
+      }
+      function redirect(){
+        spinner.stop()
+        window.location.href="/poc/scheduler-app/reservations/"+newIdGenerated
+      }
       function showAvailable(){
         $("#sneakInCard4").show()
-        $("#availableCard-Header").text("Available now (3)")
+        $("#availableCard-Header").text("Available now")
       }
       function showSearch(){
         $("#searchBox").show()
@@ -279,3 +333,4 @@ html
           $( this ).css( "box-shadow", "20px 20px 5px grey");
         }
       );
+      

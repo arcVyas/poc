@@ -11,6 +11,7 @@ html
     link(rel='stylesheet', href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='/css/styles.css')
+
   body.bg-faded
     
     nav#topNav.navbar.navbar-default.navbar-fixed-top
@@ -35,8 +36,18 @@ html
     section#one
       .container.wow.fadeInUp
         .card(id="reservationCard")
-          .card-header(id="reservationCard-header",style="background:gray;")
-            | r1234 - Appointment Completed
+          - var color 
+          - var resId = data.id
+          - if(data.appointment.status=="draft"){
+          -   color="lightyellow"
+          -   resId=""
+          - }else if(data.appointment.status=="confirmed"){
+          -   color="lightgreen"
+          - }else{
+          -   color="darkgray"
+          - }
+          .card-header(id="reservationCard-header",style="background:#{color};")
+            | Appointment - #{resId}
           .card-block
             .card-title 
               .row
@@ -66,26 +77,32 @@ html
                     | Agent
                   .card-block
                     .card-title 
-                      img(src='https://corporate.bestbuy.com/wp-content/uploads/2012/12/McCollam-Sharon.jpg',class="img-rounded", width="50" height="50")
-                      | &nbsp;&nbsp; Agent McCollam
+                      img(src='#{data.agent.photolink}',class="img-rounded", width="50" height="50")
+                      | &nbsp;&nbsp; #{data.agent.name}
                     .card-text(align="left",style="font-size:12px;") Bestbuy Geek Squad Agent
-                    .card-text(align="left",style="font-size:12px;") Services Completed: 11,451
+                    .card-text(align="left",style="font-size:12px;") Services Completed: #{data.agent.servicesCompleted}
                     .card-text(align="left",style="font-size:12px;") 
-                      span(style="color:#FFE200;font-size:15px")★★★★★
-                    .card-text(align="left",style="font-size:12px;") This was you last service with McCollam
+                      - var norating = 5-data.agent.rating
+                      span(style="color:#FFE200;font-size:15px", repeat="#{data.agent.rating}") ★
+                      span(style="color:lightgray;font-size:15px",repeat="#{norating}") ☆
+                    .card-text(align="left",style="font-size:12px;") Your last service with #{data.agent.name}: Mar 13 2015
               .col-sm-4
                 .card
                   .card-header(style="background:lightblue;")
                     | Appointment
                   .card-block
-                    .card-title January 13, 2016 2pm - 3pm
-                      
+                    .card-title(align="right") #{data.appointment.date}
+                      br
+                      span(style="font-size:12px;") (in 10 mins)
+                    .card-text(align="right",style="font-size:12px;") 
+                      | Choose a different slot &nbsp;&nbsp;
+                      i.fa.fa-calendar      
 
           .card-footer
             .row
               .col-sm-12(align="right")
-                a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(id="rate", data-toggle='modal', title='Rate us', href='#rateUsModal',style="margin: 10px;") Rate us 
-                a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(id="cancel", href='/poc/scheduler-app/search') Close
+                a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(id="confirmAppt", href='javascript:confirmAppt()',style="margin: 10px;") Confirm Appointment 
+                a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(id="cancel", href='/poc/scheduler-app/services/SR12345/agents') Close
     footer#footer
       .container
         br
@@ -124,43 +141,6 @@ html
             br
             button.btn.btn-primary.btn-lg.center-block(data-dismiss='modal', aria-hidden='true')
               | OK
-    #rateUsModal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
-      .modal-dialog
-        .modal-content
-          .modal-body
-            br
-            h2.text-center Rate your experience
-            h6.text-center Thank you for giving us the opportunity to serve you. Let us know how we did.
-            hr
-            form.contact-form.row
-              .col-md-12
-                label
-                | Overall experience
-                br
-                span.rating
-                  span.star
-                  span.star
-                  span.star
-                  span.star
-                  span.star
-              .col-md-12
-                label
-                | Agent rating
-                br
-                span.rating
-                  span.star
-                  span.star
-                  span.star
-                  span.star
-                  span.star
-              .col-md-12
-                label
-                textarea.form-control(rows='6', placeholder='Comments..')
-              .col-md-4.col-md-offset-4
-                label
-                button.btn.btn-primary.btn-lg.center-block(data-dismiss='modal', aria-hidden='true')
-                  | Submit
-
     #alertModal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
       .modal-dialog.modal-sm
         .modal-content
@@ -181,9 +161,25 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js')
     script(src='/js/scripts.js')
     script(src='/js/spin.js')
-    script(src='/js/rating.js')
     script.
       var spinner
+      $( document ).ready(function() {
+        $('[repeat]').each(function() {
+           var toRepeat = $(this).text();
+           var times = parseInt($(this).attr('repeat'));
+           var repeated = Array(times+1).join(toRepeat);
+           $(this).text(repeated).removeAttr('repeat');
+        });
+        if("#{data.appointment.status}"=="draft"){
+          $("#confirmAppt").text("Confirm Appointment");
+        }else if("#{data.appointment.status}"=="confirmed"){
+          $("#confirmAppt").text("Change Appointment");
+          $("#cancel").attr("href",'/poc/scheduler-app/reservations')
+        }else if("#{data.appointment.status}"=="completed"){
+          $("#confirmAppt").text("Rate us");
+          $("#cancel").attr("href",'/poc/scheduler-app/reservations')
+        }
+      });
       function confirmAppt(){
         $("#reservationCard-header").text("Confirming appointment")
         $("#confirmAppt").text("Confirming..");
@@ -191,10 +187,14 @@ html
         setTimeout(finish, 2000);
       }
       function finish(){
-        $("#reservationCard-header").css("background","lightgreen")
-        $("#reservationCard-header").text("Appointment confirmed - r1234")
-        $("#confirmAppt").text("Change Appointment");
-        $("#confirmAppt").blur()
+        $.post("/poc/scheduler-app/reservations/#{data.id}/confirm",
+        {},
+        function(data, status){
+          $("#reservationCard-header").css("background","lightgreen")
+          $("#reservationCard-header").text("Appointment confirmed - #{data.id}")
+          $("#confirmAppt").text("Change Appointment");
+          $("#confirmAppt").blur()
+        });
         spinner.stop()
       }
       function startSpinner(){

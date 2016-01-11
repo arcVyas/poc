@@ -27,6 +27,33 @@ pocker.getAgents = function(serviceId){
   //return JSON.stringify(agentJson)
   return agentJson
 }
+pocker.getAgentsSorted = function(serviceId){
+  console.log("pulling agent details for "+ serviceId)
+  var data={}
+  var agents={}
+  var favorites=[]
+  var availableNow=[]
+  var moreAgents=[]
+  agentJson.forEach(function(obj){
+    var more=true
+    if(obj.favorite){
+      favorites.push(obj)
+      more=false
+    }
+    if(obj.wait ==0){
+      availableNow.push(obj)
+      more=false
+    }
+    if(more){
+      moreAgents.push(obj)
+    }
+  });
+  agents["favorites"]=favorites
+  agents["availableNow"]=availableNow
+  agents["moreAgents"]=moreAgents
+  data["agents"]=agents
+  return data
+}
 pocker.getReservations = function(customerId){
   console.log("pulling reservation details for "+ customerId)
   //return JSON.stringify(agentJson)
@@ -43,21 +70,10 @@ pocker.createReservation = function(serviceId,agentId){
   console.log(serviceId + ":" + agentId)
   reservationJson = require(reservationFile);
   console.log(reservationJson)
-  var agent = agentJson.agents.availableNow.filter(function(r) {
+  var agent = agentJson.filter(function(r) {
     return r.id == agentId;
   });
-  console.log(agent[0])
-  if(!agent[0]){
-    agent = agentJson.agents.favorites.filter(function(r) {
-      return r.id == agentId;
-    });
-    console.log(agent[0])
-    if(!agent[0]){
-      agent = agentJson.agents.moreAgents.filter(function(r) {
-        return r.id == agentId;
-      });
-    }
-  }
+  
   console.log("found agent" + agent[0].name)
 
   var appointment={}
@@ -97,4 +113,13 @@ pocker.updateReservation = function(id,status){
   console.log("updated")
   
   pocker.writeFile(reservationFile,reservationJson)
+  
+  if(status=="confirmed"){
+    var agentId = reservation[0].agent.id
+    var agent = agentJson.filter(function(r) {
+      return r.id == agentId;
+    });
+    agent[0].wait = agent[0].wait + 1
+  }
+  pocker.writeFile(agentFile,agentJson)
 }

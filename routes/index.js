@@ -21,11 +21,27 @@ router.get('/scheduler-app/services', function(req, res, next) {
   res.render('./search/results1/services', { title: 'Express' });
 });
 router.get('/scheduler-app/services/SR12345/agents', function(req, res, next) {
-  res.render('./search/results/agents', {data:pocker.getAgents(1)});
+  res.render('./search/results/agents', {data:pocker.getAgentsSorted(1)});
 });
-router.get('/scheduler-app/reservations/r1234', function(req, res, next) {
-  //res.send ("Came in")
-  res.render('./reservation/r1234', { title: 'Express' });
+
+router.get('/scheduler-app/reservations', function(req, res, next) {
+  res.render('./reservation/reservations', { data: pocker.getReservations(1)});
+});
+router.get('/scheduler-app/reservations/:id', function(req, res, next) {
+  var id = req.params.id
+  res.render('./reservation/reservation', { data: pocker.getReservation(id)});
+});
+router.post('/scheduler-app/reservations/create', function(req,res,next){
+  console.log("create..")
+  var id = 1
+  var agentId = req.query.agentId
+  var newId = pocker.createReservation(1,agentId)
+  res.send(String(newId))
+});
+router.post('/scheduler-app/reservations/:id/confirm', function(req,res,next){
+  var id = req.params.id
+  pocker.updateReservation(id,"confirmed")
+  res.send(200)
 });
 router.get('/scheduler-app/reservations/r1234c', function(req, res, next) {
   //res.send ("Came in")
@@ -33,7 +49,7 @@ router.get('/scheduler-app/reservations/r1234c', function(req, res, next) {
 });
 
 router.get('/api/agents', function(req,res,next){
-  res.send(pocker.getAgents(1))
+  res.send(pocker.getAgentsSorted(1))
 });
 
 
