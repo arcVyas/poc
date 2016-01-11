@@ -9,7 +9,9 @@ html
     link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css')
     link(href='//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css', rel='stylesheet')
     link(rel='stylesheet', href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')
-    link(rel='stylesheet', href='../../css/styles.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/css/styles.css')
+
   body.bg-faded
     
     nav#topNav.navbar.navbar-default.navbar-fixed-top
@@ -33,43 +35,13 @@ html
 
     section#one
       .container.wow.fadeInUp
-        h2 Are you looking for this?
-        br
-        .bd-example
-          .row
-            .col-sm-4
-              .card
-                img.card-img-top.img-responsive(src='http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4346/4346501_sd.jpg;canvasHeight=120;canvasWidth=200', alt='Card image cap', style="width: 100%;")
-                .card-block
-                  h5.card-title Nest Thermostat Installation (Phone)
-                  p.card-text 
-                    | We will install and configure your Nest thermostat.
-                  br
-                  p.card-text.h3(align="right") $99.99
-                p.card-footer.text-muted(align="center")
-                  a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(href='./services/SR12345/agents') Schedule
-            .col-sm-4
-              .card
-                img.card-img-top.img-responsive(src='http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4346/4346501_sd.jpg;canvasHeight=120;canvasWidth=200', alt='Card image cap', style="width: 100%;")
-                .card-block
-                  h5.card-title Nest Thermostat Installation (Online)
-                  p.card-text We will install and configure your Nest thermostat, then teach you about the features.
-                  p.card-text.h3(align="right") $129.99
-                p.card-footer.text-muted(align="center")
-                  button.btn.btn-lg.text-normal.btn-primary-outline Schedule
-            .col-sm-4
-              .card
-                img.card-img-top.img-responsive(src='http://pisces.bbystatic.com/image2/BestBuy_US/images/products/4346/4346501_sd.jpg;canvasHeight=120;canvasWidth=200', alt='Card image cap', style="width: 100%;")
-                .card-block
-                  h5.card-title Nest Thermostat Installation (InHome)
-                  p.card-text We will install and configure two Nest thermostats, then teach you how to use them
-                  p.card-text.h3(align="right") $240.99
-                p.card-footer.text-muted(align="center")
-                  button.btn.btn-lg.text-normal.btn-primary-outline Schedule
-        br
-        .row.col-lg-12(align="center")
-          a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(href='/poc/scheduler-app/search') Not what I was looking for...
-      br
+        .card
+          .card-header(style="background:lightblue;")
+            | My Appointments
+          .card-block
+            ul.list-group.list-group-flush
+              each reservation in data
+                a.li.list-group-item(href="/poc/scheduler-app/reservations/#{reservation.id}") #{reservation.id} - Nest Thermostat - #{reservation.agent.name} - #{reservation.appointment.status}
     
     footer#footer
       .container
@@ -127,4 +99,7 @@ html
     script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js')
-    script(src='js/scripts.js')
+    script(src='/js/scripts.js')
+    script(src='/js/spin.js')
+
+    
