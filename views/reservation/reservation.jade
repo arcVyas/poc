@@ -211,7 +211,7 @@ html
         function(data, status){
           $("#reservationCard-header").css("background",color)
           $("#reservationCard-header").text("Appointment #{text} - #{data.id}")
-          $("#confirmAppt").text("Change Appointment");
+          $("#confirmAppt").text("Cancel Appointment");
           $("#confirmAppt").blur()
           if(hide){
             $("#confirmAppt").hide()

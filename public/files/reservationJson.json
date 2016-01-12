@@ -2,11 +2,13 @@
     {
         "id": 1,
         "agent": {
-            "id": 4,
-            "name": "Agent McCollam",
-            "photolink": "https://corporate.bestbuy.com/wp-content/uploads/2012/12/McCollam-Sharon.jpg",
+            "id": 2,
+            "name": "Agent Joly",
+            "photolink": "https://corporate.bestbuy.com/wp-content/uploads/2012/10/Hubert-Joly-About-Best-Buy.jpg",
             "rating": 5,
-            "servicesCompleted": "11,451"
+            "servicesCompleted": "11,451",
+            "wait": 12,
+            "favorite": true
         },
         "appointment": {
             "date": "January 29 2016 2 pm",
