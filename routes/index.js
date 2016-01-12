@@ -53,6 +53,11 @@ router.get('/scheduler-app/reservations/r1234c', function(req, res, next) {
   res.render('./reservation/r1234c', { title: 'Express' });
 });
 
+router.get('/scheduler-app/resetfiles', function(req, res, next) {
+  //res.send ("Came in")
+  res.render('reset', { title: 'Express' });
+});
+
 router.get('/api/agents', function(req,res,next){
   res.send(pocker.getAgentsSorted(1))
 });
