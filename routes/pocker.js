@@ -24,9 +24,6 @@ pocker.writeFile = function(file, jsonObj){
   console.log("writing file")
   fs.writeFile(file,JSON.stringify(jsonObj,null,4), function(err){
       if(err){console.log(err);}
-      agentJson = require(agentFile);
-      reservationJson = require(reservationFile);
-      console.log("reloaded files")
   });
   console.log("wrote")
 
@@ -147,8 +144,8 @@ pocker.updateAgentWait = function(agentId,wait){
 }
 
 pocker.resetFiles = function(){
-  var origAgentJson = require(origAgentFile);
-  var origReservationJson = require(origReservationFile);
-  pocker.writeFile(agentFile,origAgentJson)
-  pocker.writeFile(reservationFile,origReservationJson)
+  agentJson = require(origAgentFile);
+  reservationJson = require(origReservationFile);
+  pocker.writeFile(agentFile,agentJson)
+  pocker.writeFile(reservationFile,reservationJson)
 }
