@@ -114,7 +114,6 @@ pocker.updateReservation = function(id,status){
     return r.id == id;
   });
   console.log(reservation[0])
-
   console.log("found reservation" + reservation[0].appointment.status)
   reservation[0].appointment.status = status
   console.log("updated")
@@ -124,6 +123,9 @@ pocker.updateReservation = function(id,status){
   if(status=="confirmed"){
     var agentId = reservation[0].agent.id
     pocker.updateAgentWait(agentId)
+  }else if(status=="cancelled"){
+    var agentId = reservation[0].agent.id
+    pocker.updateAgentWait(agentId,-1)
   }
 }
 
@@ -136,6 +138,11 @@ pocker.updateAgentWait = function(agentId,wait){
   if(agent.length>0){
     if(!wait){
       wait = agent[0].wait + 1
+    }else if(wait<0){
+      wait = agent[0].wait + wait
+      if(wait <0){
+        wait=0
+      }
     }
     console.log('updating wait for agentId: '+agentId)
     agent[0].wait = wait

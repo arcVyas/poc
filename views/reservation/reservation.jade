@@ -173,7 +173,7 @@ html
         if("#{data.appointment.status}"=="draft"){
           $("#confirmAppt").text("Confirm Appointment");
         }else if("#{data.appointment.status}"=="confirmed"){
-          $("#confirmAppt").text("Change Appointment");
+          $("#confirmAppt").text("Cancel Appointment");
           $("#cancel").attr("href",'/poc/scheduler-app/reservations')
         }else if("#{data.appointment.status}"=="completed"){
           $("#confirmAppt").text("Rate us");
@@ -187,7 +187,11 @@ html
         setTimeout(finish, 2000);
       }
       function finish(){
-        $.post("/poc/scheduler-app/reservations/#{data.id}/confirm",
+        var operation ="confirm"
+        if("#{data.appointment.status}"=="confirmed"){
+          operation="cancel"
+        }
+        $.post("/poc/scheduler-app/reservations/#{data.id}/"+operation,
         {},
         function(data, status){
           $("#reservationCard-header").css("background","lightgreen")

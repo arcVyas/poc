@@ -43,6 +43,11 @@ router.post('/scheduler-app/reservations/:id/confirm', function(req,res,next){
   pocker.updateReservation(id,"confirmed")
   res.send(200)
 });
+router.post('/scheduler-app/reservations/:id/cancel', function(req,res,next){
+  var id = req.params.id
+  pocker.updateReservation(id,"cancelled")
+  res.send(200)
+});
 router.get('/scheduler-app/reservations/r1234c', function(req, res, next) {
   //res.send ("Came in")
   res.render('./reservation/r1234c', { title: 'Express' });
