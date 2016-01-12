@@ -165,7 +165,7 @@ html
     script(src='/js/spin.js')
     script.
       var spinner
-      var confirmed=false
+      var cancel=false
       $( document ).ready(function() {
         $('[repeat]').each(function() {
            var toRepeat = $(this).text();
@@ -188,7 +188,7 @@ html
       });
       function confirmAppt(){
         var text = "Confirming"
-        if("#{data.appointment.status}"=="confirmed"){
+        if("#{data.appointment.status}"=="confirmed" || cancel){
           text = "Cancelling"
         }
         $("#reservationCard-header").text(text+ " appointment")
@@ -201,11 +201,12 @@ html
         var color = "lightgreen"
         var hide = false
         var text = "confirmed"
-        if($("#confirmAppt").text() =="Cancel Appointment"){
+        if("#{data.appointment.status}"=="confirmed" || cancel){
           operation="cancel"
           color = "red"
           hide=true
           text = "cancelled"
+          cancel=true
         }
         $.post("/poc/scheduler-app/reservations/#{data.id}/"+operation,
         {},
