@@ -149,8 +149,8 @@ pocker.updateAgentWait = function(agentId,wait){
 }
 
 pocker.resetFiles = function(){
-  agentJson = require(origAgentFile);
-  reservationJson = require(origReservationFile);
+  agentJson = JSON.parse(fs.readFileSync(origAgentFile));
+  reservationJson = JSON.parse(fs.readFileSync(origReservationFile));
   pocker.writeFile(agentFile,agentJson)
   pocker.writeFile(reservationFile,reservationJson)
 }
