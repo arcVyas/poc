@@ -43,6 +43,8 @@ html
           -   resId=""
           - }else if(data.appointment.status=="confirmed"){
           -   color="lightgreen"
+          - }else if(data.appointment.status=="cancelled"){
+          -   color="lightred"
           - }else{
           -   color="darkgray"
           - }
@@ -178,26 +180,42 @@ html
         }else if("#{data.appointment.status}"=="completed"){
           $("#confirmAppt").text("Rate us");
           $("#cancel").attr("href",'/poc/scheduler-app/reservations')
+        }else if("#{data.appointment.status}"=="cancelled"){
+          $("#confirmAppt").hide();
+          $("#cancel").attr("href",'/poc/scheduler-app/reservations')
         }
       });
       function confirmAppt(){
-        $("#reservationCard-header").text("Confirming appointment")
-        $("#confirmAppt").text("Confirming..");
+        var text = "Confirming"
+        if("#{data.appointment.status}"=="confirmed"){
+          text = "Cancelling"
+        }
+        $("#reservationCard-header").text(text+ " appointment")
+        $("#confirmAppt").text(text+"..");
         startSpinner()
         setTimeout(finish, 2000);
       }
       function finish(){
         var operation ="confirm"
+        var color = "lightgreen"
+        var hide = false
+        var text = "confirmed"
         if("#{data.appointment.status}"=="confirmed"){
           operation="cancel"
+          color = "lightred"
+          hide=true
+          text = "cancelled"
         }
         $.post("/poc/scheduler-app/reservations/#{data.id}/"+operation,
         {},
         function(data, status){
-          $("#reservationCard-header").css("background","lightgreen")
-          $("#reservationCard-header").text("Appointment confirmed - #{data.id}")
+          $("#reservationCard-header").css("background",color)
+          $("#reservationCard-header").text("Appointment #{text} - #{data.id}")
           $("#confirmAppt").text("Change Appointment");
           $("#confirmAppt").blur()
+          if(hide){
+            $("#confirmAppt").hide()
+          }
         });
         spinner.stop()
       }
