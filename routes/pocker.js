@@ -75,7 +75,6 @@ pocker.getReservation = function(id){
 }
 pocker.createReservation = function(serviceId,agentId){
   console.log(serviceId + ":" + agentId)
-  reservationJson = require(reservationFile);
   console.log(reservationJson)
   var agent = agentJson.filter(function(r) {
     return r.id == agentId;
