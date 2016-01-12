@@ -206,7 +206,6 @@ html
           color = "red"
           hide=true
           text = "cancelled"
-          cancel=true
         }
         $.post("/poc/scheduler-app/reservations/#{data.id}/"+operation,
         {},
@@ -218,6 +217,7 @@ html
           if(hide){
             $("#confirmAppt").hide()
           }
+          cancel=true
         });
         spinner.stop()
       }
