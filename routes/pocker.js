@@ -26,6 +26,8 @@ pocker.writeFile = function(file, jsonObj){
       if(err){console.log(err);}
   });
   console.log("wrote")
+  agentJson = require(agentFile);
+  reservationJson = require(reservationFile);
 }
 
 pocker.getAgents = function(serviceId){
