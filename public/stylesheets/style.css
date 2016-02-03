@@ -6971,3 +6971,13 @@ table th[class*="col-"] {
    content: "\2605";
    position: absolute;
 }
+
+.coupons .coupon .offer {
+    font-size: 22px;
+    line-height: 22px;
+    color: #c00;
+    font-weight: bold;
+}
+.txt_caps {
+    text-transform: uppercase;
+}

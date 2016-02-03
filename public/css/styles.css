@@ -369,3 +369,26 @@ img::-moz-selection {
   content: "\f005";
   color: #e3cf7a;
 }
+
+.offer {
+    font-size: 22px;
+    line-height: 22px;
+    color: #c00;
+    font-weight: bold;
+}
+.txt_caps {
+    text-transform: uppercase;
+}
+.grey14 {
+    font-size: 14px;
+    line-height: 14px;
+    color: #666;
+}
+.grey12 {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+}
+.coupon-a {
+    color: #2a5a97;
+}
