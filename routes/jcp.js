@@ -7,7 +7,7 @@ var pocker = require('./pocker.js')
 router.get('/coupons', function(req, resp, next) {
   var options = {
     host: "localhost",
-    port: 8080,
+    port: 443,
     path: '/coupons',
     method: 'GET'
   };
