@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)https://www.geeksquad.com/ -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en"><!--<![endif]--><head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge;requiresActiveX=true"><meta name="application-name" content="Geek Squad"><meta name="msapplication-task" content="name=All Services;action-uri=/services/;icon-uri=/assets/0/73/128/129/042074b8-79eb-4786-afbe-ff0f96efc3dc.ico"><meta name="msapplication-task" content="name=Track Your Repair;action-uri=/repair-status/;icon-uri=/assets/0/73/128/129/2f73d531-9e73-4bb0-a1f5-e1470b500095.ico"><meta name="msapplication-task" content="name=Chat With an Agent;action-uri=http://support.geeksquad.com/support/externalStartSession.s2?ju=c4me;icon-uri=/assets/0/73/128/129/51786916-566a-482b-8c87-b05f8e909f6f.ico"><meta name="msapplication-task" content="name=Schedule In-Home Appointment;action-uri=http://scheduling.geeksquad.com;icon-uri=/assets/0/73/128/129/bf43df15-2717-4e68-b6e5-77be98a6d147.ico"><meta name="msapplication-task" content="name=Find a Location;action-uri=/find-a-location/;icon-uri=/assets/0/73/128/129/11452dee-3bfd-4471-9cc0-9d7bd55fc9cc.ico"><meta name="msapplication-navbutton-color" content="#E8741F"><meta name="msapplication-tooltip" content="Geek Squad – Computers, Home Theaters, Appliances, Online Support &amp; More"><title>
+	Geek Squad - Setup, Install, Protect, Support &amp; Repair
+</title><link rel="stylesheet" type="text/css" href="./Geek Squad - Setup, Install, Protect, Support & Repair_files/styles.css"><link rel="stylesheet" type="text/css" href="./Geek Squad - Setup, Install, Protect, Support & Repair_files/colorbox-min.css"><link rel="stylesheet" type="text/css" href="./Geek Squad - Setup, Install, Protect, Support & Repair_files/headerfooter_gs.css">
+        <script type="text/javascript" async="" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/ga.js"></script><script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/modernizr-2.0.6.min.js"></script>
+
+
+
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/jquery-1.4.2.min.js"></script>
+
+		<!-- <script src="http://code.jquery.com/jquery-1.9.0.js"></script> -->
+		<!-- <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script> -->
+
+
+
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/jquery.nyroModal-1.6.2.min.js"></script>
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/isFontFaceSupported.js"></script><style>@font-face{font-family:testfont;src:url(data:font/opentype;base64,T1RUTwALAIAAAwAwQ0ZGIMA92IQAAAVAAAAAyUZGVE1VeVesAAAGLAAAABxHREVGADAABAAABgwAAAAgT1MvMlBHT5sAAAEgAAAAYGNtYXAATQPNAAAD1AAAAUpoZWFk8QMKmwAAALwAAAA2aGhlYQS/BDgAAAD0AAAAJGhtdHgHKQAAAAAGSAAAAAxtYXhwAANQAAAAARgAAAAGbmFtZR8kCUMAAAGAAAACUnBvc3T/uAAyAAAFIAAAACAAAQAAAAEAQVTDUm9fDzz1AAsD6AAAAADHUuOGAAAAAMdS44YAAADzAz8BdgAAAAgAAgAAAAAAAAABAAABdgDzAAkDQQAAAAADPwABAAAAAAAAAAAAAAAAAAAAAwAAUAAAAwAAAAICmgGQAAUAAAK8AooAAACMArwCigAAAd0AMgD6AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAEZIRAAAQAAgAC0C7v8GAAABdv8NAAAAAQAAAAAAAAAAACAAIAABAAAAFAD2AAEAAAAAAAAAPAB6AAEAAAAAAAEAAgC9AAEAAAAAAAIABwDQAAEAAAAAAAMAEQD8AAEAAAAAAAQAAwEWAAEAAAAAAAUABQEmAAEAAAAAAAYAAgEyAAEAAAAAAA0AAQE5AAEAAAAAABAAAgFBAAEAAAAAABEABwFUAAMAAQQJAAAAeAAAAAMAAQQJAAEABAC3AAMAAQQJAAIADgDAAAMAAQQJAAMAIgDYAAMAAQQJAAQABgEOAAMAAQQJAAUACgEaAAMAAQQJAAYABAEsAAMAAQQJAA0AAgE1AAMAAQQJABAABAE7AAMAAQQJABEADgFEAEcAZQBuAGUAcgBhAHQAZQBkACAAaQBuACAAMgAwADAAOQAgAGIAeQAgAEYAbwBuAHQATABhAGIAIABTAHQAdQBkAGkAbwAuACAAQwBvAHAAeQByAGkAZwBoAHQAIABpAG4AZgBvACAAcABlAG4AZABpAG4AZwAuAABHZW5lcmF0ZWQgaW4gMjAwOSBieSBGb250TGFiIFN0dWRpby4gQ29weXJpZ2h0IGluZm8gcGVuZGluZy4AAFAASQAAUEkAAFIAZQBnAHUAbABhAHIAAFJlZ3VsYXIAAEYATwBOAFQATABBAEIAOgBPAFQARgBFAFgAUABPAFIAVAAARk9OVExBQjpPVEZFWFBPUlQAAFAASQAgAABQSSAAADEALgAwADAAMAAAMS4wMDAAAFAASQAAUEkAACAAACAAAFAASQAAUEkAAFIAZQBnAHUAbABhAHIAAFJlZ3VsYXIAAAAAAAADAAAAAwAAABwAAQAAAAAARAADAAEAAAAcAAQAKAAAAAYABAABAAIAIAAt//8AAAAgAC3////h/9UAAQAAAAAAAAAAAQYAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAA/7UAMgAAAAAAAAAAAAAAAAAAAAAAAAAAAQAEBAABAQEDUEkAAQIAAQAu+BAA+BsB+BwC+B0D+BgEWQwDi/eH+dP4CgUcAIwPHAAAEBwAkREcAB4cAKsSAAMCAAEAPQA/AEFHZW5lcmF0ZWQgaW4gMjAwOSBieSBGb250TGFiIFN0dWRpby4gQ29weXJpZ2h0IGluZm8gcGVuZGluZy5QSVBJAAAAAAEADgADAQECAxQODvb3h/cXAfeHBPnT9xf90wYO+IgU+WoVHgoDliX/DAmLDAr3Fwr3FwwMHgoG/wwSAAAAAAEAAAAOAAAAGAAAAAAAAgABAAEAAgABAAQAAAACAAAAAAABAAAAAMbULpkAAAAAx1KUiQAAAADHUpSJAfQAAAH0AAADQQAA)}</style>
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/jquery.columnizer.js"></script>
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/jquery.tmpl.min.js"></script>
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/scripts.js"></script>
+		
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/headerfooter.js"></script>
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/ie6_popup.js"></script>
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/swfobject.js"></script>
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/require.js"></script>
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/client.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="/csi-survey/csiassets/scripts/libs/domready.js" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/domready.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="/csi-survey/csiassets/scripts/models/mobileDetection.js" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/mobileDetection.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="/csi-survey/csiassets/scripts/models/cookieHandling.js" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/cookieHandling.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="/csi-survey/csiassets/scripts/models/determineUser.js" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/determineUser.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="/csi-survey/csiassets/scripts/views/modalFunctionality.js" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/modalFunctionality.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="/csi-survey/csiassets/scripts/models/globalJSVariables.js" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/globalJSVariables.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="/csi-survey/csiassets/scripts/models/cookieValues.js" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/cookieValues.js"></script>
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/jquery.colorbox-min.js"></script>
+		
+		<link rel="shortcut icon" href="https://www.geeksquad.com/favicon.ico">
+		<!--[if lt IE 7]>
+				<link rel="stylesheet" type="text/css" href="/styles/ie6.css" />
+                <script type="text/javascript" src="/scripts/supersleight.js"></script>
+		<![endif]-->
+        <script type="text/javascript">
+var headerFooterBasePathLink = 'https://www.geeksquad.com';
+var headerFooterBasePathContent = 'https://www.geeksquad.com';
+var csiSurveyDomain = 'geeksquad.com';
+</script>
+
+	   <script type="text/javascript">
+	       var _gaq = _gaq || [];
+	       _gaq.push(['_setAccount', 'UA-6804456-10']);
+	       _gaq.push(['_setDomainName', 'geeksquad.com']);
+	       _gaq.push(['_trackPageview']);
+
+	       (function () {
+	           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	       })();
+		</script>
+        <script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/stips.js"></script>
+		<meta name="description" content="Geek Squad Agents are available 24/7 for technical support, installations and repairs on computers, TV and home theater, appliances, cameras, gaming, mobile phones, iPods, gps and more."><meta name="keywords" content="Geek Squad,geeksquad,tech support,computer,support,pc,help,troubleshooting,laptop,technology,service,installation,repair,home theater,appliance,camera,camcorder,gaming,mobile,phone,speaker,ipod,netbook,television,tv,gps,car,set up,setup,install,fix,how to"><meta name="copyright" content="Geek Squad Copyright 2016"><link rel="canonical" href="https://www.geeksquad.com/default.aspx"><script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/s_code.js" id="Lm_s_code"></script><script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/trackEventCustom.js" id="Lm_trackEventCustom"></script><script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/trackEventCore.js" id="Lm_trackEvent"></script><link href="./Geek Squad - Setup, Install, Protect, Support & Repair_files/stips.css" type="text/css" rel="stylesheet"></head><fontface><span style="font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 99px; line-height: normal; font-family: testfont, _, serif; position: absolute; visibility: hidden;" id="fonttest">-------</span></fontface>
+	<body class="fontface high-contrast hasGoogleVoiceExt"><a id="firstSkipTo" href="https://www.geeksquad.com/#skipcontent" onclick="s_objectID=&quot;http://www.geeksquad.com/#skipcontent_1&quot;;return this.s_oc?this.s_oc(e):true">Skip to main content</a><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="padding-bottom: 8px; padding-right: 8px; display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow: hidden; float: left;"></div><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><div id="cboxNext" style="float: left;"></div><div id="cboxPrevious" style="float: left;"></div><div id="cboxSlideshow" style="float: left;"></div><div id="cboxClose" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div>
+		<!-- Begin Qualaroo snippet -->
+		<script type="text/javascript">		    var _kiq = _kiq || [];</script>
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/84j.js" async="true"></script>
+		<!-- End Qualaroo snippet -->
+		
+
+
+		
+
+<!-- Begin Header -->
+<!-- hfReference:18332-->
+<div id="mcHeader">
+	<div id="wrapper">
+		<div id="topBar">
+			<div class="contentContainer">
+				<div id="dd_men"><button class="dd-men-link skip-auto-wire">My&nbsp;Geek&nbsp;Squad</button>
+					<!-- myGeek squad menu -->
+					
+					<ul class="topLvl">
+						<!-- myGeek squad menu items-->
+						
+								<li>
+									<a href="https://www.geeksquad.com/my-account/" onclick="s_objectID=&quot;https://www.geeksquad.com/my-account/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img alt="My Account Spritesheet" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/myGs_myAcct.png">
+									</div>
+									My Account</a> </li>
+							
+								<li>
+									<a href="https://www.geeksquad.com/repair-status" onclick="s_objectID=&quot;https://www.geeksquad.com/repair-status_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img style="border: 0px solid;" alt="mygs_trackRepair" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/myGs_trackRepair(1).png" border="0">
+									</div>
+									Track Your Repair</a> </li>
+							
+								<li>
+									<a href="https://www.geeksquad.com/find-a-location" onclick="s_objectID=&quot;https://www.geeksquad.com/find-a-location_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img width="16" height="30" style="border: 0px solid; width: 16px; height: 30px;" alt="mygs_findlocation" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/myGs_findLocation(1).png" border="0">
+									</div>
+									Find a Location</a> </li>
+							
+								<li>
+									<a href="https://www.geeksquad.com/scheduling" onclick="s_objectID=&quot;https://www.geeksquad.com/scheduling_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img alt="In-Home Scheduling Spritesheet" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/myGs_inHome.png">
+									</div>
+									Schedule a Service</a> </li>
+							
+								<li>
+									<a href="http://www.geeksquad.com/servicerequest/" target="_blank" onclick="s_objectID=&quot;http://www.geeksquad.com/servicerequest/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/gser.png" alt="gser sprite">
+									</div>
+									Express Replacement</a> </li>
+							
+								<li>
+									<a href="https://www.geeksquad.com/chat-with-an-agent/?&amp;utm_campaign=Chat%20With%20An%20Agent&amp;utm_source=WWW%20Header&amp;utm_medium=My%20GeekSquad" onclick="s_objectID=&quot;https://www.geeksquad.com/chat-with-an-agent/?&amp;utm_campaign=Chat%20With%20An%20Agent&amp;utm_source=W_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img alt="Chat with an Agent Spritesheet" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/myGs_chat.png">
+									</div>
+									Chat with an Agent</a> </li>
+							
+								<li>
+									<a href="https://www.geeksquad.com/pin" onclick="s_objectID=&quot;https://www.geeksquad.com/pin_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img width="16" height="30" style="border: 0px solid; width: 16px; height: 30px;" alt="mygs_techHelp" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/myGs_techHelp.png" border="0">
+									</div>
+									Top Secret Passcode</a> </li>
+							
+					</ul>
+					<!-- END myGeek squad items -->
+				</div>
+				<!-- END myGeek squad menu -->
+				<div class="right">
+					<span class="white"></span>
+					
+					<div id="ctl00_dynamicGeekSquadHeader_searchBox_searhContainer" class="search fright"><label class="search-label" for="search" style="visibility: hidden">Search: </label>
+    <a class="search_btn search-btn disable" href="https://www.geeksquad.com/#" aria-hidden="false" aria-label="Search the site" onclick="s_objectID=&quot;https://www.geeksquad.com/#_1&quot;;return this.s_oc?this.s_oc(e):true"><span style="visibility: hidden">Search</span></a>
+    <input name="search" type="text" id="search" maxlength="1000" value="Search..." class="search_box search-box" role="search">
+    <div class="search_load">
+    </div>
+    <div class="search_dd" role="search">
+        <div class="searchResults">
+        </div>
+        <script class="resultTemplate" type="text/html">
+        <div>
+            <p>
+            <a 
+            {{if Class}}
+            class="{{= Class}}"
+            {{/if}}
+            {{if Target}}
+            target="{{= Target}}"
+            {{/if}}
+            href="{{= Url}}">
+            <span class="name">{{= Title}}</span><br />
+            {{= Summary}}
+            </a>
+            </p>
+        </div>
+        </script>
+        
+        <div class="view_all" style="display: none">
+    
+            <a href="https://www.geeksquad.com/#" onclick="s_objectID=&quot;https://www.geeksquad.com/#_2&quot;;return this.s_oc?this.s_oc(e):true">View All Search Results</a>    
+        </div>
+    </div>
+
+</div>
+
+				</div>
+			</div>
+			<!-- end content container -->
+		</div>
+		<!-- End TOP BAR -->
+		<div id="primary" class="clearfix">
+			<!-- Primary nav -->
+			<div class="contentContainer">
+				<ul id="menuBlocks" role="menubar">
+					<li class=""><a href="./Geek Squad - Setup, Install, Protect, Support & Repair_files/Geek Squad - Setup, Install, Protect, Support &amp; Repair.html" onclick="s_objectID=&quot;https://www.geeksquad.com/_1&quot;;return this.s_oc?this.s_oc(e):true">
+						<img class="navLogo" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/primarynav_logo.png" width="138" height="88" alt="Geek Squad Logo"></a></li>
+					<li><span rel="dd_categories" class="gs-nav-menu-link" role="link" tabindex="0">
+						Categories</span><div class="blockState">
+						</div>
+					</li>
+					<li><span rel="dd_support" href="#" class="gs-nav-menu-link" role="link" tabindex="0">
+						Support Plans</span><div class="blockState">
+						</div>
+					</li>
+					<li><span rel="dd_help" class="bRight gs-nav-menu-link" href="#" role="link" tabindex="0">
+						Self Help</span><div class="blockState">
+						</div>
+					</li>
+				</ul>
+				<ul class="helpLinks" role="navigation">
+					
+							<li>
+								<a href="https://www.geeksquad.com/chat-with-an-agent" onclick="s_objectID=&quot;https://www.geeksquad.com/chat-with-an-agent_1&quot;;return this.s_oc?this.s_oc(e):true">
+								<div class="imgWrap">
+									<img alt="Chat with an Agent Spritesheet" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/myGs_chat.png">
+								</div>
+								Chat With an Agent</a> </li>
+						
+							<li>
+								<a href="https://www.geeksquad.com/scheduling/" onclick="s_objectID=&quot;https://www.geeksquad.com/scheduling/_1&quot;;return this.s_oc?this.s_oc(e):true">
+								<div class="imgWrap">
+									<img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/myGs_inHome(1).png" alt="In-Home Scheduling Spritesheet">
+								</div>
+								Schedule a Service</a> </li>
+						
+							<li>
+								<a href="https://www.geeksquad.com/repair-status" onclick="s_objectID=&quot;https://www.geeksquad.com/repair-status_2&quot;;return this.s_oc?this.s_oc(e):true">
+								<div class="imgWrap">
+									<img style="border: 0px solid;" alt="mygs_trackRepair" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/myGs_trackRepair(1).png" border="0">
+								</div>
+								Track Your Repair</a> </li>
+						
+				</ul>
+			</div>
+			<!-- end content container -->
+		</div>
+		<!-- END PRIMARY NAV -->
+		<div id="dd_sub" class="clearfix">
+			<!-- Drop Down  sub nav nav container -->
+			<div class="contentContainer" role="widget">
+				
+				
+				<ul id="dd_categories" class="7-items">
+					
+							<li style="width: 138.857px;">
+								<a id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl00_hlMenu1" href="https://www.geeksquad.com/services/computers/" onclick="s_objectID=&quot;https://www.geeksquad.com/services/computers/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl00_imgMenu1" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/cat_computers.png" alt="computersnetworking"></div>
+									Computers</a>
+							</li>
+						
+							<li style="width: 138.857px;">
+								<a id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl01_hlMenu1" href="https://www.geeksquad.com/services/home-theater/" onclick="s_objectID=&quot;https://www.geeksquad.com/services/home-theater/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl01_imgMenu1" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/cat_tvVideo.png" alt="tv_video"></div>
+									Home Theater</a>
+							</li>
+						
+							<li style="width: 138.857px;">
+								<a id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl02_hlMenu1" href="https://www.geeksquad.com/services/portable-mobile/" onclick="s_objectID=&quot;https://www.geeksquad.com/services/portable-mobile/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl02_imgMenu1" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/cat_phone.png" alt="phones_tablets"></div>
+									Portable &amp; Mobile</a>
+							</li>
+						
+							<li style="width: 138.857px;">
+								<a id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl03_hlMenu1" href="https://www.geeksquad.com/services/car-gps/" onclick="s_objectID=&quot;https://www.geeksquad.com/services/car-gps/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl03_imgMenu1" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/cat_carGps.png" alt="car_gps"></div>
+									Car &amp; GPS</a>
+							</li>
+						
+							<li style="width: 138.857px;">
+								<a id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl04_hlMenu1" href="https://www.geeksquad.com/services/appliances/" onclick="s_objectID=&quot;https://www.geeksquad.com/services/appliances/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl04_imgMenu1" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/cat_appliances.png" alt="Category of Internet Appliances"></div>
+									Appliances</a>
+							</li>
+						
+							<li style="width: 138.857px;">
+								<a id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl05_hlMenu1" href="https://www.geeksquad.com/services/networking-data/" onclick="s_objectID=&quot;https://www.geeksquad.com/services/networking-data/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl05_imgMenu1" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/support_networking[new].png" alt="Header Footer Networking &amp; Data"></div>
+									Networking &amp; Data</a>
+							</li>
+						
+							<li style="border-right-style: none; width: 138.857px;">
+								<a id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl06_hlMenu1" href="https://www.geeksquad.com/services/smart-home/" onclick="s_objectID=&quot;https://www.geeksquad.com/services/smart-home/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_CategoriesRepeater_ctl06_imgMenu1" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/cat_smarthome.png" alt="smarthome"></div>
+									Smart Home</a>
+							</li>
+						
+				</ul>
+				<!-- end category list -->
+				<!-- start support -->
+				<ul id="dd_support" class="5-items">
+					
+							<li style="width: 194.8px;">
+								<a id="ctl00_dynamicGeekSquadHeader_ProtectionPlanRepeater_ctl00_hlMenu2" href="https://www.geeksquad.com/protection-plans/geek-squad-protection/" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_ProtectionPlanRepeater_ctl00_imgMenu2" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/support_tech(1).png" alt="Badge">
+									</div>
+									<h3>Geek Squad® Protection</h3>
+									<span style="min-width:fill-available">
+										Plans that cover repair &amp; service</span>
+								</a>
+							</li>
+						
+							<li style="width: 194.8px;">
+								<a id="ctl00_dynamicGeekSquadHeader_ProtectionPlanRepeater_ctl01_hlMenu2" href="https://www.geeksquad.com/protection-plans/247-support/" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/247-support/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_ProtectionPlanRepeater_ctl01_imgMenu2" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/logo_sprite.png" alt="logo sprite">
+									</div>
+									<h3>24/7 Support</h3>
+									<span style="min-width:fill-available">
+										Get unlimited answers via online, phone &amp; in store</span>
+								</a>
+							</li>
+						
+							<li style="width: 194.8px;">
+								<a id="ctl00_dynamicGeekSquadHeader_ProtectionPlanRepeater_ctl02_hlMenu2" href="https://www.geeksquad.com/protection-plans/internet-security-software/" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/internet-security-software/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_ProtectionPlanRepeater_ctl02_imgMenu2" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/internet_security.png" alt="internet security">
+									</div>
+									<h3>Internet Security Software</h3>
+									<span style="min-width:fill-available">
+										Protection against virus, spyware &amp; malware</span>
+								</a>
+							</li>
+						
+							<li style="width: 194.8px;">
+								<a id="ctl00_dynamicGeekSquadHeader_ProtectionPlanRepeater_ctl03_hlMenu2" href="https://www.geeksquad.com/protection-plans/tech-support/" role="link" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/tech-support/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_ProtectionPlanRepeater_ctl03_imgMenu2" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/support_tie.png" alt="support tie">
+									</div>
+									<h3>Tech Support</h3>
+									<span style="min-width:fill-available">
+										Access your Tech Support membership</span>
+								</a>
+							</li>
+						
+							<li style="border-right-style: none; width: 194.8px;">
+								<a id="ctl00_dynamicGeekSquadHeader_ProtectionPlanRepeater_ctl04_hlMenu2" href="https://www.geeksquad.com/protection-plans/home-networking-made-simple/" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/home-networking-made-simple/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_ProtectionPlanRepeater_ctl04_imgMenu2" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/support_networking(1).png" alt="support networking(1)">
+									</div>
+									<h3>Home Networking Made Simple</h3>
+									<span style="min-width:fill-available">
+										Everything you need to stay connected</span>
+								</a>
+							</li>
+						
+				</ul>
+				<!--End SUPPORT SUB -->
+				<!-- start help  -->
+				<ul id="dd_help" class="two-items">
+					
+							<li style="width: 470px;">
+								<a id="ctl00_dynamicGeekSquadHeader_SelfHelpRepeater_ctl00_hlMenu3" class="track_outgoing_link" href="https://www.geeksquad.com/do-it-yourself/" onclick="s_objectID=&quot;https://www.geeksquad.com/do-it-yourself/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_SelfHelpRepeater_ctl00_imgMenu3" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/help_tools.png" alt="help tools">
+									</div>
+									<h3>Resources &amp; Tools</h3>
+									<span>Do-it-yourself advice, how-to videos and useful tools.</span>
+								</a>
+							</li>
+						
+							<li style="width: 470px;">
+								<a id="ctl00_dynamicGeekSquadHeader_SelfHelpRepeater_ctl01_hlMenu3" class="track_outgoing_link" href="https://www.geeksquad.com/tech-tips/" onclick="s_objectID=&quot;https://www.geeksquad.com/tech-tips/_1&quot;;return this.s_oc?this.s_oc(e):true">
+									<div class="imgWrap">
+										<img id="ctl00_dynamicGeekSquadHeader_SelfHelpRepeater_ctl01_imgMenu3" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/help_tech.png" alt="help tech">
+									</div>
+									<h3>Tech Tips</h3>
+									<span>Step-by-step instructions for the digital do-it-yourselfer.</span>
+								</a>
+							</li>
+						
+							
+						
+				</ul><div id="close">
+				<a href="https://www.geeksquad.com/#" id="closeHelper" title="Close" onclick="s_objectID=&quot;https://www.geeksquad.com/#_3&quot;;return this.s_oc?this.s_oc(e):true"><span aria-hidden="true" style="display:none">Close</span></a></div>
+				<!--End SELF HELP SUB -->
+			</div>
+			<!-- end content container -->
+		</div>
+		<!--END Drop Down Sub nav container -->
+	</div>
+	<!-- END HEADER -->
+	<div id="mcGsCont">
+		<!-- End Header -->
+		<!-- Begin Content -->
+
+
+		<!-- load 00:00:00.5928010, build 00:00:00.9828017 -->
+		<form method="post" action="./Geek Squad - Setup, Install, Protect, Support & Repair_files/Geek Squad - Setup, Install, Protect, Support &amp; Repair.html" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE5ODQ1MzQ1NzIPZBYCZg9kFgoCAQ9kFgICFg8WAh4EVGV4dAXPATxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0Ij4NCnZhciBoZWFkZXJGb290ZXJCYXNlUGF0aExpbmsgPSAnaHR0cHM6Ly93d3cuZ2Vla3NxdWFkLmNvbSc7DQp2YXIgaGVhZGVyRm9vdGVyQmFzZVBhdGhDb250ZW50ID0gJ2h0dHBzOi8vd3d3LmdlZWtzcXVhZC5jb20nOw0KdmFyIGNzaVN1cnZleURvbWFpbiA9ICdnZWVrc3F1YWQuY29tJzsNCjwvc2NyaXB0PmQCBQ9kFhBmDxYCHgtfIUl0ZW1Db3VudAIHFg5mD2QWAmYPFQMXPGEgaHJlZj0iL215LWFjY291bnQvIj5wPGltZyBhbHQ9Ik15IEFjY291bnQgU3ByaXRlc2hlZXQiIHNyYz0iL3VwbG9hZGVkSW1hZ2VzL3d3d2dlZWtzcXVhZGNvbS91cGxvYWRlZF9hc3NldHMvaWNvbnMvbXlHc19teUFjY3QucG5nIiAvPgpNeSBBY2NvdW50ZAIBD2QWAmYPFQMZPGEgaHJlZj0iL3JlcGFpci1zdGF0dXMiPrEBPGltZyB0aXRsZT0ibXlnc190cmFja1JlcGFpciIgc3R5bGU9ImJvcmRlcjogMHB4IHNvbGlkOyIgYWx0PSJteWdzX3RyYWNrUmVwYWlyIiBzcmM9Ii91cGxvYWRlZEltYWdlcy93d3dnZWVrc3F1YWRjb20vdXBsb2FkZWRfYXNzZXRzL2ljb25zL215R3NfdHJhY2tSZXBhaXIoMSkucG5nIiBib3JkZXI9IjAiIC8+EVRyYWNrIFlvdXIgUmVwYWlyZAICD2QWAmYPFQMbPGEgaHJlZj0iL2ZpbmQtYS1sb2NhdGlvbiI+5gE8aW1nIHdpZHRoPSIxNiIgaGVpZ2h0PSIzMCIgdGl0bGU9Im15Z3NfZmluZGxvY2F0aW9uIiBzdHlsZT0iYm9yZGVyOiAwcHggc29saWQ7IHdpZHRoOiAxNnB4OyBoZWlnaHQ6IDMwcHg7IiBhbHQ9Im15Z3NfZmluZGxvY2F0aW9uIiBzcmM9Ii91cGxvYWRlZEltYWdlcy93d3dnZWVrc3F1YWRjb20vdXBsb2FkZWRfYXNzZXRzL2ljb25zL215R3NfZmluZExvY2F0aW9uKDEpLnBuZyIgYm9yZGVyPSIwIiAvPg9GaW5kIGEgTG9jYXRpb25kAgMPZBYCZg8VAxY8YSBocmVmPSIvc2NoZWR1bGluZyI+eDxpbWcgYWx0PSJJbi1Ib21lIFNjaGVkdWxpbmcgU3ByaXRlc2hlZXQiIHNyYz0iL3VwbG9hZGVkSW1hZ2VzL3d3d2dlZWtzcXVhZGNvbS91cGxvYWRlZF9hc3NldHMvaWNvbnMvbXlHc19pbkhvbWUucG5nIiAvPhJTY2hlZHVsZSBhIFNlcnZpY2VkAgQPZBYCZg8VA0M8YSBocmVmPSJodHRwOi8vd3d3LmdlZWtzcXVhZC5jb20vc2VydmljZXJlcXVlc3QvIiB0YXJnZXQ9Il9ibGFuayI+ZTxpbWcgc3JjPSIvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL3VwbG9hZGVkX2Fzc2V0cy9pY29ucy9nc2VyLnBuZz9uPTMxMjgiIGFsdD0iZ3NlciBzcHJpdGUiIC8+E0V4cHJlc3MgUmVwbGFjZW1lbnRkAgUPZBYCZg8VA3g8YSBocmVmPSIvY2hhdC13aXRoLWFuLWFnZW50Lz8mdXRtX2NhbXBhaWduPUNoYXQlMjBXaXRoJTIwQW4lMjBBZ2VudCZ1dG1fc291cmNlPVdXVyUyMEhlYWRlciZ1dG1fbWVkaXVtPU15JTIwR2Vla1NxdWFkIj52PGltZyBhbHQ9IkNoYXQgd2l0aCBhbiBBZ2VudCBTcHJpdGVzaGVldCIgc3JjPSIvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL3VwbG9hZGVkX2Fzc2V0cy9pY29ucy9teUdzX2NoYXQucG5nIiAvPhJDaGF0IHdpdGggYW4gQWdlbnRkAgYPZBYCZg8VAw88YSBocmVmPSIvcGluIj7XATxpbWcgd2lkdGg9IjE2IiBoZWlnaHQ9IjMwIiB0aXRsZT0ibXlnc190ZWNoSGVscCIgc3R5bGU9ImJvcmRlcjogMHB4IHNvbGlkOyB3aWR0aDogMTZweDsgaGVpZ2h0OiAzMHB4OyIgYWx0PSJteWdzX3RlY2hIZWxwIiBzcmM9Ii91cGxvYWRlZEltYWdlcy93d3dnZWVrc3F1YWRjb20vdXBsb2FkZWRfYXNzZXRzL2ljb25zL215R3NfdGVjaEhlbHAucG5nIiBib3JkZXI9IjAiIC8+E1RvcCBTZWNyZXQgUGFzc2NvZGVkAgMPFgIfAAUKQ2F0ZWdvcmllc2QCBA8WAh8ABQ1TdXBwb3J0IFBsYW5zZAIFDxYCHwAFCVNlbGYgSGVscGQCBg8WAh8BAgMWBmYPZBYCZg8VAx48YSBocmVmPSIvY2hhdC13aXRoLWFuLWFnZW50Ij52PGltZyBhbHQ9IkNoYXQgd2l0aCBhbiBBZ2VudCBTcHJpdGVzaGVldCIgc3JjPSIvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL3VwbG9hZGVkX2Fzc2V0cy9pY29ucy9teUdzX2NoYXQucG5nIiAvPhJDaGF0IFdpdGggYW4gQWdlbnRkAgEPZBYCZg8VAxc8YSBocmVmPSIvc2NoZWR1bGluZy8iPn88aW1nIHNyYz0iL3VwbG9hZGVkSW1hZ2VzL3d3d2dlZWtzcXVhZGNvbS91cGxvYWRlZF9hc3NldHMvaWNvbnMvbXlHc19pbkhvbWUucG5nP249MjkwNSIgYWx0PSJJbi1Ib21lIFNjaGVkdWxpbmcgU3ByaXRlc2hlZXQiIC8+ElNjaGVkdWxlIGEgU2VydmljZWQCAg9kFgJmDxUDGTxhIGhyZWY9Ii9yZXBhaXItc3RhdHVzIj6xATxpbWcgdGl0bGU9Im15Z3NfdHJhY2tSZXBhaXIiIHN0eWxlPSJib3JkZXI6IDBweCBzb2xpZDsiIGFsdD0ibXlnc190cmFja1JlcGFpciIgc3JjPSIvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL3VwbG9hZGVkX2Fzc2V0cy9pY29ucy9teUdzX3RyYWNrUmVwYWlyKDEpLnBuZyIgYm9yZGVyPSIwIiAvPhFUcmFjayBZb3VyIFJlcGFpcmQCBw8WAh4FY2xhc3MFBzctaXRlbXMWAgIBDxYCHwECBxYOZg9kFgICAQ8PFgIeC05hdmlnYXRlVXJsBRQvc2VydmljZXMvY29tcHV0ZXJzL2QWBAIBDw8WBB4ISW1hZ2VVcmwFRy91cGxvYWRlZEltYWdlcy93d3dnZWVrc3F1YWRjb20vdXBsb2FkZWRfYXNzZXRzL2ljb25zL2NhdF9jb21wdXRlcnMucG5nHg1BbHRlcm5hdGVUZXh0BRNjb21wdXRlcnNuZXR3b3JraW5nZGQCAw8WAh8ABQlDb21wdXRlcnNkAgEPZBYCAgEPDxYCHwMFFy9zZXJ2aWNlcy9ob21lLXRoZWF0ZXIvZBYEAgEPDxYEHwQFRS91cGxvYWRlZEltYWdlcy93d3dnZWVrc3F1YWRjb20vdXBsb2FkZWRfYXNzZXRzL2ljb25zL2NhdF90dlZpZGVvLnBuZx8FBQh0dl92aWRlb2RkAgMPFgIfAAUMSG9tZSBUaGVhdGVyZAICD2QWAgIBDw8WAh8DBRovc2VydmljZXMvcG9ydGFibGUtbW9iaWxlL2QWBAIBDw8WBB8EBUMvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL3VwbG9hZGVkX2Fzc2V0cy9pY29ucy9jYXRfcGhvbmUucG5nHwUFDnBob25lc190YWJsZXRzZGQCAw8WAh8ABRFQb3J0YWJsZSAmIE1vYmlsZWQCAw9kFgICAQ8PFgIfAwUSL3NlcnZpY2VzL2Nhci1ncHMvZBYEAgEPDxYEHwQFRC91cGxvYWRlZEltYWdlcy93d3dnZWVrc3F1YWRjb20vdXBsb2FkZWRfYXNzZXRzL2ljb25zL2NhdF9jYXJHcHMucG5nHwUFB2Nhcl9ncHNkZAIDDxYCHwAFCUNhciAmIEdQU2QCBA9kFgICAQ8PFgIfAwUVL3NlcnZpY2VzL2FwcGxpYW5jZXMvZBYEAgEPDxYEHwQFSC91cGxvYWRlZEltYWdlcy93d3dnZWVrc3F1YWRjb20vdXBsb2FkZWRfYXNzZXRzL2ljb25zL2NhdF9hcHBsaWFuY2VzLnBuZx8FBQphcHBsaWFuY2VzZGQCAw8WAh8ABQpBcHBsaWFuY2VzZAIFD2QWAgIBDw8WAh8DBRovc2VydmljZXMvbmV0d29ya2luZy1kYXRhL2QWBAIBDw8WBB8EBVgvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL3VwbG9hZGVkX2Fzc2V0cy9pY29ucy9zdXBwb3J0X25ldHdvcmtpbmdbbmV3XS5wbmc/bj0zNzAzHwUFH0hlYWRlciBGb290ZXIgTmV0d29ya2luZyAmIERhdGFkZAIDDxYCHwAFEU5ldHdvcmtpbmcgJiBEYXRhZAIGD2QWAgIBDw8WAh8DBRUvc2VydmljZXMvc21hcnQtaG9tZS9kFgQCAQ8PFgQfBAVNL3VwbG9hZGVkSW1hZ2VzL3d3d2dlZWtzcXVhZGNvbS91cGxvYWRlZF9hc3NldHMvaWNvbnMvY2F0X3NtYXJ0aG9tZS5wbmc/bj0yNjEfBQUJc21hcnRob21lZGQCAw8WAh8ABQpTbWFydCBIb21lZAIIDxYCHwIFBzUtaXRlbXMWAgIBDxYCHwECBRYKZg9kFgICAQ8PFgIfAwUoL3Byb3RlY3Rpb24tcGxhbnMvZ2Vlay1zcXVhZC1wcm90ZWN0aW9uL2QWBgIBDw8WAh8EBUkvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL3VwbG9hZGVkX2Fzc2V0cy9pY29ucy9zdXBwb3J0X3RlY2goMSkucG5nZGQCAw8WAh8ABRdHZWVrIFNxdWFkwq4gUHJvdGVjdGlvbmQCBQ8WAh8ABSFQbGFucyB0aGF0IGNvdmVyIHJlcGFpciAmIHNlcnZpY2VkAgEPZBYCAgEPDxYCHwMFHi9wcm90ZWN0aW9uLXBsYW5zLzI0Ny1zdXBwb3J0L2QWBgIBDw8WAh8EBVIvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL3Byb3RlY3Rpb25fcGxhbnMvMjQ3c3VwcG9ydC9sb2dvX3Nwcml0ZS5wbmc/bj00NTEwZGQCAw8WAh8ABQwyNC83IFN1cHBvcnRkAgUPFgIfAAUyR2V0IHVubGltaXRlZCBhbnN3ZXJzIHZpYSBvbmxpbmUsIHBob25lICYgaW4gc3RvcmVkAgIPZBYCAgEPDxYCHwMFLS9wcm90ZWN0aW9uLXBsYW5zL2ludGVybmV0LXNlY3VyaXR5LXNvZnR3YXJlL2QWBgIBDw8WAh8EBVIvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL3VwbG9hZGVkX2Fzc2V0cy9pY29ucy9pbnRlcm5ldF9zZWN1cml0eS5wbmc/bj03MDYyZGQCAw8WAh8ABRpJbnRlcm5ldCBTZWN1cml0eSBTb2Z0d2FyZWQCBQ8WAh8ABStQcm90ZWN0aW9uIGFnYWluc3QgdmlydXMsIHNweXdhcmUgJiBtYWx3YXJlZAIDD2QWAgIBDw8WAh8DBR8vcHJvdGVjdGlvbi1wbGFucy90ZWNoLXN1cHBvcnQvZBYGAgEPDxYCHwQFRS91cGxvYWRlZEltYWdlcy93d3dnZWVrc3F1YWRjb20vdXBsb2FkZWRfYXNzZXRzL2ljb25zL3N1cHBvcnRfdGllLnBuZ2RkAgMPFgIfAAUMVGVjaCBTdXBwb3J0ZAIFDxYCHwAFI0FjY2VzcyB5b3VyIFRlY2ggU3VwcG9ydCBtZW1iZXJzaGlwZAIED2QWAgIBDw8WAh8DBS4vcHJvdGVjdGlvbi1wbGFucy9ob21lLW5ldHdvcmtpbmctbWFkZS1zaW1wbGUvZBYGAgEPDxYCHwQFTy91cGxvYWRlZEltYWdlcy93d3dnZWVrc3F1YWRjb20vdXBsb2FkZWRfYXNzZXRzL2ljb25zL3N1cHBvcnRfbmV0d29ya2luZygxKS5wbmdkZAIDDxYCHwAFG0hvbWUgTmV0d29ya2luZyBNYWRlIFNpbXBsZWQCBQ8WAh8ABSVFdmVyeXRoaW5nIHlvdSBuZWVkIHRvIHN0YXkgY29ubmVjdGVkZAIJDxYCHwIFBzMtaXRlbXMWAgIBDxYCHwECAxYGZg9kFgICAQ8PFgIfAwUQL2RvLWl0LXlvdXJzZWxmLxYCHwIFE3RyYWNrX291dGdvaW5nX2xpbmsWBgIBDw8WAh8EBUQvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL3VwbG9hZGVkX2Fzc2V0cy9pY29ucy9oZWxwX3Rvb2xzLnBuZ2RkAgMPFgIfAAURUmVzb3VyY2VzICYgVG9vbHNkAgUPFgIfAAU2RG8taXQteW91cnNlbGYgYWR2aWNlLCBob3ctdG8gdmlkZW9zIGFuZCB1c2VmdWwgdG9vbHMuZAIBD2QWAgIBDw8WAh8DBQsvdGVjaC10aXBzLxYCHwIFE3RyYWNrX291dGdvaW5nX2xpbmsWBgIBDw8WAh8EBUMvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL3VwbG9hZGVkX2Fzc2V0cy9pY29ucy9oZWxwX3RlY2gucG5nZGQCAw8WAh8ABQlUZWNoIFRpcHNkAgUPFgIfAAU7U3RlcC1ieS1zdGVwIGluc3RydWN0aW9ucyBmb3IgdGhlIGRpZ2l0YWwgZG8taXQteW91cnNlbGZlci5kAgIPZBYCAgEPDxYCHwMFJmh0dHA6Ly93d3cuZ2Vla3NxdWFkLmNvbS9pbnRlbGxpZ2VuY2UvFgIfAgUTdHJhY2tfb3V0Z29pbmdfbGluaxYGAgEPDxYCHwQFSy91cGxvYWRlZEltYWdlcy93d3dnZWVrc3F1YWRjb20vdXBsb2FkZWRfYXNzZXRzL2ljb25zL2hlbHBfaW50ZWxsaWdlbmNlLnBuZ2RkAgMPFgIfAAUcR2VlayBTcXVhZCBJbnRlbGxpZ2VuY2UgQmxvZ2QCBQ8WAh8ABTlOZXdzIGFuZCBCZXN0IFByYWN0aWNlcyBmcm9tIE91ciBOZXR3b3JrIG9mIEZpZWxkIEFnZW50cy5kAgcPFgIfAAU2PCEtLSBsb2FkIDAwOjAwOjAwLjU5MjgwMTAsIGJ1aWxkIDAwOjAwOjAwLjk4MjgwMTcgLS0+ZAIJEGRkFgQCAw9kFgYCAQ8WAh8ABS8yMCwwMDAgQWdlbnRzIDxici8+IE92ZXIgMjAgWWVhcnMgb2YgRXhwZXJpZW5jZWQCBQ9kFgICAQ8WAh8BAgMWBmYPZBYIAgEPDxYEHwQFSy91cGxvYWRlZEltYWdlcy93d3dnZWVrc3F1YWRjb20vaG9tZXBhZ2VfcHJvbW9fYm94ZXMvZml0dG9nZXRoZXIuanBnP249NzAyNB8FBRVwaG90byBvZiBsYWR5IGpvZ2dpbmdkZAIDDxYCHwAFGVlvdXIgYmVzdCB5b3Ugc3RhcnRzIGhlcmVkAgUPFgIfAAVaVGlwcyBvbiBjaG9vc2luZyB0aGUgcmlnaHQgd2VhcmFibGUgdGVjaG5vbG9neSBkZXZpY2UgYW5kIGhvdyB0byBnZXQgdGhlIG1vc3Qgb3V0IG9mIGl0LiAgZAIHDxYCHwAFdzxhIGNsYXNzPSJidG4iIGhyZWY9Imh0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9ZFpGRXIzZjFCeWMmbGlzdD1QTE8tUUxESjZoVDZkVFlfWXpKVjdRbHZIcHdLUWVuWWQ4Ij5SZWFkIE1vcmU8L2E+ZAIBD2QWCAIBDw8WBB8EBU4vdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL3NpZGViYXJfY29udGVudC9nc3JvdXRlcl8zMDB4MjIwX2J3LnBuZz9uPTUzMzAfBQUMZ3Nyb3V0ZXIgYi93ZGQCAw8WAh8ABRhORVRHRUFSIE5pZ2h0aGF3ayBSb3V0ZXJkAgUPFgIfAAVKVGlwcyBvbiBzZXR0aW5nIHVwIHRoZSBuZXcgTmlnaHRoYXdrIHJvdXRlciB0aGF0IGNvbWVzIHdpdGggQWdlbnQgc3VwcG9ydC5kAgcPFgIfAAVAPGEgY2xhc3M9ImJ0biIgaHJlZj0iL3RlY2gtdGlwcy9uZXRnZWFyLW5pZ2h0aGF3ayI+UmVhZCBNb3JlPC9hPmQCAg9kFggCAQ8PFgQfBAVFL3VwbG9hZGVkSW1hZ2VzL3d3d2dlZWtzcXVhZGNvbS9zaWRlYmFyX2NvbnRlbnQvd2luMTBwcm9tby5wbmc/bj00MDE4HwUFDndpbjEwIGxvZ28gYi93ZGQCAw8WAh8ABRVVcGdyYWRlIHRvIFdpbmRvd3MgMTBkAgUPFgIfAAVHT3VyIHR3byBUZWNoIFRpcCB2aWRlb3Mgd2lsbCBoZWxwIHlvdSBwcmVwYXJlIHRvIHVwZ3JhZGUgdG8gV2luZG93cyAxMC5kAgcPFgIfAAUwPGEgY2xhc3M9ImJ0biIgaHJlZj0iL3dpbi0xMC5hc3B4Ij5SZWFkIE1vcmU8L2E+ZAIHD2QWAgIBDxYCHwECAxYGZg9kFgICAQ8PFgIfAwU0L2RvLWl0LXlvdXJzZWxmL3Rvb2xzL3Rlc3QteW91ci1icm9hZGJhbmQtc3BlZWQuYXNweGQWBgIBDw8WAh8EBVEvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL2hvbWVwYWdlX3RlY2hfdGlwcy9pY25fdGVjaF90aXBzXzE3eDE2LnBuZz9uPTQwMTNkZAIDDxYCHwAFGiBUZXN0IFlvdXIgQnJvYWRiYW5kIFNwZWVkZAIFDxYCHwAFNFNlZSBpZiB5b3UgYXJlIGdldHRpbmcgdGhlIHNwZWVkIHlvdSBhcmUgcGF5aW5nIGZvci5kAgEPZBYCAgEPDxYCHwMFKi9kby1pdC15b3Vyc2VsZi90ZWNoLXRpcHMvbW9iaWxlLXRpcHMuYXNweGQWBgIBDw8WAh8EBUwvdXBsb2FkZWRJbWFnZXMvd3d3Z2Vla3NxdWFkY29tL2hvbWVwYWdlX3RlY2hfdGlwcy9pY25fdG9vbHNfMTd4MTYucG5nP249MjA5ZGQCAw8WAh8ABR1TZXR0aW5nIFVwIFlvdXIgTW9iaWxlIERldmljZWQCBQ8WAh8ABTxUaGluZ3MgdG8gZG8gYmVmb3JlIHlvdSB0cmFkZS1pbiBvciBnaXZlIHNvbWVvbmUgeW91ciBwaG9uZS5kAgIPZBYCAgEPDxYCHwMFNy9kby1pdC15b3Vyc2VsZi90b29scy9zY2FuLWZvci12aXJ1c2VzLWFuZC1zcHl3YXJlLmFzcHhkFgYCAQ8PFgIfBAVRL3VwbG9hZGVkSW1hZ2VzL3d3d2dlZWtzcXVhZGNvbS9ob21lcGFnZV90ZWNoX3RpcHMvaWNuX3RlY2hfdGlwc18xN3gxNi5wbmc/bj00MDEzZGQCAw8WAh8ABRxTY2FuIGZvciBWaXJ1c2VzIGFuZCBTcHl3YXJlZAIFDxYCHwAFQkNoZWNrIHlvdXIgbWFjaGluZSBmb3IgbWFsd2FyZSwgYWR3YXJlLCB3b3JtcyBvciBvdGhlciBpbmZlY3Rpb25zLmQCCQ9kFg4CAw8WAh8ABRFHbyBhaGVhZC4gVXNlIHVzLmQCBQ8WAh8BAgYWDGYPZBYCAgEPFgIfAAVQPGEgaHJlZj0iL2NoYXQtd2l0aC1hbi1hZ2VudC8iIHRpdGxlPSJDaGF0IHdpdGggYW4gQWdlbnQiPkNoYXQgd2l0aCBhbiBBZ2VudDwvYT5kAgEPZBYCAgEPFgIfAAVHPGEgaHJlZj0iL2ZpbmQtYS1sb2NhdGlvbi8iIHRpdGxlPSJGaW5kIGEgTG9jYXRpb24iPkZpbmQgYSBMb2NhdGlvbjwvYT5kAgIPZBYCAgEPFgIfAAVhPGEgaHJlZj0iL3NjaGVkdWxpbmcvIiB0aXRsZT0iU2NoZWR1bGUgYW4gT24tU2l0ZSBvciBJbi1TdG9yZSBBcHBvaW50bWVudCI+U2NoZWR1bGUgYSBTZXJ2aWNlPC9hPmQCAw9kFgICAQ8WAh8ABTk8YSBocmVmPSIvY29udGFjdC5hc3B4IiB0aXRsZT0iQ29udGFjdCBVcyI+Q29udGFjdCBVczwvYT5kAgQPZBYCAgEPFgIfAGVkAgUPZBYCAgEPFgIfAGVkAgcPFgIfAQIEFghmD2QWBGYPFQEJRm9sbG93IFVzZAIBDxYCHwECBBYIZg9kFgICAQ8WAh8ABVk8YSBocmVmPSJodHRwOi8vd3d3LmZhY2Vib29rLmNvbS9HZWVrU3F1YWQiIHRpdGxlPSJGYWNlYm9vayIgdGFyZ2V0PSJfYmxhbmsiPkZhY2Vib29rPC9hPmQCAQ9kFgICAQ8WAh8ABVY8YSBocmVmPSJodHRwOi8vd3d3LnR3aXR0ZXIuY29tL0dlZWtTcXVhZCIgdGl0bGU9IlR3aXR0ZXIiIHRhcmdldD0iX2JsYW5rIj5Ud2l0dGVyPC9hPmQCAg9kFgICAQ8WAh8ABV08YSBocmVmPSJodHRwOi8vd3d3LnlvdXR1YmUuY29tL3VzZXIvR2Vla1NxdWFkSFEiIHRpdGxlPSJZb3VUdWJlIiB0YXJnZXQ9Il9ibGFuayI+WW91VHViZTwvYT5kAgMPZBYCAgEPFgIfAAVkPGEgaHJlZj0iaHR0cDovL2ZlZWRzLmZlZWRidXJuZXIuY29tL2dlZWtzcXVhZC9VVGZsIiB0aXRsZT0iU3Vic2NyaWJlIiB0YXJnZXQ9Il9ibGFuayI+U3Vic2NyaWJlPC9hPmQCAQ9kFgRmDxUBDldoeSBHZWVrIFNxdWFkZAIBDxYCHwECBxYOZg9kFgICAQ8WAh8ABTI8YSB0aXRsZT0iQWJvdXQgVXMiIGhyZWY9Ii9hYm91dC11cy8iPkFib3V0IFVzPC9hPmQCAQ9kFgICAQ8WAh8ABUE8YSB0aXRsZT0iV2h5IENob29zZSBVcyIgaHJlZj0iL3doeS1jaG9vc2UtdXMvIj5XaHkgQ2hvb3NlIFVzPC9hPmQCAg9kFgICAQ8WAh8ABVA8YSB0aXRsZT0iVGVzdGltb25pYWxzIiBocmVmPSIvd2h5LWNob29zZS11cy90ZXN0aW1vbmlhbHMuYXNweCI+VGVzdGltb25pYWxzPC9hPmQCAw9kFgICAQ8WAh8ABVs8YSB0aXRsZT0iTWVldCBPdXIgQWdlbnRzIiBocmVmPSJodHRwOi8vc3VwcG9ydC5nZWVrc3F1YWQuY29tL3N1cHBvcnQvIj5NZWV0IE91ciBBZ2VudHM8L2E+ZAIED2QWAgIBDxYCHwAFQTxhIHRpdGxlPSJQcmljaW5nIiBocmVmPSIvd2h5LWNob29zZS11cy9wcmljaW5nLmFzcHgiPlByaWNpbmc8L2E+ZAIFD2QWAgIBDxYCHwAFUzxhIHRpdGxlPSJPdXIgR3VhcmFudGVlIiBocmVmPSIvd2h5LWNob29zZS11cy9vdXItZ3VhcmFudGVlLmFzcHgiPk91ciBHdWFyYW50ZWU8L2E+ZAIGD2QWAgIBDxYCHwAFZTxhIHRpdGxlPSJTYWZldHkgJmFtcDsgU2VjdXJpdHkiIGhyZWY9Ii93aHktY2hvb3NlLXVzL3NhZmV0eS1zZWN1cml0eS5hc3B4Ij5TYWZldHkgJmFtcDsgU2VjdXJpdHk8L2E+ZAICD2QWBGYPFQEJU2VsZiBIZWxwZAIBDxYCHwECBhYMZg9kFgICAQ8WAh8ABXQ8YSBocmVmPSJodHRwOi8vd3d3LmJlc3RidXkuY29tL3JlY3ljbGluZyIgdGl0bGU9IlJlY3ljbGUgTXkgRWxlY3Ryb25pY3MiIHRhcmdldD0iX2JsYW5rIj5SZWN5Y2xlIE15IEVsZWN0cm9uaWNzPC9hPmQCAQ9kFgICAQ8WAh8ABYABPGEgaHJlZj0iaHR0cDovL3d3dy5iZXN0YnV5LmNvbS90cmFkZWluIiB0aXRsZT0iVHJhZGUgT2xkIEdlYXIgRm9yIEdpZnQgQ2FyZHMiIHRhcmdldD0iX2JsYW5rIj5UcmFkZSBPbGQgR2VhciBGb3IgR2lmdCBDYXJkczwvYT5kAgIPZBYCAgEPFgIfAAV7PGEgdGl0bGU9IkZpbmQgRHJpdmVycyBhbmQgVXBkYXRlcyIgaHJlZj0iL2RvLWl0LXlvdXJzZWxmL3Rvb2xzL2ZpbmQtZHJpdmVycy1hbmQtdXBkYXRlcy5hc3B4Ij5GaW5kIERyaXZlcnMgYW5kIFVwZGF0ZXM8L2E+ZAIDD2QWAgIBDxYCHwAFhwE8YSB0aXRsZT0iU2NhbiBmb3IgVmlydXNlcyBhbmQgU3B5d2FyZSIgaHJlZj0iL2RvLWl0LXlvdXJzZWxmL3Rvb2xzL3NjYW4tZm9yLXZpcnVzZXMtYW5kLXNweXdhcmUuYXNweCI+U2NhbiBmb3IgVmlydXNlcyBhbmQgU3B5d2FyZTwvYT5kAgQPZBYCAgEPFgIfAAV+PGEgdGl0bGU9IlRlc3QgWW91ciBCcm9hZGJhbmQgU3BlZWQiIGhyZWY9Ii9kby1pdC15b3Vyc2VsZi90b29scy90ZXN0LXlvdXItYnJvYWRiYW5kLXNwZWVkLmFzcHgiPlRlc3QgWW91ciBCcm9hZGJhbmQgU3BlZWQ8L2E+ZAIFD2QWAgIBDxYCHwAFfDxhIHRpdGxlPSJNYW51ZmFjdHVyZXIgUmVzdG9yZSBEaXNjcyIgaHJlZj0iL2RvLWl0LXlvdXJzZWxmL3Rvb2xzL2NvbXB1dGVyLXJlc3RvcmUtZGlzYy5hc3B4Ij5NYW51ZmFjdHVyZXIgUmVzdG9yZSBEaXNjczwvYT5kAgMPZBYEZg8VAQ1BY2NvdW50IFRvb2xzZAIBDxYCHwECBRYKZg9kFgICAQ8WAh8ABSU8YSBocmVmPSIvbXktYWNjb3VudC8iPk15IEFjY291bnQ8L2E+ZAIBD2QWAgIBDxYCHwAFQTxhIGhyZWY9Ii9yZXBhaXItc3RhdHVzLyIgdGl0bGU9IlJlcGFpciBTdGF0dXMiPlJlcGFpciBTdGF0dXM8L2E+ZAICD2QWAgIBDxYCHwAFSjxhIHRpdGxlPSJQcm90ZWN0aW9uIFBsYW5zIiBocmVmPSIvcHJvdGVjdGlvbi1wbGFucy8iPlByb3RlY3Rpb24gUGxhbnM8L2E+ZAIDD2QWAgIBDxYCHwAFOzxhIGhyZWY9Imh0dHA6Ly9qb2luLmdlZWtzcXVhZC5jb20vIj5Kb2luIFBob25lIFNlc3Npb248L2E+ZAIED2QWAgIBDxYCHwAFRDxhIHRpdGxlPSJSZW1vdGUgTG9naW4iIGhyZWY9Ii9waW4iIHRhcmdldD0iX2JsYW5rIj5SZW1vdGUgTG9naW48L2E+ZAIJDxYCHwECARYCZg9kFgICAQ8WAh8ABdMCPGEgdGl0bGU9IlRydXN0ZSBDZXJ0aWZpZWQgUHJpdmFjeSIgaHJlZj0iaHR0cDovL3ByaXZhY3kudHJ1c3RlLmNvbS9wcml2YWN5LXNlYWwvQmVzdC1CdXktQ28tLC1JbmMtL3ZhbGlkYXRpb24/cmlkPWMxNzNmY2UyLTY2ZWYtNGFhNS05OGU5LWJkMDA4N2Q4ODk2OSIgdGFyZ2V0PSJfYmxhbmsiPjxpbWcgc3JjPSJodHRwczovL3d3dy5nZWVrc3F1YWQuY29tL3VwbG9hZGVkSW1hZ2VzL3d3d2dlZWtzcXVhZGNvbS9zaXRlX3NldHRpbmdzL3RydXN0ZS5naWY/bj02NzgzIiBhbHQ9IlRydXN0ZSBDZXJ0aWZpZWQgUHJpdmFjeSIgdGl0bGU9IlRydXN0ZSBDZXJ0aWZpZWQgUHJpdmFjeSIgLz48L2E+ZAILDxYCHwECCBYQZg9kFgICAQ8WAh8ABS88YSB0aXRsZT0iQ2FyZWVycyIgaHJlZj0iL2NhcmVlcnMvIj5DYXJlZXJzPC9hPmQCAQ9kFgICAQ8WAh8ABVo8YSBocmVmPSJodHRwOi8vcHIuYmJ5LmNvbS8iIHRpdGxlPSJOZXdzICZhbXA7IFByZXNzIiB0YXJnZXQ9Il9ibGFuayI+TmV3cyAmYW1wOyBQcmVzczwvYT5kAgIPZBYCAgEPFgIfAAU1PGEgdGl0bGU9IlNpdGUgTWFwIiBocmVmPSIvc2l0ZW1hcC5hc3B4Ij5TaXRlIE1hcDwvYT5kAgMPZBYCAgEPFgIfAAVVPGEgdGl0bGU9IkdlZWsgU3F1YWQgU2l0ZXMiIGhyZWY9Ii9tb3JlLXNpdGVzL2dlZWstc3F1YWQtc2l0ZXMvIj5HZWVrIFNxdWFkIFNpdGVzPC9hPmQCBA9kFgICAQ8WAh8ABUw8YSB0aXRsZT0iUGFydG5lciBTaXRlcyIgaHJlZj0iL21vcmUtc2l0ZXMvcGFydG5lci1zaXRlcy8iPlBhcnRuZXIgU2l0ZXM8L2E+ZAIFD2QWAgIBDxYCHwAFczxhIGhyZWY9Imh0dHA6Ly93d3cuYmVzdGJ1eS5jb20vYWFycC8iIHRpdGxlPSJUZWNoIFN1cHBvcnQgYW5kZSBHdWlkYW5jZSBmb3IgQUFSUCBNZW1iZXJzIiB0YXJnZXQ9Il9ibGFuayI+QUFSUDwvYT5kAgYPZBYCAgEPFgIfAAU1PGEgdGl0bGU9IlNpdGUgSGVscCIgaHJlZj0iL3NpdGUtaGVscC8iPlNpdGUgSGVscDwvYT5kAgcPZBYCAgEPFgIfAGVkAg0PFgIfAAUTQ2FsbCAxLTgwMC00MzMtNTc3OGQCDw8WAh8ABZoDVXNlIG9mIHRoaXMgc2l0ZSBzaWduaWZpZXMgeW91ciBhY2NlcHRhbmNlIG9mIHRoZSA8YSB0aXRsZT0iTGVnYWwgVGVybXMgb2YgVXNlIiBocmVmPSIvdGVybXMtb2YtdXNlLmFzcHgiPkxlZ2FsIFRlcm1zIG9mIFVzZTwvYT4sIG91ciA8YSB0aXRsZT0iUHJpdmFjeSBQb2xpY3kiIGhyZWY9Ii9wb2xpY3ktZm9yLXByaXZhY3kuYXNweCI+UHJpdmFjeSBQb2xpY3k8L2E+LDxiciAvPjxhIGhyZWY9Ii9wb2xpY3ktZm9yLXByaXZhY3ktQ0EuYXNweCI+Q2FsaWZvcm5pYSBQcml2YWN5IFJpZ2h0czwvYT4gYW5kIG91ciBwcm9jZXNzIGZvciBoYW5kbGluZyA8YSBocmVmPSIvSW50ZXJlc3RBZHMuYXNweCI+SW50ZXJlc3QgQmFzZWQgQWRzPC9hPi48YnIgLz7CqTIwMTYgR2VlayBTcXVhZC4gQWxsIFJpZ2h0cyBSZXNlcnZlZC5kAgsPFgIfAAVfPHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPgoJdmFyIHRyYWNrID0gbmV3IE9iamVjdCgpOwoJdHJhY2suY2F0TmFtZSA9ICdIb21lJzsgCjwvc2NyaXB0PgpkZKuB297xqf+q4RXqD05djiNHNHh+gyPUndS4CiLleaH6">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="84C1BFF7">
+</div>
+			
+				
+
+						<a id="skipcontent" name="skipcontent"><span style="display: none" aria-hidden="true">Content</span></a>
+						
+    <div id="mcGsCont">
+        <div class="home-page-content">
+            <section class="lead-in">
+                <div class="inner">
+                    <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/homepage-leading.jpg" alt="Homepage Banner">
+                    <h1>
+                        20,000 Agents <br> Over 20 Years of Experience
+                        </h1>
+                </div>
+            </section>
+            
+
+<section class="collapsible-tabs">
+    <div class="inner">
+        <div class="close-icon"><a href="https://www.geeksquad.com/#" onclick="s_objectID=&quot;https://www.geeksquad.com/#_4&quot;;return this.s_oc?this.s_oc(e):true">
+            <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_close.jpg" alt="Close Icon">
+        </a></div>
+        <ul class="article-wrap" role="menubar">
+            <li>
+                <div class="tab"><a href="javascript:void(0);" style="text-decoration: none;" onclick="s_objectID=&quot;javascript:void(0);_1&quot;;return this.s_oc?this.s_oc(e):true">
+                    <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_setup-tab.png" alt="Setup Tab Icon">
+                    <h3>Set up &amp; Install</h3>
+                    <span>Where You Need It</span>
+                </a></div>
+                <div class="content-block set-up-block">
+                    <div class="inner">
+                        <header>
+                            <p>
+                                Whether you need a hand with your new device or are looking to reset your current tech, we're here to help. Our Agents will help you get it set up and show you how to get the most out of it.
+                            </p>
+                        <a href="https://www.geeksquad.com/#" class="close-content-icon" onclick="s_objectID=&quot;http://www.geeksquad.com/#_4&quot;;return this.s_oc?this.s_oc(e):true"><img class="close-x" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_close.jpg" alt="Close Icon"></a></header>
+                        <section>
+                            <ul role="navigation">
+                                <li>
+                                    <a href="https://www.geeksquad.com/services/computers/" role="link" onclick="s_objectID=&quot;https://www.geeksquad.com/services/computers/_2&quot;;return this.s_oc?this.s_oc(e):true">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_laptop.png" alt="Laptop Icon">
+                                        <h4>Computers</h4>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.geeksquad.com/services/home-theater/" role="link" onclick="s_objectID=&quot;https://www.geeksquad.com/services/home-theater/_2&quot;;return this.s_oc?this.s_oc(e):true">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_homeTheater.png" alt="Home Theater Icon">
+                                        <h4>home theater</h4>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.geeksquad.com/services/portable-mobile/" role="link" onclick="s_objectID=&quot;https://www.geeksquad.com/services/portable-mobile/_2&quot;;return this.s_oc?this.s_oc(e):true">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_mobile.png" alt="Mobile Icon">
+                                        <h4>Portable &amp; Mobile</h4>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.geeksquad.com/services/car-gps/" role="link" onclick="s_objectID=&quot;https://www.geeksquad.com/services/car-gps/_2&quot;;return this.s_oc?this.s_oc(e):true">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_car.png" alt="Car Icon">
+                                        <h4>Car &amp; GPS</h4>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.geeksquad.com/services/networking-data/" role="link" onclick="s_objectID=&quot;https://www.geeksquad.com/services/networking-data/_2&quot;;return this.s_oc?this.s_oc(e):true">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_networkTower.png" alt="Network Tower Icon">
+                                        <h4>Networking &amp; Data</h4>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.geeksquad.com/services/smart-home/" role="link" onclick="s_objectID=&quot;https://www.geeksquad.com/services/smart-home/_2&quot;;return this.s_oc?this.s_oc(e):true">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_smart-home.png" alt="Smart Home Icon">
+                                        <h4>Smart Home</h4>
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="tab"><a href="javascript:void(0);" style="text-decoration: none;" onclick="s_objectID=&quot;javascript:void(0);_2&quot;;return this.s_oc?this.s_oc(e):true">
+                    <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_protect-tab.png" alt="Protect Tab Icon">
+                    <h3>Protect</h3>
+                    <span>The Devices You Buy</span>
+                </a></div>
+                <div class="content-block protection-block">
+                    <div class="inner">
+                        <header>
+                            <p>
+                                Add a little peace-of-mind to your purchase. Geek Squad Protection keeps your
+					devices safe when manufacturer warranties come up short. Because real-life
+					accidents don’t always match the fine print.
+                            </p>
+                        <a href="https://www.geeksquad.com/#" class="close-content-icon" onclick="s_objectID=&quot;http://www.geeksquad.com/#_4&quot;;return this.s_oc?this.s_oc(e):true"><img class="close-x" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_close.jpg" alt="Close Icon"></a></header>
+                        <section>
+                            <div class="icon-wrap">
+                                <div class="icon-block">
+                                    <div class="image-block">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_accidentalDamage.png" alt="Accidental Damage Icon">
+                                    </div>
+                                    <div class="copy-block">
+                                        <span tabindex="0">Accidental Damage</span>
+                                    </div>
+                                </div>
+                                <div class="icon-block">
+                                    <div class="image-block">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_normalWear.png" alt="Normal Wear Icon">
+                                    </div>
+                                    <div class="copy-block">
+                                        <span tabindex="0">Normal Wear &amp; Tear Plus Defects</span>
+                                    </div>
+                                </div>
+                                <div class="icon-block">
+                                    <div class="image-block">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_parts.png" alt="Parts Icon">
+                                    </div>
+                                    <div class="copy-block">
+                                        <span tabindex="0">Parts Coverage</span>
+                                    </div>
+                                </div>
+                                <div class="icon-block">
+                                    <div class="image-block">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_powerSurges.png" alt="Power Surges Icon">
+                                    </div>
+                                    <div class="copy-block">
+                                        <span tabindex="0">Power Surges</span>
+                                    </div>
+                                </div>
+                                <div class="icon-block">
+                                    <div class="image-block">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_inHomeService.png" alt="In Home Service Icon">
+                                    </div>
+                                    <div class="copy-block">
+                                        <span tabindex="0">In-Home Service</span>
+                                    </div>
+                                </div>
+
+                                <div class="icon-block">
+                                    <div class="image-block">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_reinstallation.png" alt="Reinstallation Icon">
+                                    </div>
+                                    <div class="copy-block">
+                                        <span tabindex="0">Reinstallation</span>
+                                    </div>
+                                </div>
+                                <div class="icon-block">
+                                    <div class="image-block">
+                                        <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_battery.png" alt="Battery Icon">
+                                    </div>
+                                    <div class="copy-block">
+                                        <span tabindex="0">One-time Replacement of the Original Battery</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn" href="https://www.geeksquad.com/protection-plans/geek-squad-protection/" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/_2&quot;;return this.s_oc?this.s_oc(e):true">Learn More</a>
+                        </section>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="tab"><a href="javascript:void(0);" style="text-decoration: none;" onclick="s_objectID=&quot;javascript:void(0);_3&quot;;return this.s_oc?this.s_oc(e):true">
+                    <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_support-tab.png" alt="Support Tab Icon">
+                    <h3>Support</h3>
+                    <span>When You Need Help</span>
+                </a></div>
+                <div class="content-block support-block">
+                    <div class="inner">
+                        <header>
+                            <p>
+                                We are always there for your tech support needs. Agents are available 24/7 online and on the phone. And if you like the personal touch, Agents are available in the Precinct at your local Best Buy.
+                            </p>
+                            <p class="cta"><a href="https://www.geeksquad.com/chat-with-an-agent/" role="link" onclick="s_objectID=&quot;https://www.geeksquad.com/chat-with-an-agent/_1&quot;;return this.s_oc?this.s_oc(e):true">Chat with an Agent</a> online now or call us at <strong>1-800-GEEKSQUAD</strong> to get started.</p>
+                        <a href="https://www.geeksquad.com/#" class="close-content-icon" onclick="s_objectID=&quot;http://www.geeksquad.com/#_4&quot;;return this.s_oc?this.s_oc(e):true"><img class="close-x" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_close.jpg" alt="Close Icon"></a></header>
+                        <section>
+                            <div class="link-block">
+                                <div class="image-block">
+                                    <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_tech-support-membership.jpg" alt="Tech Support Memebership Icon">
+                                </div>
+                                <div class="copy-block">
+                                    <h4>Tech Support Membership</h4>
+                                    <p>24/7 support for PCs, Macs and tablets, including unlimited virus removals, tune-ups and more.</p>
+                                    <a class="btn" href="https://www.geeksquad.com/protection-plans/tech-support/#_tab3" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/tech-support/#_tab3_1&quot;;return this.s_oc?this.s_oc(e):true">LOGIN NOW</a>
+                                    <a href="https://www.geeksquad.com/buytechsupport/" onclick="s_objectID=&quot;https://www.geeksquad.com/buytechsupport/_1&quot;;return this.s_oc?this.s_oc(e):true">Learn more</a>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Tech Tips</h4>
+                                <p>Helpful how-to videos and information to get your newest device up and running.</p>
+                                <a class="btn" href="https://www.geeksquad.com/tech-tips/" onclick="s_objectID=&quot;https://www.geeksquad.com/tech-tips/_2&quot;;return this.s_oc?this.s_oc(e):true">Learn More</a>
+                                
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="tab"><a href="javascript:void(0);" style="text-decoration: none;" onclick="s_objectID=&quot;javascript:void(0);_4&quot;;return this.s_oc?this.s_oc(e):true">
+                    <img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_repair-tab.png" alt="Repair Tab Icon">
+                    <h3>Repair</h3>
+                    <span>If Things Break Down</span>
+                </a></div>
+                <div class="content-block repair-block">
+                    <div class="inner">
+                        <header>
+                            <p>
+                                Our Agents provide quick and effective repair services on all kinds of tech - computers, home theater, car audio and home appliances. We fix most makes and models, no matter where you bought it.
+                            </p>
+                        <a href="https://www.geeksquad.com/#" class="close-content-icon" onclick="s_objectID=&quot;http://www.geeksquad.com/#_4&quot;;return this.s_oc?this.s_oc(e):true"><img class="close-x" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_close.jpg" alt="Close Icon"></a></header>
+                        <section>
+                            <div class="link-block">
+                                <div class="copy-block">
+                                    <h4>Reach out to our Agents.</h4>
+                                    <p>We’re always here to help whether you have a Protection plan or not, we have a repair solution. Questions? We’re available.</p>
+                                    <a class="chat-link" href="https://www.geeksquad.com/chat-with-an-agent/" role="link" onclick="s_objectID=&quot;https://www.geeksquad.com/chat-with-an-agent/_2&quot;;return this.s_oc?this.s_oc(e):true">Chat with an Agent</a>
+                                    <span>or</span>
+                                    <span class="tel">1-800-GEEKSQUAD</span>
+                                </div>
+                            </div>
+                            <div class="select-block">
+                                <h4>Have a protection plan?</h4>
+                                <p>Getting help is easy. Check your service options:</p>
+                                <a href="javascript:void(0);" class="dropDown" role="combobox" onclick="s_objectID=&quot;javascript:void(0);_5&quot;;return this.s_oc?this.s_oc(e):true"><dl class="select-dropdown">
+                                    <dt>
+                                        <a><span>Select a product category</span></a>
+                                    </dt>
+                                    <dd>
+                                        <ul>
+                                            <li><a href="https://www.geeksquad.com/protection-plans/geek-squad-protection/appliances.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/appliances.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Appliances</a></li>
+                                            <li><a href="https://www.geeksquad.com/protection-plans/geek-squad-protection/cameras-camcorders.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/cameras-camcorders.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Cameras &amp; Camcorders</a></li>
+                                            <li><a href="https://www.geeksquad.com/protection-plans/geek-squad-protection/car-gps.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/car-gps.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Car &amp; GPS</a></li>
+                                            <li><a href="https://www.geeksquad.com/protection-plans/geek-squad-protection/cell-phones.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/cell-phones.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Cell Phones</a></li>
+                                            <li><a href="https://www.geeksquad.com/protection-plans/geek-squad-protection/computing.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/computing.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Computing, Tablets &amp; E-Readers</a></li>
+                                            <li><a href="https://www.geeksquad.com/protection-plans/geek-squad-protection/gadgets.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/gadgets.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Gadgets</a></li>
+                                            <li><a href="https://www.geeksquad.com/protection-plans/geek-squad-protection/gaming.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/gaming.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Gaming Consoles</a></li>
+                                            <li><a href="https://www.geeksquad.com/protection-plans/geek-squad-protection/handheld-gaming.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/handheld-gaming.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Handheld Gaming</a></li>
+                                            <li><a href="https://www.geeksquad.com/protection-plans/geek-squad-protection/health-fitness.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/health-fitness.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Health &amp; Fitness</a></li>
+                                            <li><a href="https://www.geeksquad.com/protection-plans/geek-squad-protection/home-theater.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/home-theater.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Home Theater</a></li>
+                                            <li><a href="https://www.geeksquad.com/protection-plans/geek-squad-protection/mp3-players.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/mp3-players.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">iPod &amp; MP3 Players</a></li>
+                                            <li><a href="https://www.geeksquad.com/protection-plans/geek-squad-protection/musical-instruments.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/geek-squad-protection/musical-instruments.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Musical Instruments</a></li>
+                                        </ul>
+                                    </dd>
+                                </dl></a>
+                                <a class="btn" href="https://www.geeksquad.com/#" onclick="s_objectID=&quot;https://www.geeksquad.com/#_5&quot;;return this.s_oc?this.s_oc(e):true">Go</a>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('.select-block li a').click(function (e) {
+                e.preventDefault();
+
+                $(this).closest('ul').hide();
+            });
+
+            $('.select-block a.btn').click(function (e) {
+                e.preventDefault();
+
+                var $selectedLink = $(this).closest('.select-block').find('a.selected').eq(0);
+                if ($selectedLink.length == 1) {
+                    document.location = $selectedLink.attr('href');
+                }
+            });
+        });
+    </script>
+</section>
+
+            <section class="body-content">
+
+                <div class="inner">
+                    
+
+<section class="article-wrap" role="menubar">
+
+            <article>
+        <div class="image-block">
+            <img id="ctl00_MainPlaceholder_HomePageFeatures1_rptFeatures_ctl00_ImageLeft" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/fittogether.jpg" alt="photo of lady jogging">
+            
+        </div>
+        <div class="copy-block">
+            <h3>Your best you starts here</h3>
+            <p>Tips on choosing the right wearable technology device and how to get the most out of it.  
+                
+            </p>
+			
+			<a class="btn" href="https://www.youtube.com/watch?v=dZFEr3f1Byc&amp;list=PLO-QLDJ6hT6dTY_YzJV7QlvHpwKQenYd8" onclick="s_objectID=&quot;https://www.youtube.com/watch?v=dZFEr3f1Byc&amp;list=PLO-QLDJ6hT6dTY_YzJV7QlvHpwKQenYd8_1&quot;;return this.s_oc?this.s_oc(e):true">Read More</a>
+            
+            
+        </div>
+    </article>
+    
+            <article>
+        <div class="image-block">
+            <img id="ctl00_MainPlaceholder_HomePageFeatures1_rptFeatures_ctl01_ImageLeft" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/gsrouter_300x220_bw.png" alt="gsrouter b/w">
+            
+        </div>
+        <div class="copy-block">
+            <h3>NETGEAR Nighthawk Router</h3>
+            <p>Tips on setting up the new Nighthawk router that comes with Agent support.
+                
+            </p>
+			
+			<a class="btn" href="https://www.geeksquad.com/tech-tips/netgear-nighthawk" onclick="s_objectID=&quot;https://www.geeksquad.com/tech-tips/netgear-nighthawk_1&quot;;return this.s_oc?this.s_oc(e):true">Read More</a>
+            
+            
+        </div>
+    </article>
+    
+            <article>
+        <div class="image-block">
+            <img id="ctl00_MainPlaceholder_HomePageFeatures1_rptFeatures_ctl02_ImageLeft" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/win10promo.png" alt="win10 logo b/w">
+            
+        </div>
+        <div class="copy-block">
+            <h3>Upgrade to Windows 10</h3>
+            <p>Our two Tech Tip videos will help you prepare to upgrade to Windows 10.
+                
+            </p>
+			
+			<a class="btn" href="https://www.geeksquad.com/win-10.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/win-10.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Read More</a>
+            
+            
+        </div>
+    </article>
+    
+
+
+
+</section>
+                    
+<section class="tips-wrap">
+    <header>
+        <h3>Top Tech Tips</h3>
+    </header>
+    
+            <article>
+                <a id="ctl00_MainPlaceholder_HomePageTechTips1_rptTechTips_ctl00_hlLink" href="https://www.geeksquad.com/do-it-yourself/tools/test-your-broadband-speed.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/do-it-yourself/tools/test-your-broadband-speed.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">
+                    <header>
+                        <img id="ctl00_MainPlaceholder_HomePageTechTips1_rptTechTips_ctl00_imgIcon" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_tech_tips_17x16.png" alt="icn tech tips 17x16">
+                        
+                        <h4> Test Your Broadband Speed</h4>
+                    </header>
+                  
+                    <p>See if you are getting the speed you are paying for.</p>
+                </a>
+            </article>
+        
+            <article>
+                <a id="ctl00_MainPlaceholder_HomePageTechTips1_rptTechTips_ctl01_hlLink" href="https://www.geeksquad.com/do-it-yourself/tech-tips/mobile-tips.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/do-it-yourself/tech-tips/mobile-tips.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">
+                    <header>
+                        <img id="ctl00_MainPlaceholder_HomePageTechTips1_rptTechTips_ctl01_imgIcon" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_tools_17x16.png" alt="icn tools 17x16">
+                        
+                        <h4>Setting Up Your Mobile Device</h4>
+                    </header>
+                  
+                    <p>Things to do before you trade-in or give someone your phone.</p>
+                </a>
+            </article>
+        
+            <article>
+                <a id="ctl00_MainPlaceholder_HomePageTechTips1_rptTechTips_ctl02_hlLink" href="https://www.geeksquad.com/do-it-yourself/tools/scan-for-viruses-and-spyware.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/do-it-yourself/tools/scan-for-viruses-and-spyware.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">
+                    <header>
+                        <img id="ctl00_MainPlaceholder_HomePageTechTips1_rptTechTips_ctl02_imgIcon" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/icn_tech_tips_17x16.png" alt="icn tech tips 17x16">
+                        
+                        <h4>Scan for Viruses and Spyware</h4>
+                    </header>
+                  
+                    <p>Check your machine for malware, adware, worms or other infections.</p>
+                </a>
+            </article>
+        
+</section>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/homev3.js" type="text/javascript"></script>
+
+						<div class="hidden"></div>
+						<div class="clear"></div>
+				
+
+			
+<!-- End Content -->
+<!-- Begin Footer -->
+</form></div>
+<footer id="mcFooter">
+	<div class="contentContainer">
+		<div id="ctl00_dynamicGeekSquadFooter_aspxSearchBar_searhContainer" class="search fright">
+    <a class="search_btn search-btn disable" href="https://www.geeksquad.com/#" aria-hidden="false" aria-label="Search the site" onclick="s_objectID=&quot;https://www.geeksquad.com/#_6&quot;;return this.s_oc?this.s_oc(e):true"><span style="visibility: hidden">Search</span></a>
+    <input name="search" type="text" id="search" maxlength="1000" value="Search..." class="search_box search-box" role="search">
+    <div class="search_load">
+    </div>
+    <div class="search_dd" role="search">
+        <div class="searchResults">
+        </div>
+        <script class="resultTemplate" type="text/html">
+        <div>
+            <p>
+            <a 
+            {{if Class}}
+            class="{{= Class}}"
+            {{/if}}
+            {{if Target}}
+            target="{{= Target}}"
+            {{/if}}
+            href="{{= Url}}">
+            <span class="name">{{= Title}}</span><br />
+            {{= Summary}}
+            </a>
+            </p>
+        </div>
+        </script>
+        
+        <div class="view_all" style="display: none">
+    
+            <a href="https://www.geeksquad.com/#" onclick="s_objectID=&quot;https://www.geeksquad.com/#_7&quot;;return this.s_oc?this.s_oc(e):true">View All Search Results</a>    
+        </div>
+    </div>
+
+</div>
+
+
+        <h1>Go ahead. Use us.</h1>
+
+		<div class="footer_center clearfix">
+			<ul class="left footer_primary">
+            <li><h3>Popular Links</h3></li>
+				
+						<li><a href="https://www.geeksquad.com/chat-with-an-agent/" role="link" onclick="s_objectID=&quot;https://www.geeksquad.com/chat-with-an-agent/_3&quot;;return this.s_oc?this.s_oc(e):true">Chat with an Agent</a></li>
+					
+						<li><a href="https://www.geeksquad.com/find-a-location/" role="link" onclick="s_objectID=&quot;https://www.geeksquad.com/find-a-location/_1&quot;;return this.s_oc?this.s_oc(e):true">Find a Location</a></li>
+					
+						<li><a href="https://www.geeksquad.com/scheduling/" title="Schedule an On-Site or In-Store Appointment" onclick="s_objectID=&quot;https://www.geeksquad.com/scheduling/_2&quot;;return this.s_oc?this.s_oc(e):true">Schedule a Service</a></li>
+					
+						<li><a href="https://www.geeksquad.com/contact.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/contact.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Contact Us</a></li>
+					
+						<li></li>
+					
+						<li></li>
+					
+			</ul>
+
+			
+					<ul class="right">
+						<li><h3>Follow Us</h3></li>
+						
+								<li><a href="http://www.facebook.com/GeekSquad" target="_blank" onclick="s_objectID=&quot;http://www.facebook.com/GeekSquad_1&quot;;return this.s_oc?this.s_oc(e):true">Facebook</a></li>
+							
+								<li><a href="http://www.twitter.com/GeekSquad" target="_blank" onclick="s_objectID=&quot;http://www.twitter.com/GeekSquad_1&quot;;return this.s_oc?this.s_oc(e):true">Twitter</a></li>
+							
+								<li><a href="http://www.youtube.com/user/GeekSquadHQ" target="_blank" onclick="s_objectID=&quot;http://www.youtube.com/user/GeekSquadHQ_1&quot;;return this.s_oc?this.s_oc(e):true">YouTube</a></li>
+							
+								<li><a href="http://feeds.feedburner.com/geeksquad/UTfl" target="_blank" onclick="s_objectID=&quot;http://feeds.feedburner.com/geeksquad/UTfl_1&quot;;return this.s_oc?this.s_oc(e):true">Subscribe</a></li>
+							
+					</ul>
+				
+					<ul class="right">
+						<li><h3>Why Geek Squad</h3></li>
+						
+								<li><a href="https://www.geeksquad.com/about-us/" onclick="s_objectID=&quot;https://www.geeksquad.com/about-us/_1&quot;;return this.s_oc?this.s_oc(e):true">About Us</a></li>
+							
+								<li><a href="https://www.geeksquad.com/why-choose-us/" onclick="s_objectID=&quot;https://www.geeksquad.com/why-choose-us/_1&quot;;return this.s_oc?this.s_oc(e):true">Why Choose Us</a></li>
+							
+								<li><a href="https://www.geeksquad.com/why-choose-us/testimonials.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/why-choose-us/testimonials.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Testimonials</a></li>
+							
+								<li><a href="http://support.geeksquad.com/support/" onclick="s_objectID=&quot;http://support.geeksquad.com/support/_1&quot;;return this.s_oc?this.s_oc(e):true">Meet Our Agents</a></li>
+							
+								<li><a href="https://www.geeksquad.com/why-choose-us/pricing.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/why-choose-us/pricing.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Pricing</a></li>
+							
+								<li><a href="https://www.geeksquad.com/why-choose-us/our-guarantee.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/why-choose-us/our-guarantee.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Our Guarantee</a></li>
+							
+								<li><a href="https://www.geeksquad.com/why-choose-us/safety-security.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/why-choose-us/safety-security.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Safety &amp; Security</a></li>
+							
+					</ul>
+				
+					<ul class="right">
+						<li><h3>Self Help</h3></li>
+						
+								<li><a href="http://www.bestbuy.com/recycling" target="_blank" onclick="s_objectID=&quot;http://www.bestbuy.com/recycling_1&quot;;return this.s_oc?this.s_oc(e):true">Recycle My Electronics</a></li>
+							
+								<li><a href="http://www.bestbuy.com/tradein" target="_blank" onclick="s_objectID=&quot;http://www.bestbuy.com/tradein_1&quot;;return this.s_oc?this.s_oc(e):true">Trade Old Gear For Gift Cards</a></li>
+							
+								<li><a href="https://www.geeksquad.com/do-it-yourself/tools/find-drivers-and-updates.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/do-it-yourself/tools/find-drivers-and-updates.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Find Drivers and Updates</a></li>
+							
+								<li><a href="https://www.geeksquad.com/do-it-yourself/tools/scan-for-viruses-and-spyware.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/do-it-yourself/tools/scan-for-viruses-and-spyware.aspx_2&quot;;return this.s_oc?this.s_oc(e):true">Scan for Viruses and Spyware</a></li>
+							
+								<li><a href="https://www.geeksquad.com/do-it-yourself/tools/test-your-broadband-speed.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/do-it-yourself/tools/test-your-broadband-speed.aspx_2&quot;;return this.s_oc?this.s_oc(e):true">Test Your Broadband Speed</a></li>
+							
+								<li><a href="https://www.geeksquad.com/do-it-yourself/tools/computer-restore-disc.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/do-it-yourself/tools/computer-restore-disc.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Manufacturer Restore Discs</a></li>
+							
+					</ul>
+				
+					<ul class="right">
+						<li><h3>Account Tools</h3></li>
+						
+								<li><a href="https://www.geeksquad.com/my-account/" onclick="s_objectID=&quot;https://www.geeksquad.com/my-account/_2&quot;;return this.s_oc?this.s_oc(e):true">My Account</a></li>
+							
+								<li><a href="https://www.geeksquad.com/repair-status/" onclick="s_objectID=&quot;https://www.geeksquad.com/repair-status/_1&quot;;return this.s_oc?this.s_oc(e):true">Repair Status</a></li>
+							
+								<li><a href="https://www.geeksquad.com/protection-plans/" onclick="s_objectID=&quot;https://www.geeksquad.com/protection-plans/_1&quot;;return this.s_oc?this.s_oc(e):true">Protection Plans</a></li>
+							
+								<li><a href="http://join.geeksquad.com/" onclick="s_objectID=&quot;http://join.geeksquad.com/_1&quot;;return this.s_oc?this.s_oc(e):true">Join Phone Session</a></li>
+							
+								<li><a href="https://www.geeksquad.com/pin" target="_blank" onclick="s_objectID=&quot;https://www.geeksquad.com/pin_2&quot;;return this.s_oc?this.s_oc(e):true">Remote Login</a></li>
+							
+					</ul>
+				
+
+			
+		</div><!-- end footer center -->
+
+        <div class="right">                                                                   
+           
+					<a title="Truste Certified Privacy" href="http://privacy.truste.com/privacy-seal/Best-Buy-Co-,-Inc-/validation?rid=c173fce2-66ef-4aa5-98e9-bd0087d88969" target="_blank" onclick="s_objectID=&quot;http://privacy.truste.com/privacy-seal/Best-Buy-Co-,-Inc-/validation?rid=c173fce2-66ef-4aa5-98e9-_1&quot;;return this.s_oc?this.s_oc(e):true"><img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/truste.gif" alt="Truste Certified Privacy"></a>
+				        
+        </div>
+
+        <ul class="bottom_links">
+			
+					<li><a href="https://www.geeksquad.com/careers/" onclick="s_objectID=&quot;https://www.geeksquad.com/careers/_1&quot;;return this.s_oc?this.s_oc(e):true">Careers</a></li>
+				
+					<li><a href="http://pr.bby.com/" target="_blank" onclick="s_objectID=&quot;http://pr.bby.com/_1&quot;;return this.s_oc?this.s_oc(e):true">News &amp; Press</a></li>
+				
+					<li><a href="https://www.geeksquad.com/sitemap.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/sitemap.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Site Map</a></li>
+				
+					<li><a href="https://www.geeksquad.com/more-sites/geek-squad-sites/" onclick="s_objectID=&quot;https://www.geeksquad.com/more-sites/geek-squad-sites/_1&quot;;return this.s_oc?this.s_oc(e):true">Geek Squad Sites</a></li>
+				
+					<li><a href="https://www.geeksquad.com/more-sites/partner-sites/" onclick="s_objectID=&quot;https://www.geeksquad.com/more-sites/partner-sites/_1&quot;;return this.s_oc?this.s_oc(e):true">Partner Sites</a></li>
+				
+					<li><a href="http://www.bestbuy.com/aarp/" title="Tech Support ande Guidance for AARP Members" target="_blank" onclick="s_objectID=&quot;http://www.bestbuy.com/aarp/_1&quot;;return this.s_oc?this.s_oc(e):true">AARP</a></li>
+				
+					<li><a href="https://www.geeksquad.com/site-help/" onclick="s_objectID=&quot;https://www.geeksquad.com/site-help/_1&quot;;return this.s_oc?this.s_oc(e):true">Site Help</a></li>
+				
+					<li></li>
+				
+	    </ul>
+        <h3 class="left">Call 1-800-433-5778</h3>		 
+		<p class="copyright">Use of this site signifies your acceptance of the <a href="https://www.geeksquad.com/terms-of-use.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/terms-of-use.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Legal Terms of Use</a>, our <a href="https://www.geeksquad.com/policy-for-privacy.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/policy-for-privacy.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Privacy Policy</a>,<br><a href="https://www.geeksquad.com/policy-for-privacy-CA.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/policy-for-privacy-CA.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">California Privacy Rights</a> and our process for handling <a href="https://www.geeksquad.com/InterestAds.aspx" onclick="s_objectID=&quot;https://www.geeksquad.com/InterestAds.aspx_1&quot;;return this.s_oc?this.s_oc(e):true">Interest Based Ads</a>.<br>©2016 Geek Squad. All Rights Reserved.</p>
+	</div><!-- end content container -->
+</footer></div> <!-- end of #wrapper -->
+
+
+
+
+
+<!-- End Footer -->
+		
+    
+		<script type="text/javascript">
+	var track = new Object();
+	track.catName = 'Home'; 
+</script>
+
+		<script type="text/javascript" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/liveManager.js"></script>
+
+		<div id="ie6ModalBlocker">
+		</div>
+		<div id="ieModalContainer">
+			<div id="ieModalClose"></div>
+			<div id="ie6Modal">
+				<div id="ieModalHeader">
+					<h4>There's no easy way to say this, but...</h4>
+					<h1>Your Browser Is Holding You Back.<span> It's Time To Move on.</span></h1>
+					<h4>Click one of the icons below to upgrade to a new browser.</h4>
+				</div>
+				<div id="ieModalIcons">
+					<a href="http://www.mozilla.com/en-US/firefox/new/" onclick="s_objectID=&quot;http://www.mozilla.com/en-US/firefox/new/_1&quot;;return this.s_oc?this.s_oc(e):true"><img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/ff_icon.jpg" width="105" height="92" alt="Firefox"></a>
+					<a href="http://www.google.com/chrome" onclick="s_objectID=&quot;http://www.google.com/chrome_1&quot;;return this.s_oc?this.s_oc(e):true"><img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/chrome_icon.jpg" width="105" height="92" alt="Google Chrome"></a>
+					<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home" onclick="s_objectID=&quot;http://windows.microsoft.com/en-US/internet-explorer/products/ie/home_1&quot;;return this.s_oc?this.s_oc(e):true"><img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/ie_icon.jpg" width="105" height="92" alt="Internet Explorer"></a>
+					<a href="http://www.apple.com/safari/download/" onclick="s_objectID=&quot;http://www.apple.com/safari/download/_1&quot;;return this.s_oc?this.s_oc(e):true"><img src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/safari_icon.jpg" width="105" height="92" alt="Safari"></a>
+				</div>
+				<div id="ieModalFooter">
+					<h4>No thanks, I understand this site may not display properly.</h4><img id="ie6CloseWindowButton" src="./Geek Squad - Setup, Install, Protect, Support & Repair_files/closeWindowButton.jpg" alt="close window">
+				</div>
+			</div>
+		</div>
+	
+<object id="__symantecPKIClientMessenger" data-extension-version="0.4.0.90" style="display: none;"></object><span id="__symantecPKIClientDetector" style="display: none;">__PRESENT</span><script id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{(function() { for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i.toString(); } else { d.textContent=i.toString(); } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }})()}catch(e){}</script></body></html>

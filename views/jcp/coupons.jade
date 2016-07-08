@@ -1,0 +1,103 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Demo App
+    meta(name='description', content='JCP playground')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='generator', content='Vyas')
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css')
+    link(href='//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/css/styles.css')
+  
+  body.bg-faded(id="body-agents")
+  
+    nav#topNav.navbar.navbar-default.navbar-fixed-top
+      .container
+        button.navbar-toggler.hidden-md-up.pull-right(type='button', data-toggle='collapse', data-target='#collapsingNavbar')
+          | ☰
+        a.navbar-brand.page-scroll(href='/poc/scheduler-app/search') JCP - Demo App
+        #collapsingNavbar.collapse.navbar-toggleable-sm
+          ul.nav.navbar-nav
+            li.nav-item
+              a.nav-link.page-scroll(href='#') Menu 1
+            li.nav-item
+              a.nav-link.page-scroll(href='#') Menu 2
+          ul.nav.navbar-nav.pull-right
+            li.nav-item
+              a.nav-link.page-scroll(data-toggle='modal', title='Change Zip', href='#') Zip 10003 (Change)
+            li.nav-item
+              a.nav-link.page-scroll(data-toggle='modal', title='About', href='#') About
+
+    section#two
+      .container.wow.fadeInUp(id="main-container")
+        br
+        - console.log("vyas:"+data)
+        each category in data
+          - console.log("category=="+ category)
+          .card
+            .card-header(style="background:#c9302c;color: white;")
+              .span#category #{category.category}
+              - var coupons = category.coupons
+              - console.log(coupons)
+            .card-block
+              .row
+                each coupon in coupons
+                  .col-lg-4
+                    .card
+                      .card-block(style="border-style:dotted")
+                        .row
+                          .col-sm-12(style="vertical-align: middle;")
+                            h4.card-title.text-xs-left(style="font-size:16px")
+                              .span(class="grey12")#couponChannel #{coupon.channel}
+                          each offer in coupon.offers
+                            .col-sm-12(style="vertical-align: middle;")
+                              h4.card-title.text-xs-left(style="font-size:16px")
+                                .span(class="offer txt_caps") #{offer.name}
+                              h6.text-xs-left(style="font-size:13px") 
+                                .span(class="grey12")#couponDetails #{offer.description}
+                        br
+                        .row
+                          .col-sm-12(style="vertical-align: middle;")
+                            h4.card-title.text-xs-left(style="font-size:12px")
+                              .span(class="grey12")#shopNow #{coupon.code}
+                          .col-sm-12(style="vertical-align: middle;")
+                            h4.card-title.text-xs-left(style="font-size:12px")
+                              .span(class="grey12")#shopNow #{coupon.validity} 
+                          each link in coupon.links
+                            .col-sm-12(style="vertical-align: middle;")
+                              a(href='#{link.desktopURL}' class="grey12 coupon-a") #{link.title}  ›
+                        br
+                        .row
+                          .col-sm-12(style="vertical-align: middle;")
+                            a.btn.btn-primary-outline.btn-sm.page-scroll.wow.fadeInUp(href='#') apply code
+
+    footer#footer
+      .container
+        br
+        span.pull-right.text-muted.small
+          a(href='') Demo App
+          |  ©2015 Company
+  
+    // scripts loaded here
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js')
+    script(src='/js/scripts.js')
+    script(src='/js/spin.js')
+    script. 
+      $( document ).ready(function() {
+        /*$.get(
+          "http://localhost:8080/coupons",
+          {},
+          function(data, status){
+            /*console.log(data + ":" + status)
+            $("[id^='couponTitle'").text(data[0].items[0].desc)
+            $("[id^='couponText'").text(data[0].items[0].details)*/
+            
+          });*/
+      });
+      

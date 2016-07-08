@@ -1,0 +1,19 @@
+html
+  script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+  script.
+    $( document ).ready(function() {
+      $("#butt").click(function() {
+        $("#status").text("Start Reset")
+        $.post("/poc/api/resetfiles?token=GTH8765-998TGDHRUN-FNU88123",
+        {},
+        function(data, status){
+          $("#status").text("reset status: " + status)
+        });
+      });
+    });
+  body
+    span  Use this only if you know about it.. You could get fired for doing this
+    br
+    input#butt(type='submit', value='RESET DEMO APP')
+    br
+    span#status

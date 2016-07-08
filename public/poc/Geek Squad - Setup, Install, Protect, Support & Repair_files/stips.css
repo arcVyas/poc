@@ -1,0 +1,1929 @@
+﻿a:focus, button:focus, input:focus {
+	outline: blue solid medium !important;
+	outline: -webkit-focus-ring-color auto 5px !important;
+}
+
+.quick-select-dropdown:focus {
+	outline: blue solid medium !important;
+	outline: -webkit-focus-ring-color auto 5px !important;
+}
+
+.content-block a:focus {
+	border: 1px solid blue;
+}
+
+.content-block	.protection-block .copy-block span {
+	outline: blue solid medium !important;
+	outline: -webkit-focus-ring-color auto 5px !important;
+}
+
+.home-page-content .collapsible-tabs ul.article-wrap > li .content-block {
+	display: none;
+}
+
+.home-page-content .collapsible-tabs ul.article-wrap > li.active .content-block {
+	display: block;
+}
+
+a[name="skipcontent"] {
+	position: absolute;
+	left: -999px;
+}
+
+.high-contrast h2.featured-products-head {
+	color: #FFF; 
+}
+
+.featured-products-item {
+	text-decoration: none !important; 
+}
+
+.featured-products-item:hover {
+	text-decoration: underline !important; 
+}
+
+#firstSkipTo {
+	display: block;
+	z-index: 9999;
+	position: absolute;
+	font-size: 15px;
+	line-height: 20px;
+	top: 15px;
+	left: 15px;
+	background-color: #000;
+	color: #000;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+#firstSkipTo:focus {
+    width: auto;
+    height: 20px;
+    overflow: visible;
+	color: #FFF;
+}
+
+.search-label {
+	display: none;
+}
+
+#dd_sub #dd_categories, #dd_sub #dd_support, #dd_sub #dd_help {
+	display: none;
+}
+
+#dd_sub #dd_categories.top, #dd_sub #dd_support.top, #dd_sub #dd_help.top {
+	display: block;
+}
+
+#close {
+	display: none;
+}
+
+#dd_sub ul.top ~ #close {
+	display: block;
+}
+
+#close:focus {
+	border: 1px solid blue;
+}
+
+.close-icon {
+	display: none;
+}
+
+.faq h5 {
+	text-decoration: underline;
+}
+
+.content-block header {
+	position: relative;
+}
+
+.content-block header a.close-content-icon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 99999;
+	margin: 0;
+}
+
+#mcHeader .content-block header a.close-content-icon img.close-x {
+	height: 16px;
+	width: 16px;
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+.dd-men-link {
+	padding: 10px;
+    width: 224px;
+    border-radius: 4px 4px;
+	color: #FFF;
+	background-color: #333;
+	text-decoration: none;
+	border: none;
+	font-size: 15px;
+}
+
+
+h2.active .dd-men-link {
+	color: #FFF;
+	background-color: #555;
+	text-decoration: none;
+	border: none;
+}
+
+.topLvl li a {
+	color: #b5540f;
+}
+
+
+
+
+/****************** HIGH CONTRAST STYLES *********************/
+/****************** HIGH CONTRAST STYLES *********************/
+/****************** HIGH CONTRAST STYLES *********************/
+/****************** HIGH CONTRAST STYLES *********************/
+
+.high-contrast .row {
+	vertical-align: top;
+	height: auto;
+}
+
+.high-contrast .square-content {
+	vertical-align: top;
+	height: auto;
+	float: none;
+	display: inline-block;
+}
+
+/*#dd_sub #dd_support {
+	margin: -10px;
+}
+
+#dd_sub #dd_support li {
+	padding: 10px;
+}
+*/
+
+.high-contrast #dd_sub #dd_support li a span {
+	text-transform: capitalize;
+}
+
+.high-contrast #dd_sub #dd_support li a {
+	padding: 15px;
+/*	padding-bottom: 5px;
+	padding-left: 4px;
+	padding-right: 4px;*/
+}
+
+
+.high-contrast #dd_sub #dd_support li a div.imgWrap {
+	margin-left: 13px;
+	left: 0;
+	top: 15px;
+} 
+
+.high-contrast #dd_support h3 {
+	color: #000;
+	margin-bottom: 15px;
+	font-weight: 700;
+	height: 50px;
+}
+
+
+.high-contrast #topBar {
+	padding-top: 5px;
+	padding-bottom: 7px;
+}
+
+.high-contrast #dd_support li a h3 {
+	margin-left: 30px;
+}
+
+.high-contrast #dd_support span {
+	line-height: 1.5;
+	color: #000;
+}
+
+
+.high-contrast #dd_support.top li a .imgWrap {
+	left: 2px;
+	top: 10px;
+}
+
+
+.high-contrast #dd_sub #dd_help li a span {
+	line-height: 1.5;
+	color: #000;
+}
+
+
+.high-contrast .sub-nav-help.header-sub-nav-panel.cf a, .high-contrast .sub-nav-support.header-sub-nav-panel.cf a {
+	padding-top: 10px;
+	padding-bottom: 5px;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.high-contrast .sub-nav-help.header-sub-nav-panel.cf h3, .high-contrast .header-sub-nav-panel.cf h3 {
+	color: #b5540f;
+	margin-bottom: 15px;
+	font-weight: 700;
+	height: 50px;
+}
+
+.high-contrast .sub-nav-help.header-sub-nav-panel.cf span, .high-contrast .header-sub-nav-panel.cf span {
+	color: #000;
+}
+
+.high-contrast button.user-dd-menu-btn {
+	padding-right: 35px;
+	color: #FFF;
+}
+
+.high-contrast button.user-dd-menu-btn.active {
+	background-color: #777;
+	background-image: none;
+}
+
+.high-contrast .contentContainer ul#menuBlocks {
+	margin-right: 15px;
+}
+
+.high-contrast #primary ul.helpLinks li {
+	margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.high-contrast .topLvl.active a:focus {
+	text-decoration: underline;
+}
+
+.high-contrast .dd-men-link {
+	color: #FFF;
+	background-color: #333;
+}
+
+.high-contrast .number {
+    background: none;
+    color: #000;
+}
+
+.high-contrast .black_bg .number {
+    color: #EEE;
+}
+
+.high-contrast .black_bg p {
+	color: #EEE;
+}
+
+.high-contrast .breadcrumbs-wrap, .high-contrast .breadcrumbs-separator {
+	background-color: #FFF;
+	color: #000;
+}
+
+.high-contrast .footer.content-section.cf a {
+	color: #FFF;
+}
+
+.high-contrast .footer.content-section.cf a:focus {
+	text-decoration: underline;
+}
+
+.high-contrast .sidebar-item-content {
+	color: #FFF;
+}
+
+.high-contrast .breadcrumbs {
+	color: #000;
+}
+
+.high-contrast .landing-intro .breadcrumbs {
+	color: #FFF;
+}
+
+.high-contrast .landing-intro .breadcrumbs a {
+	color: #FFF;
+}
+
+.high-contrast .breadcrumb {
+	color: #FFF;
+}
+
+.high-contrast .breadcrumb a {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+.high-contrast .breadcrumbs a {
+	color: #000;
+	text-decoration: underline;
+}
+
+.high-contrast .chat_content .breadcrumbs a {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+.high-contrast .black_bg .breadcrumbs {
+	color: #FFF;
+}
+
+.high-contrast .black_bg .breadcrumbs a{
+	color: #FFF;
+}
+
+.high-contrast .landing_head .breadcrumbs {
+	color: #FFF;
+}
+
+.high-contrast .landing_head .breadcrumbs a {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+.high-contrast .legal {
+	color: #000;
+}
+
+.high-contrast .cn_protection-plan .manage-your-plan {
+	background-color: #333;
+}
+
+.high-contrast .easy-help {
+	background-color: #333;
+}
+
+.high-contrast .button a {
+	white-space: nowrap;
+    padding: 0;
+	background: none;
+	background-color: #FFF;
+	border: 1px solid #333;
+	text-decoration: none;
+}
+
+.high-contrast .button a:hover {
+	text-decoration: underline;
+}
+
+.high-contrast form[action="/do-it-yourself/tools/scan-for-viruses-and-spyware.aspx"] .button a {
+	background-color: #eee;
+	padding: 0 10px;
+}
+
+.high-contrast form[action="/do-it-yourself/tools/scan-for-viruses-and-spyware.aspx"] .button a:hover {
+	text-decoration: none;
+}
+
+.high-contrast .service_channel h4 + p, .high-contrast .service_channel p.phone span  {
+	color: #000;
+}
+
+.high-contrast .side_diy {
+	background-color: #000;
+}
+
+.high-contrast h2.active  .dd-men-link {
+	color: #FFF;
+	background-color: #555;
+}
+
+.high-contrast .subtitle {
+	color: #333;
+}
+
+.high-contrast .side_subscription .top {
+	background-color: #333;
+}
+
+.high-contrast .external_link_icon {
+	display: none;
+}
+
+.high-contrast .cn_protection-plan .shop-categories .category-block h3 {
+	color: #000;
+}
+
+.high-contrast .product-article-content a,
+.high-contrast .product-item.product-help-finish a {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+.external_link_icon {
+	display: none !important;
+}
+
+.high-contrast .cn_protection-plan .btn, .high-contrast .cn_tech-support .btn {
+	background-image: none;
+	background-color: #ddd;
+	border: 1px solid #999;
+}
+
+.high-contrast h3 {
+	line-height: 1.5;
+}
+
+.high-contrast .helpLinks li:hover {
+	text-decoration: underline;
+}
+
+.high-contrast .chat_content a.btn {
+	background-image: none;
+	background-color: #000;
+	border: 1px solid #999;
+	color: #FFF;
+}
+
+.high-contrast .chat_content {
+	color: #000;
+	background-color: #FFF;
+}
+
+.high-contrast .chat_content li {
+	color: #FFF;
+}
+
+.high-contrast .chat_content p {
+	color: #000;
+}
+
+.high-contrast .tabs li a {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+}
+
+.high-contrast .chat_content {
+	height: 900px !important;
+}
+
+.high-contrast .chat_content .pop-up_blocker_call_out {
+	background-color: #eee;
+}
+
+.high-contrast .chat_content .disable_pop-up_blocker {
+	color: #000;
+}
+
+.high-contrast .tech-support-features .buy-now-block a.btn {
+	width: 120px;
+}
+
+.high-contrast .square-content a {
+	background: none;
+	background-color: #FFF;
+}
+
+.high-contrast .cn_tech-support .landing-intro header p {
+	max-width: 450px;
+}
+
+.high-contrast .tslanding div h1 {
+	font-size: 48px !important;
+}
+
+.high-contrast .tslanding .priceSub {
+	color: #000 !important;
+}
+
+.high-contrast .tslanding .clearfix.modules a.btn, #buyTS .modules a.btn {
+	background: none;
+	background-image: none;
+	color: #000 !important;
+	background-color: #FFF !important;
+}
+
+.high-contrast .tslanding .clearfix.modules li p {
+	color: #FFF !important;
+	font-size: 13px !important;
+}
+
+.high-contrast .tslanding #buyTS ul.modules li{
+	padding: 12px 5px;
+}
+
+.high-contrast .tslanding .rightContent a.btn {
+	background: none;
+	background-color: #000;
+}
+
+.high-contrast .tabs li.member a {
+	background: none;
+	color: #000;
+	background-image: none;
+	background-color: #E6E6E6;
+	border: none;
+}
+
+.high-contrast .pledge p {
+	color: #EEE;
+}
+
+.high-contrast .pledge h2 {
+	color: #EEE;
+}
+
+
+.high-contrast .why_nav a {
+	color: #FFF;
+}
+
+.high-contrast .why_nav h4 {
+	color: #EEE;
+}
+
+.high-contrast .home-page-content .collapsible-tabs .content-block.repair-block .link-block a,
+.high-contrast .home-page-content .collapsible-tabs .content-block.repair-block .link-block span.tel {
+	color: #333;
+}
+
+.high-contrast #topBar .search_box {
+	color: #FFF;
+}
+
+.high-contrast .bottom_links a:hover {
+	text-decoration: underline;
+	color: #FFF;
+}
+
+.high-contrast #mcFooter * {
+	color: #FFF;
+}
+
+.high-contrast #mcFooter #search {
+	color: #000;
+}
+
+.high-contrast #mcHeader .search_dd a, #mcFooter .search_dd a {
+	color: #000;
+	line-height: 1.5;
+}
+
+.high-contrast #mcFooter .searchResults, #mcHeader .search_dd .searchResults .name {
+	color: #000;
+	line-height: 1.5;
+}
+
+.high-contrast #mcFooter ul.right, .high-contrast #mcFooter ul.right a {
+	color: #FFF;
+}
+
+.high-contrast #mcFooter ul.left li a, .high-contrast #mcFooter ul.right a {
+	text-decoration: underline;
+}
+
+.high-contrast #mcFooter ul.left li, .high-contrast #mcFooter ul.left li a {
+	color: #FFF
+}
+
+.high-contrast #mcFooter .copyright{
+	color:#FFF;
+}
+
+.high-contrast #mcFooter .copyright a {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+.high-contrast .external_link_icon {
+	display: none;
+}
+
+.high-contrast .footer-menu-head {
+	font-size: 20px !important;
+	font-weight: 700;
+	font-family: Verdana, Arial, sans-serif;
+	padding-bottom: 15px;
+}
+
+.high-contrast .topLvl {
+	width: 225px;
+	margin-left: -3px;
+}
+
+.high-contrast button.user-dd-menu-btn {
+	padding: 0;
+}
+
+.high-contrast .helpLinks .imgWrap img {
+	clip: rect(0px, 15px, 15px ,0px);
+}
+
+.high-contrast .helpLinks li.hover .imgWrap img, 
+.high-contrast .topLvl img.clip {
+	clip: rect(15px, 15px, 32px ,0px);
+}
+
+.high-contrast li.hover a {
+	text-decoration: underline;
+}
+
+.high-contrast #primary ul.helpLinks {
+	padding-top: 5px;
+}
+
+.high-contrast #primary ul.helpLinks li a,
+.high-contrast #dd_men ul li a  {
+	height: 30px;
+	overflow: visible;
+	color: #000;
+}
+
+.high-contrast .search-label {
+	color: #FFF;
+	display: inline;
+	padding-right: 10px;
+}
+
+.high-contrast #dd_men ul.topLvl a .imgWrap,
+.high-contrast #primary ul.helpLinks a .imgWrap {
+	height: 28px;
+	overflow: hidden;
+}
+
+.high-contrast .tab_container {
+	background-color: #FFF;
+}
+
+.high-contrast #dd_men h2 {
+	background-image: none;
+	background-color: #333;
+	border-radius: 4px 4px;
+	color: #FFF;
+}
+
+.high-contrast #dd_men h2.active {
+	background-color: #555;
+}
+
+.high-contrast #dd_sub #dd_categories li a,
+.high-contrast #dd_sub #dd_support li a,
+.high-contrast #dd_sub #dd_help li a,
+.high-contrast #dd_sub #dd_help li a {
+	color: #b5540f;
+}
+
+.high-contrast #primary ul.helpLinks li a,
+.high-contrast #dd_men ul li a {
+	color: #b5540f;
+}
+
+.high-contrast .home-page-content .body-content .tips-wrap article h4 {
+	color: #000;
+}
+
+.high-contrast .searchResults p br {
+	line-height: 20px;
+}
+
+.high-contrast .select-dropdown a {
+	line-height: 1.5;
+	height: 30px;
+}
+
+.high-contrast .content-block .select-block a:focus {
+	border: none;
+}
+
+.high-contrast .cn_protection-plan .breadcrumb h1 {
+    margin-top: -6px;
+}
+
+.high-contrast .get-help-now .copy-block h2 {
+	font-size: 36px !important;
+}
+
+.high-contrast .plan-details .step-1 a {
+	color: #FFF;
+}
+
+.high-contrast form[action="/protection-plans/"] .landing_head {
+    padding: 28px 20px 6px;
+    width: 450px;
+}
+
+.high-contrast .buy-now-block div p {
+	clear: both;
+
+}
+
+
+.high-contrast .header-nav a {
+	text-decoration: none;
+}
+
+.high-contrast .home-page-content .select-dropdown span {
+	margin-top: 10px;
+}
+
+.high-contrast .home-page-content .body-content .tips-wrap article h4 {
+	margin-top: 0;
+	margin-bottom: 15px;
+	width: 200px;
+	display: inline-block;
+}
+
+.high-contrast .searchResults,
+.high-contrast .search_dd .searchResults .name {
+	color: #000;
+}
+
+.high-contrast .home-page-content .btn {
+	background-image: none;
+	background-color: #000;
+	border: 1px solid #fff;
+}
+
+.high-contrast h2,
+.high-contrast .cn_ecc-content h2 {
+	color: #000;
+}
+
+.high-contrast .cn_ecc-content .ecc-products nav li.active {
+	background-color: #000;
+}
+
+.high-contrast .cn_tech-support .btn {
+	background: none;
+	background-color: #000;
+}
+
+.high-contrast .cn_tech-support .faq h5 {
+	color: #000;
+}
+
+.high-contrast a, .high-contrast a:hover {
+	color: #000;
+	text-decoration: underline;
+}
+
+.high-contrast .home-page-content .collapsible-tabs ul.article-wrap > li.active span {
+	color: #333;
+}
+
+.high-contrast #dd_sub #dd_support li h3,
+.high-contrast #dd_sub #dd_help li h3 {
+	color: #b5540f;
+}
+
+.high-contrast #dd_sub #dd_support li:hover,
+.high-contrast #dd_sub #dd_help li:hover {
+	text-decoration: underline;
+}
+
+.high-contrast .inline-button a:hover,
+.high-contrast .button input:hover {
+	background: none;
+	background-color: #000;
+}
+
+.high-contrast #footer .primary_links a {
+	color: #000;
+}
+
+.high-contrast .search_dd .name {
+	color: #000;
+}
+
+.high-contrast .search_dd .view_all a {
+	color: #000;
+}
+
+.high-contrast .tab_content .member {
+	border-bottom-color: #000;
+	border-top-color: #000;
+}
+
+.high-contrast #side .multilink_promo a {
+	color: #000;
+}
+
+.high-contrast .promo-icon .orange {
+	color: #000;
+}
+
+.high-contrast #side .promo-icon-bottom p a {
+	color: #000;
+}
+
+.high-contrast .diy h5 {
+	color: #000;
+}
+
+.high-contrast .side_pledge li {
+	color: #000;
+}
+
+.high-contrast #side .side_pledge a  {
+	color: #000;
+}
+
+.high-contrast .side_subscription {
+	border-bottom-color: #000;
+}
+
+.high-contrast #side .side_subscription a {
+	color: #000;
+}
+
+.high-contrast #billboard h1 span {
+	color: #000;
+}
+
+.high-contrast .orangecolor {
+	color: #000;
+}
+
+.high-contrast .chat_content h2 {
+	color: #000;
+}
+
+.high-contrast .results .name {
+	color: #000;
+}
+
+.high-contrast .orangeify {
+	color: #000;
+}
+
+.high-contrast .product_replacement_container h4 {
+	color: #000;
+}
+
+.high-contrast .avlanding-banner h2 {
+	color: #000;
+}
+
+.high-contrast .tslanding .headlines {
+	background: none;
+}
+
+.high-contrast .tslanding ul.terms-login-links li a {
+	color: #000;
+}
+
+.high-contrast .tslanding .button a {
+	color: #000;
+}
+
+.high-contrast .tslanding h2 {
+	color: #000;
+}
+
+.high-contrast #mcGsMain.homepg #landingHeadInner .landingHeadContent p.button span {
+	color: #000;
+}
+
+.high-contrast .tsemployee h2 {
+	color: #000;
+}
+
+.high-contrast #scheduling .details-container a.button {
+	background: none;
+	background-color: #000;
+	color: #FFF;
+	text-decoration: none;
+}
+
+.high-contrast #scheduling .details-container a.button.no-bg {
+	background: none;
+	background-color: #FFF;
+	color: #000;
+	text-decoration: none;
+}
+
+.high-contrast #scheduling .details-container a.button:hover, .high-contrast #scheduling .details-container a.button.no-bg:hover {
+	text-decoration: underline;
+}
+
+.high-contrast .cn_protection-plan .btn {
+	color: #000;
+}
+
+.high-contrast .cn_protection-plan .select-block dl ul li a:hover {
+	color: #000;
+}
+
+/*.high-contrast .cn_protection-plan .manage-your-plan a h4 {
+	color: #000;
+}*/
+
+.high-contrast .cn_protection-plan .action-block ul li:before {
+	color: #000;
+}
+
+.high-contrast .cn_protection-plan .detail-list a {
+	color: #000;
+}
+
+.high-contrast .home-page-content .collapsible-tabs .content-block .select-block dl ul li a:hover  {
+	color: #000;
+}
+
+.high-contrast .home-page-content .collapsible-tabs .content-block.repair-block .link-block span.tel {
+	color: #000;
+}
+
+.high-contrast .home-page-content .body-content > header {
+	color: #000;
+}
+
+.high-contrast .home-page-content .body-content .tips-wrap article h4 {
+	color: #000;
+}
+
+.high-contrast .cn_ecc-content h2 {
+	color: #000;
+}
+
+.high-contrast .cn_ecc-content .ecc-products nav li.active {
+	color: #000;
+}
+
+.high-contrast #side * {
+	color: #fff;
+}
+
+.high-contrast #side a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+
+.high-contrast .content.withside a {
+	text-decoration: none;
+}
+
+.high-contrast .content.withside a:hover {
+	text-decoration: underline;
+}
+
+.high-contrast .manage-your-plan a h4 {
+	text-decoration: underline;
+	color:white;
+}
+
+.high-contrast .two_col_plans .second_sub_link  {
+
+	font-size: 13px;
+}
+
+.high-contrast .two_col_plans .second_sub_link  a {
+	font-size: 14px;
+	position: relative;
+}
+
+.high-contrast .two_col_plans {
+	height: 180px;
+}
+
+.high-contrast .two_col_plans .plans_button_holder {
+	position:relative;
+}
+
+.high-contrast .copy-block a {
+	text-decoration: underline;
+	color:white;
+}
+
+.high-contrast .call-to-action .copy-block a {
+	text-decoration: underline;
+	color:#000;
+}
+
+.high-contrast .buy-now-block a {
+	text-decoration: underline;
+	color:white;
+}
+.high-contrast .side_subscription {
+	background: none repeat scroll 0 0 #000000
+}
+.high-contrast .side_nav {
+	background: none repeat scroll 0 0 #000000
+}
+
+.high-contrast .select-dropdown a:focus {
+	text-decoration: underline;
+	background-color: #eee;
+}
+
+.high-contrast .inner a {
+	text-decoration: underline;
+	color: #FFF;
+}
+
+.high-contrast .inner a[href="/buytechsupport/"] {
+	color: #000;
+	background-color: #C5C3C3;
+	padding-bottom: 8px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 8px;
+	border-radius: 4px 4px;
+}
+
+.high-contrast .inner a[href="/buytechsupport/"]:hover {
+	text-decoration: none;
+}
+
+.high-contrast .inner p>a  {
+	color:black;
+}
+.high-contrast .content-block a {
+		text-decoration: underline;
+}
+
+.high-contrast .chart .extra-top a{
+	color:white;
+	text-decoration: underline;
+}
+
+.high-contrast .more-help-items a {
+	color:white;
+	text-decoration: underline;
+}
+
+.high-contrast .external_link_icon {
+	display:block;
+}
+
+.high-contrast .header-nav-help a {
+	font-size: 15px;
+	height: 30px;
+	overflow: visible;
+	text-decoration: none;
+	line-height: 1.2;
+	padding-top: 2px;
+}
+.header-nav-help {
+    padding-top: 5px;
+}
+
+.high-contrast .header-nav-help li {
+    margin-bottom: 5px;
+    line-height: 1.2;
+		padding-top: 5px;
+		padding-bottom: 5px;
+}
+
+.high-contrast .header-nav-help a:hover {
+	text-decoration: underline;
+}
+
+.promo_image .caption {
+	background: black;
+}
+
+.quick-start-go-btn-active {
+	background: white;
+	outline: black solid 2px;
+}
+
+.quick-select-dropdown .selected {
+	color:black;
+}
+
+/*
+ * =======================================================================================
+ * =======================================================================================
+ * Auto Generated Font Size and Line Height Code.
+ * Please don't edit this, we'll provide an override if needed.
+ * =======================================================================================
+ * =======================================================================================
+ */
+
+
+body.high-contrast {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast sup {
+	font-size: 15px;
+}
+
+.high-contrast .reg {
+	font-size: 15px;
+}
+
+.high-contrast .button a, .high-contrast .button input {
+	font-size: 15px;
+}
+
+.high-contrast .inline-button a {
+	font-size: 15px;
+}
+
+.high-contrast #topbar {
+	font-size: 15px;
+}
+
+.high-contrast #container {
+	font-size: 15px;
+}
+
+.high-contrast #header {
+	font-size: 15px;
+}
+
+.high-contrast .chat a {
+	font-size: 15px;
+}
+
+.high-contrast .chat strong {
+	font-size: 15px;
+}
+
+.high-contrast #sec_nav li a {
+	font-size: 15px;
+}
+
+.high-contrast #nav {
+	font-size: 15px;
+}
+
+.high-contrast .fontface #nav {
+	font-size: 15px;
+}
+
+.high-contrast #nav li ul {
+	font-size: 15px;
+}
+
+.high-contrast #footer .search {
+	font-size: 15px;
+}
+
+.high-contrast #footer h3 span {
+	font-size: 15px;
+}
+
+.high-contrast #footer .sec_links h3 {
+	font-size: 15px;
+}
+
+.high-contrast .copyright {
+	font-size: 15px;
+}
+
+.high-contrast .search_box {
+	font-size: 15px;
+}
+
+.high-contrast .search_dd .name {
+	font-size: 15px;
+}
+
+.high-contrast .breadcrumbs {
+	font-size: 15px;
+}
+
+.high-contrast .landing_head p {
+	font-size: 15px;
+}
+
+.high-contrast .second_sub_link {
+	font-size: 15px;
+}
+
+.high-contrast .second_sub_link a {
+	font-size: 15px;
+}
+
+.high-contrast .subtitle {
+	font-size: 15px;
+}
+
+.high-contrast .legal {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .tabs li.active a, .high-contrast .tabs li.active a:hover {
+	font-size: 15px;
+}
+
+.high-contrast .tabs li.member a {
+	font-size: 15px;
+}
+
+.high-contrast .tabs li.active.member a, .high-contrast .tabs li.active.member a:hover {
+	font-size: 15px;
+}
+
+.high-contrast .promo-icon-bottom p {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .side_nav h4 {
+	font-size: 15px;
+}
+
+.high-contrast .side_pledge li {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .side_pledge span {
+	font-size: 15px;
+}
+
+.high-contrast #billboard .person {
+	font-size: 15px;
+}
+
+.high-contrast .person span {
+	font-size: 15px;
+}
+
+.high-contrast .service_channel p.phone span {
+	font-size: 15px;
+}
+
+.high-contrast .price {
+	font-size: 15px;
+}
+
+.high-contrast .chat_content p {
+	font-size: 15px;
+}
+
+.high-contrast .chat_content li {
+	font-size: 15px;
+}
+
+.high-contrast .chat_content .subP {
+	font-size: 15px;
+}
+
+.high-contrast .chat_text {
+	font-size: 15px;
+}
+
+.high-contrast .chat_content .two_col_noborder p {
+	font-size: 15px;
+}
+
+.high-contrast .why_nav h4 {
+	font-size: 15px;
+}
+
+.high-contrast .results .name {
+	font-size: 15px;
+}
+
+.high-contrast #ie6Modal h4 {
+	font-size: 15px;
+}
+
+.high-contrast .tc-cat-header p {
+	font-size: 15px;
+}
+
+.high-contrast .tc-sub-text {
+	font-size: 15px;
+}
+
+.high-contrast .refurb-chart-container .chart td {
+	font-size: 15px;
+}
+
+.high-contrast .bubble h3 span {
+	font-size: 15px;
+}
+
+.high-contrast .avlanding-banner .headlines p {
+	font-size: 15px;
+}
+
+.high-contrast .avlanding-banner .summary ul li, .high-contrast .tslanding .summary ul li {
+	font-size: 15px;
+}
+
+.high-contrast .tslanding h2 span {
+	font-size: 15px;
+}
+
+.high-contrast .tslanding .summary ul li {
+	font-size: 15px;
+}
+
+.high-contrast .tslanding ul.terms-login-links li {
+	font-size: 15px;
+}
+
+.high-contrast .tslanding p {
+	font-size: 15px;
+}
+
+.high-contrast .tslanding div.leftContent p.checkPoint {
+	font-size: 15px;
+}
+
+.high-contrast .tslanding div.rightContent p {
+	font-size: 15px;
+}
+
+.high-contrast .tslanding div.rightContent p.priceSub {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .tslanding li p {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast #buyTS .rightContent p {
+	font-size: 15px;
+}
+
+.high-contrast #buyTS .rightContent p.priceSub {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast #buyTS li p {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast #buyTS #buy p {
+	font-size: 15px;
+}
+
+.high-contrast #buyTS #buy h3 sup {
+	font-size: 15px;
+}
+
+.high-contrast #mcGsMain.homepg #landingHeadInner .landingHeadContent p.button span {
+	font-size: 15px;
+}
+
+.high-contrast #mcGsMain.homepg .home_category.viewAllCategories h6 {
+	font-size: 15px;
+}
+
+.high-contrast #mcGsMain.homepg .home_category.viewAllCategories h3 {
+	font-size: 15px;
+}
+
+.high-contrast .tsemployee .employeeIdInput {
+	font-size: 15px;
+}
+
+.high-contrast .tsemployee .btnmonthly {
+	font-size: 15px;
+}
+
+.high-contrast .tsemployee .btnannual {
+	font-size: 15px;
+}
+
+.high-contrast .tsemployee .column li {
+	font-size: 15px;
+}
+
+.high-contrast #scheduling .bottom-text {
+	font-size: 15px;
+}
+
+.high-contrast #scheduling .details-container > a {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast #scheduling .details-container p.details {
+	font-size: 15px;
+}
+
+.high-contrast #partner-landing .sub-head p {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast #partner-landing .column-wrapper .column p {
+	font-size: 15px;
+}
+
+.high-contrast #partner-landing .column-wrapper .column p.footnote {
+	font-size: 15px;
+}
+
+.high-contrast #partner-landing .column-wrapper .column p.disclaimer {
+	font-size: 15px;
+}
+
+.high-contrast #partner-landing .column-wrapper .column .input-row label {
+	font-size: 15px;
+}
+
+.high-contrast #partner-landing .column-wrapper .column .input-row span {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast #ts-renewal .detail-content .input-container .row label {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast #ts-renewal .detail-content .input-container .row label.error {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast #ts-renewal .features .feature p {
+	font-size: 15px;
+}
+
+.high-contrast #ts-renewal .sub-features .sub-feature h4 {
+	font-size: 15px;
+}
+
+.high-contrast #ts-renewal p.footnote {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .btn {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .breadcrumb {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .landing-intro .easy-help p {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .plan-intro h2 {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .plan-intro ul li, .high-contrast .cn_protection-plan .plan-intro ul a {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .select-block dl {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .manage-your-plan h4 {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .cn_protection-plan .highlights h4 {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .enhance-your-protection .icon-block .copy-block span {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .cn_protection-plan .legal h5 {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .legal p {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .shop-categories .category-block h3 {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .action-block a.btn {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .cn_protection-plan .plan-details > header p, .high-contrast .cn_protection-plan .plan-details > header a, .high-contrast .cn_protection-plan .plan-details > header strong {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .detail-list li {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .detail-list h5 {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .service-fees h4 {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .service-fees h5 {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan .service-fees li span.limits {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan footer h5 {
+	font-size: 15px;
+}
+
+.high-contrast .cn_protection-plan footer p {
+	font-size: 15px;
+}
+
+.high-contrast .home-page-content .btn {
+	font-size: 15px;
+}
+
+.high-contrast .home-page-content .collapsible-tabs ul.article-wrap > li.active span {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .home-page-content .collapsible-tabs .tab span {
+	font-size: 15px;
+}
+
+.high-contrast .home-page-content .collapsible-tabs .content-block header p.cta {
+	font-size: 15px;
+}
+
+.high-contrast .home-page-content .collapsible-tabs .content-block p {
+	font-size: 15px;
+}
+
+.high-contrast .home-page-content .collapsible-tabs .content-block .select-block dl {
+	font-size: 15px;
+}
+
+.high-contrast .home-page-content .collapsible-tabs .content-block.set-up-block h4 {
+	font-size: 15px;
+}
+
+.high-contrast .home-page-content .body-content > header span {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .home-page-content .body-content .tips-wrap h3 {
+	font-size: 15px;
+}
+
+.high-contrast .home-page-content .body-content .tips-wrap h4 {
+	font-size: 15px;
+}
+
+.high-contrast .home-page-content .body-content .tips-wrap article h4 {
+	font-size: 15px;
+}
+
+.high-contrast table {
+	font-size: 15px;
+}
+
+.high-contrast .cn_ecc-content h3 {
+	font-size: 15px;
+}
+
+.high-contrast .cn_ecc-content .btn {
+	font-size: 15px;
+}
+
+.high-contrast .cn_ecc-content .primary-header a {
+	font-size: 15px;
+}
+
+.high-contrast .cn_ecc-content .source-form-block label {
+	font-size: 15px;
+}
+
+.high-contrast .cn_ecc-content .ecc-products nav li {
+	font-size: 15px;
+}
+
+.high-contrast .cn_ecc-content .ecc-products .product-group header a, .high-contrast .cn_ecc-content .ecc-products .product-group footer a {
+	font-size: 15px;
+}
+
+.high-contrast .cn_ecc-content .option-block option {
+	font-size: 15px;
+}
+
+.high-contrast .cn_ecc-content .info-block h3 {
+	font-size: 15px;
+}
+
+.high-contrast .cn_ecc-content .info-block p {
+	font-size: 15px;
+}
+
+.high-contrast .cn_ecc-content footer a, .high-contrast .cn_ecc-content footer span {
+	font-size: 15px;
+}
+
+.high-contrast .cn_tech-support {
+	font-size: 15px;
+}
+
+.high-contrast .cn_tech-support .btn {
+	font-size: 15px;
+}
+
+.high-contrast .cn_tech-support .breadcrumbs {
+	font-size: 15px;
+}
+
+.high-contrast .cn_tech-support .landing-intro article a {
+	font-size: 15px;
+}
+
+.high-contrast .cn_tech-support .landing-intro input {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .cn_tech-support .video-block span {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .cn_tech-support .call-out-interstitial span {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .cn_tech-support .tech-support-features li {
+	font-size: 15px;
+}
+
+.high-contrast .cn_tech-support .tech-support-features .buy-now-block a {
+	font-size: 15px;
+}
+
+.high-contrast .cn_tech-support .faq h5 {
+	font-size: 15px;
+}
+
+.high-contrast .cn_tech-support .faq p {
+	font-size: 15px;
+}
+
+.high-contrast .cn_tech-support footer h3 {
+	font-size: 15px;
+}
+
+
+.high-contrast #mcHeader + #mcGsMain, .high-contrast #mcHeader + #mcGsCont, .high-contrast #mcFooter {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast #mcHeader pre, .high-contrast #mcHeader code, .high-contrast #mcHeader kbd, .high-contrast #mcHeader samp, .high-contrast #mcFooter pre, .high-contrast #mcFooter code, .high-contrast #mcFooter kbd, .high-contrast #mcFooter samp {
+	font-size: 15px;
+}
+
+.high-contrast #mcHeader small, .high-contrast #mcFooter small {
+	font-size: 15px;
+}
+
+.high-contrast #mcHeader sub, .high-contrast #mcHeader sup, .high-contrast #mcFooter sub, .high-contrast #mcFooter sup {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast #topBar {
+	font-size: 15px;
+}
+
+.high-contrast #topBar span.gray, .high-contrast #topBar span.white {
+	font-size: 15px;
+}
+
+.high-contrast #topBar .search_box {
+	font-size: 15px;
+}
+
+.high-contrast #dd_men button {
+	background: url("../images/headerfooter/btn_myGeekSquad_sprite.png") no-repeat scroll left top transparent;
+	font-size: 15px;
+    color: #fff;
+	padding-right: 25px;
+}
+
+.high-contrast #dd_men button.active {
+	background: url("../images/headerfooter/btn_myGeekSquad_sprite.png") no-repeat scroll left top transparent;
+    background-position: left -132px;
+}
+
+.high-contrast #dd_men .blockState, .high-contrast ul#menuBlocks .blockState {
+    width: 10px;
+    height: 7px;
+    background: url("../images/headerfooter/menuBlock_sprite.png") left top no-repeat transparent;
+    left: 91px;
+    top: 93px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 99999;
+}
+
+.high-contrast ul#menuBlocks li.open .blockState, .high-contrast #dd_men.active .blockState {
+    background-position: left -16px;
+}
+
+.high-contrast #dd_men h2 {
+	font-size: 15px;
+}
+
+.high-contrast #dd_men ul li.option a {
+	font-size: 15px;
+}
+
+.high-contrast #primary ul.helpLinks li a, .high-contrast #dd_men ul li a {
+	font-size: 15px;
+}
+
+.high-contrast #dd_sub {
+	font-size: 15px;
+}
+
+.high-contrast #dd_sub #dd_categories li a, .high-contrast #dd_sub #dd_support li a, .high-contrast #dd_sub #dd_help li a, .high-contrast #dd_sub #dd_help li a {
+	font-size: 15px;
+}
+
+.high-contrast #dd_sub #dd_support li a, .high-contrast #dd_sub #dd_help li a {
+	font-size: 15px;
+}
+
+.high-contrast #dd_sub #dd_support li h3, .high-contrast #dd_sub #dd_help li h3 {
+	font-size: 15px;
+}
+
+.high-contrast #mcFooter {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast #mcFooter h3 span {
+	font-size: 15px;
+}
+
+.high-contrast #mcFooter .searchResults, .high-contrast #mcHeader .search_dd .searchResults .name {
+	font-size: 15px;
+}
+
+.high-contrast #mcFooter .search {
+	font-size: 15px;
+}
+
+.high-contrast #mcFooter .search_box {
+	font-size: 15px;
+}
+
+
+.high-contrast #mcFooter ul.right h3, .high-contrast #mcFooter h3 {
+	font-size: 20px;
+	padding-bottom: 15px;
+	font-weight: 700;
+	font-family: Verdana, Arial, sans-serif;
+}
+
+.high-contrast #mcFooter .copyright {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .footer.content-section.cf {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .footer.content-section.cf a{
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .footer.content-section.cf .footer-menu-head{
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .footer.content-section.cf .footer-copyright-content{
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .footer.content-section.cf h3 span {
+	font-size: 15px;
+}
+
+.high-contrast .footer.content-section.cf .searchResults, .high-contrast #mcHeader .search_dd .searchResults .name {
+	font-size: 15px;
+}
+
+.high-contrast .footer.content-section.cf .search {
+	font-size: 15px;
+}
+
+.high-contrast .footer.content-section.cf .search_box {
+	font-size: 15px;
+}
+
+.high-contrast .footer.content-section.cf ul.right h3 {
+	font-size: 15px;
+}
+
+.high-contrast .footer.content-section.cf .copyright {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.high-contrast .product-item-meta {
+	color: #000;
+}
+
+.high-contrast .sidebar-item-content a{
+	background-image: none;
+	background-color: #fff;
+}
+
+.high-contrast .chat_bubble span{
+	text-decoration: underline;
+}
+
+
+.high-contrast .footer-menu-primary a, .high-contrast .footer-menu-primary a:visited {
+	color: #b5540f;
+}
+
+.high-contrast .footer-copyright a, .high-contrast .footer-copyright a:visited {
+	color: #b5540f;
+}
+
+.high-contrast .more-help-items {
+	color: #b5540f;
+}
+
+.high-contrast .header-nav-help a {
+	color: #b5540f;
+}
+
+.high-contrast .header-sub-nav-panel a {
+	color: #b5540f;
+}
+
+.high-contrast a {
+	text-decoration: underline !important;
+}
+
+.high-contrast a:hover {
+	text-decoration: none !important;
+}
+
+.high-contrast header a, 
+.high-contrast #primary a, 
+.high-contrast #dd_sub a, 
+.high-contrast #dd_men a, 
+.high-contrast .select-block a,
+.high-contrast .quick-select-dropdown a,
+.high-contrast .tabs a,
+.high-contrast .home-page-content .collapsible-tabs a,
+.high-contrast #side a,
+.high-contrast .helpLinks li.hover {
+	text-decoration: none !important;
+}
+
+.high-contrast form[action="/tech-tips/"] .featured-products.content-section a {
+	text-decoration: none !important;
+}
+
+.high-contrast form[action="/tech-tips/"] .featured-products.content-section a:hover {
+	text-decoration: underline !important;
+}
+
+.high-contrast form[action="/tech-tips/"] .featured-products.content-section a,
+.high-contrast #dd_support a, 
+.high-contrast #dd_support a:hover, 
+.high-contrast #dd_help  h3:hover,
+.high-contrast #dd_support h3:hover, 
+.high-contrast #dd_help a, 
+.high-contrast #dd_help a:hover,
+.high-contrast #dd_support li.hover, 
+.high-contrast #dd_help li.hover {
+	text-decoration: none !important;
+	color: #000 !important;
+}
+
+.high-contrast header a:hover, .high-contrast #primary a:hover, .high-contrast #dd_sub a:hover {
+	text-decoration: none !important;
+	color: #000;
+}
+
+.high-contrast #dd_sub #dd_support li h3, .high-contrast #dd_sub #dd_help li h3 {
+	color: #b5540f;
+}
+

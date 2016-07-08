@@ -1,0 +1,133 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title PR Analyzer
+    link(href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css')
+    link(rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+    link(rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.12/af-2.1.2/b-1.2.1/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.0/se-1.2.0/datatables.min.css")
+    style.
+    //  body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, //.panel-title {
+    //    font-family: 'Roboto', 'sans-serif';
+    //    font-size: 12px;
+    //  }
+  body
+
+    - var cnt =1
+    #wrapper
+      .row
+        .col-lg-12
+          .panel.panel-info
+            .panel-heading
+              h3.panel-title
+                .row
+                  .col-lg-6
+                    i.fa.fa-money.fa-fw
+                    |  PR Analyzer
+                  .col-lg-6(align="right")
+                    span(id="refreshTime" textalign="right" style="font-size:10px;")
+            .panel-body
+              .table-responsive
+                table.table.table-bordered.table-hover.table-striped(id="pr-table")
+                  thead
+                    tr
+                      th pr
+                      th title
+                      th author
+                      th state
+                      th reviewStatus
+                      th createdDate
+                      th timeElapsed
+                      th activity
+                  tbody
+                    each pr in data
+                        tr
+                          -var tdColor="transparent"
+                          if(pr.state == "DECLINED")
+                            - tdColor = "yellow"
+                          else if(pr.state == "MERGED")
+                            - tdColor = "lightgreen"
+
+                          td(id='pr_#{pr.id}')
+                            a(href='https://#{stashHost}/projects/ECOMM/repos/expcommerce/pull-requests/#{pr.id}/overview', target='_blank') #{pr.id}
+                          td #{pr.title}
+                          td #{pr.author}
+                          td(bgcolor='#{tdColor}' style="font-weight:bold;") #{pr.state}
+                          td
+                            each status in pr.reviewStatus
+                              | #{status.reviewer} : #{status.reviewStatus}
+                              br
+                          td #{pr.createdDate}
+                          td #{pr.timeElapsed}
+                          td
+                            a(id='#{pr.id}' href='#activity-modal', data-toggle='modal', data-target='#activity-modal') Show Activity
+              br
+              //.span(id="totalPRs") Total PRs
+              //.span(id="totalTimeElapsed") Total Time Elapsed
+              //.span(id="averageTimeElapsed") Average
+
+  #activity-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog.modal-lg
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#myModalLabel.modal-title PR Activity
+          .modal-body.activity-content
+            | ...
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+
+  // scripts loaded here
+  script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+  script(type="text/javascript" src="https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.12/af-2.1.2/b-1.2.1/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.0/se-1.2.0/datatables.min.js")
+  script(src='/bootstrap/js/bs-min.js')
+  script.
+    $( document ).ready(function() {
+      $('#pr-table').dataTable({
+        "iDisplayLength": 100,
+        "order": [[ 0, "desc" ]]
+      });
+      $('#activity-modal').on('show.bs.modal', function(e) {
+        var $modal = $(this),
+            pr = e.relatedTarget.id;
+        $.get('pull-requests/'+pr+'?internal=true')
+        .done(function (data, textStatus, xhr) {
+          $modal.find('.activity-content').html(data);
+        });
+      });
+    });
+    function callUrl(){
+      var totalTimeElapsed=0
+      var count=0
+      $('[id^=pr_]').each(function() {
+        var pr = this.id.split('_').pop();
+        $.get('pull-requests/'+pr+'?internal=true')
+        .done(function (data, textStatus, xhr) {
+          $("#"+pr+"_result").html(data)
+          totalTimeElapsed = totalTimeElapsed + Number(xhr.getResponseHeader('timeElapsed'))
+          count=count+1
+          //console.debug("totalTimeElapsed:"+ totalTimeElapsed)
+          //console.debug("count:"+ count)
+          generateStats(totalTimeElapsed, count)
+        });
+      });
+    }
+    function generateStats(totalTimeElapsed, count){
+      if(totalTimeElapsed > 0){
+        console.debug("Generating Stats")
+        $("#totalPRs").text("Total PRs: " + count)
+        $("#totalTimeElapsed").text("Total Time Elapsed: " + printTimeInFormat(totalTimeElapsed))
+        $("#averageTimeElapsed").text("Avergae Time Taken: " + printTimeInFormat((totalTimeElapsed/count).toFixed(2)))
+      }
+    }
+    function printTimeInFormat(avgTime){
+      //take out milliseconds
+      avgTime = avgTime/1000;
+      var seconds = Math.floor(avgTime % 60);
+      avgTime = avgTime/60;
+      var minutes = Math.floor(avgTime % 60);
+      avgTime = avgTime/60;
+      var hours = Math.floor(avgTime % 24);
+      var days = Math.floor(avgTime/24);
+      return days + ' days, ' + hours + ' hours, ' + minutes + ' minutes, and ' + seconds + ' seconds';
+    }

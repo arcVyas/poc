@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "agent": {
+            "id": 2,
+            "name": "Agent Joly",
+            "photolink": "https://corporate.bestbuy.com/wp-content/uploads/2012/10/Hubert-Joly-About-Best-Buy.jpg",
+            "rating": 5,
+            "servicesCompleted": "11,451",
+            "wait": 12,
+            "favorite": true
+        },
+        "appointment": {
+            "date": "January 29 2016 2 pm",
+            "status": "confirmed"
+        }
+    },
+    {
+        "agent": {
+            "id": 1,
+            "name": "Agent Barry",
+            "photolink": "https://corporate.bestbuy.com/wp-content/uploads/2015/11/Corie-Barry-BBY2.jpg",
+            "rating": 5,
+            "servicesCompleted": "11,451",
+            "wait": 26,
+            "favorite": true
+        },
+        "appointment": {
+            "date": "January 08th 2016, 4 pm",
+            "status": "completed"
+        },
+        "id": 2
+    }
+]
