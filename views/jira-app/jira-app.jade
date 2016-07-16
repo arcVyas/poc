@@ -26,6 +26,7 @@ html
                         th points
                         th status
                         th assignee
+                        th comments
                     tbody
                       each ticket in data.stories
                         -var tdColor="transparent"
@@ -42,6 +43,8 @@ html
                           td(style='#{tdStyle}') #{ticket.points}
                           td(bgcolor='#{tdColor}') #{ticket.status}
                           td #{ticket.assignee}
+                          td
+                            textarea(rows="1")
                 .row.col-lg-12
 
                 .row.col-lg-12

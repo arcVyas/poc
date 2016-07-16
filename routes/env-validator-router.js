@@ -5,6 +5,14 @@ var envValidator = require('./env-validator.js')
 var async = require('async');
 var request = require('request');
 
+router.get('/testJvms', function(req, res, next) {
+  res.render('./env-validator/testJvms', {data:envValidator.getUrls()});
+});
+
+router.get('/convert', function(req, res, next) {
+  res.send(envValidator.convertFileJson())
+});
+
 router.get('/validate', function(req, res, next) {
   res.send(envValidator.getInstanceUrls(req.query.instance))
 });

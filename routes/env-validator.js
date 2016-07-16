@@ -9,16 +9,52 @@ var request = require('request');
 
 var callCount=0
 
-var urlsFile=__dirname+"/../public/files/urls-to-test.json"
-var instancesFile=__dirname+"/../public/files/instances-to-test.json"
+var urlsFile=__dirname+"/../public/files/dnc/urls-to-test.json"
+var instancesFile=__dirname+"/../public/files/dnc/instances-to-test.json"
 var urlsJson = JSON.parse(fs.readFileSync(urlsFile,'utf8'));
 var instancesJson = JSON.parse(fs.readFileSync(instancesFile,'utf8'));
+
+
+var convertFile=__dirname+"/../public/files/dnc/convertcsv.json"
+var convertFileJson = JSON.parse(fs.readFileSync(convertFile,'utf8'));
+
+var atgServers=__dirname+"/../public/files/dnc/atg-servers.json"
+var atgServersJson = JSON.parse(fs.readFileSync(atgServers,'utf8'));
 //console.log("\n *Start: Files Name* \n");
 //console.log("urlsFile:"+urlsFile)
 //console.log("instancesFile:"+instancesFile)
 //console.log("urlsJson:"+JSON.stringify(urlsJson, null, 0))
 //console.log("instancesJson:"+JSON.stringify(instancesJson, null, 0))
 
+
+envValidator.getUrls = function(name){
+  var testableUrls=[]
+  atgServersJson.forEach(function(atgServer){
+    if(atgServer!=null && atgServer!="" && atgServer!=" "){
+      var server= atgServer.split(" ")[0]
+      var port= atgServer.split(" ")[1]
+      var url = "http://"+server+":"+port+"/dotcom/rs/v1/browse/header"
+      testableUrls.push(url)
+    }
+  })
+  return testableUrls
+}
+
+envValidator.convertFileJson = function(){
+  var mergedServer;
+  var results=[];
+  convertFileJson.forEach(function(instance){
+    if(instance.ID!=""){
+      mergedServer=instance.ID
+    }
+    if(instance.Seq!=null){
+      results.push(mergedServer + " " + instance.Seq)
+      //console.log(mergedServer + " " + instance.Seq)
+    }
+  });
+  console.log("Done")
+  return results
+}
 
 envValidator.getUrlDataForInstance = function(instanceJson){
   //console.log("Generate test urls for instance "+ instanceJson.instance)
