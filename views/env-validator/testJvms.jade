@@ -6,7 +6,6 @@ html
     link(rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
     link(rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.12/af-2.1.2/b-1.2.1/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.0/se-1.2.0/datatables.min.css")
   body
-    - console.log("vyas:"+data)
     - var cnt =0
     - var totalCnt=data.length
     #wrapper
@@ -23,7 +22,7 @@ html
                     span(id="status") 
                     span(id="finalCnt" visibility="false") #{data.length}
                     &nbsp;&nbsp;&nbsp;
-                    button(id="startTest").
+                    button(id="startTest" class="btn btn-primary").
                       Start Test
             .panel-body
               .row.col-lg-12
@@ -31,13 +30,15 @@ html
                   table.table.table-bordered.table-hover.table-striped(id="tester-table")
                     thead
                       tr
+                        th Desc
                         th Url
                         th Status
                     tbody
-                      each url in data
+                      each urlData in data
                         tr(id='tr_#{cnt}')
+                          td #{urlData.desc}
                           td
-                            a(id='url_#{cnt}' href='#{url}' target="_blank") #{url}
+                            a(id='url_#{cnt}' href='#{urlData.url}' target="_blank") #{urlData.url}
                           td
                             div(id='status_#{cnt}')
                         - cnt=cnt+1 
@@ -48,16 +49,21 @@ html
   script.
     $( document ).ready(function() {
       $("#finalCnt").hide()
-      $('#tester-table').dataTable({
-          "iDisplayLength": 1000
-        });
+      setDataTable()
       $("#startTest").click(function(){
         startTest()
       })
     });
+    function setDataTable(){
+      $('#tester-table').dataTable({
+          "aLengthMenu": [[25, 50, 100, 500, -1], [25, 50, 100, 500, "All"]],
+          "pageLength": -1,
+          "sDom": 'lifrtip',
+      });
+    }
     function startTest(){
       var execCnt=0
-      var finalCnt=$("#finalCnt").text()
+      var finalCnt = $('#tester-table tr').length-1;
       $("#status").text("Starting test..")
       $('[id^=url_]').each(function() {
         var number = this.id.split('_').pop();
@@ -75,11 +81,9 @@ html
           execCnt=execCnt+1
           $("#status").text("Progress: [ "+ execCnt + " / " + finalCnt + " ]")
           if(execCnt==finalCnt){
-            var table = $('#tester-table').DataTable();
+            var table = $('#tester-table').DataTable()
             table.destroy();
-            $('#tester-table').dataTable({
-              "iDisplayLength": 1000
-            });
+            setDataTable();
             $("#status").text("Done: [ "+ execCnt + " / " + finalCnt + " ]")
           }
         });

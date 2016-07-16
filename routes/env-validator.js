@@ -20,6 +20,8 @@ var convertFileJson = JSON.parse(fs.readFileSync(convertFile,'utf8'));
 
 var atgServers=__dirname+"/../public/files/dnc/atg-servers.json"
 var atgServersJson = JSON.parse(fs.readFileSync(atgServers,'utf8'));
+var directUrls=__dirname+"/../public/files/dnc/direct-urls.json"
+var directUrlsJson = JSON.parse(fs.readFileSync(directUrls,'utf8'));
 //console.log("\n *Start: Files Name* \n");
 //console.log("urlsFile:"+urlsFile)
 //console.log("instancesFile:"+instancesFile)
@@ -29,13 +31,21 @@ var atgServersJson = JSON.parse(fs.readFileSync(atgServers,'utf8'));
 
 envValidator.getUrls = function(name){
   var testableUrls=[]
-  atgServersJson.forEach(function(atgServer){
-    if(atgServer!=null && atgServer!="" && atgServer!=" "){
-      var server= atgServer.split(" ")[0]
-      var port= atgServer.split(" ")[1]
-      var url = "http://"+server+":"+port+"/dotcom/rs/v1/browse/header"
-      testableUrls.push(url)
-    }
+  directUrlsJson.forEach(function(urlData){
+    var desc = urlData.desc
+    urlData.urls.forEach(function(uri){
+      atgServersJson.forEach(function(atgServer){
+        if(atgServer!=null && atgServer!="" && atgServer!=" "){
+          var server= atgServer.split(" ")[0]
+          var port= atgServer.split(" ")[1]
+          var url = "http://"+server+":"+port+uri
+          var urlTest={}
+          urlTest["desc"]=desc
+          urlTest["url"]=url
+          testableUrls.push(urlTest)
+        }
+      })
+    })
   })
   return testableUrls
 }
