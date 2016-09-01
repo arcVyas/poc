@@ -18,7 +18,7 @@ router.get('/stories', function(req, res, next) {
     function(callback) {
       request(
         {
-          "url": "https://"+props.get('uid')+":"+props.get('pwd')+"@"+props.get('jira-host')+"/rest/api/2/search?jql=sprint in ("+req.query.sprints+") and assignee in ("+props.get('team-in-jira')+")"+filter+"+order+by+sprint,status&fields=id,key,summary,status,assignee,customfield_10900,customfield_10102&maxResults=100",
+          "url": "https://"+props.get('uid')+":"+props.get('pwd')+"@"+props.get('jira-host')+"/rest/api/2/search?jql=sprint in ("+req.query.sprints+") and assignee in ("+props.get('team-in-jira')+")"+filter+"+order+by+sprint,status&fields=id,key,issuetype,parent,summary,status,assignee,customfield_10900,customfield_10102&maxResults=100",
           "timeout": 10000,
           "rejectUnauthorized": false
         },
@@ -38,9 +38,16 @@ router.get('/stories', function(req, res, next) {
       var pointPivot={}
       jiraResponse.issues.forEach(function(issue){
         var story={}
+        if(issue.fields.issuetype.subtask){
+          story["key"]=issue.fields.parent.key
+          story["subTaskKey"]=issue.key
+          story["summary"]=" - " + issue.fields.summary
+        }else{
+          story["key"]=issue.key
+          story["subTaskKey"]=""
+          story["summary"]=issue.fields.summary
+        }
         story["id"]=issue.id
-        story["key"]=issue.key
-        story["summary"]=issue.fields.summary
         story["status"]=issue.fields.status.name
         story["assignee"]=issue.fields.assignee.displayName
         story["sprint"]= getSprintName(issue.fields.customfield_10900[0])

@@ -11,6 +11,7 @@ var jcp = require('./routes/jcp');
 var envValidatorRouter = require('./routes/env-validator-router');
 var prAnalyzerRouter = require('./routes/pr-analyzer-router');
 var jiraAppRouter = require('./routes/jira-app-router');
+var cacheAppRouter = require('./routes/cache-app/cache-router');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/jcp-app', jcp);
 app.use('/env-validator', envValidatorRouter);
 app.use('/pr-analyzer', prAnalyzerRouter);
 app.use('/jira-app', jiraAppRouter);
+app.use('/cache-app', cacheAppRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
