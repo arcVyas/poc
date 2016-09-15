@@ -20,6 +20,10 @@ html
           br
           br
           a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(href='#one') Or Select
+          hr
+          a.btn.btn-primary-outline.btn-lg.page-scroll.wow.fadeInUp(href='javascript:test()') BOPIS ORDER
+          hr
+          div(id='testMessage')
           
     nav#topNav.navbar.navbar-default.navbar-fixed-top
       .container
@@ -148,6 +152,21 @@ html
     script.
       $( document ).ready(function() {
         $(".card").css( "box-shadow", "10px 10px 5px lightgray");
-        
-        
+        $("#testbutton").click(function(){
+          console.log("test")
+        });
       });
+      function test(){
+        var offset = new Date().getTimezoneOffset();
+        var now = new Date();
+        var closeTime = new Date();
+        closeTime.setHours(14); closeTime.setMinutes(00);
+        console.log(now, closeTime, now.getTime() >= closeTime.getTime());
+        var message
+        if(now.getTime() >= closeTime.getTime()){
+          message = "Same Day Pickup items ordered before 2 p.m. will be available the next day"
+        }else{
+          message = "Same Day Pickup items ordered after 2 p.m. will be available the same day"
+        }
+        $("#testMessage").text(message)
+      }

@@ -8,6 +8,10 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var jcp = require('./routes/jcp');
+var envValidatorRouter = require('./routes/env-validator-router');
+var prAnalyzerRouter = require('./routes/pr-analyzer-router');
+var jiraAppRouter = require('./routes/jira-app-router');
+var cacheAppRouter = require('./routes/cache-app/cache-router');
 
 var app = express();
 
@@ -26,6 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/poc', routes);
 app.use('/users', users);
 app.use('/jcp-app', jcp);
+app.use('/env-validator', envValidatorRouter);
+app.use('/pr-analyzer', prAnalyzerRouter);
+app.use('/jira-app', jiraAppRouter);
+app.use('/cache-app', cacheAppRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -54,11 +62,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {}
+    error: err
   });
 });
 
-app.set('port', 80);
+app.set('port', 9080);
 var server = app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + server.address().port);
 });

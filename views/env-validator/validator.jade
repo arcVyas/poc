@@ -1,0 +1,110 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Environment Validator
+    link(rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+  body
+    - var cnt =1
+    #wrapper
+      .row
+        .col-lg-12
+          .panel.panel-info
+            .panel-heading
+              h3.panel-title
+                .row
+                  .col-lg-6
+                    i.fa.fa-money.fa-fw
+                    |  EXPCOM Environment
+                  .col-lg-6(align="right")
+                    span(id="refreshTime" textalign="right" style="font-size:10px;")
+            .panel-body
+              .table-responsive
+                table.table.table-bordered.table-hover.table-striped
+                  thead
+                    tr
+                      th Instance
+                      th Web
+                      th App
+                      th Endeca
+                      th Tester Urls
+                  tbody
+                    each instance in data
+                      tr
+                        td #{instance.instance}
+
+                        td
+                          each server in instance.webLB
+                            | #{server}
+                            br
+
+                        td
+                          each server in instance.appServer
+                            | #{server}
+                            br
+                        td
+                          each server in instance.endecaServer
+                            | #{server}
+                            br
+                        td
+                          .table-responsive
+                            table.table.table-bordered.table-hover.table-striped
+                              tbody
+                                each item in instance.urlData
+                                  each url in item.urls
+                                    tr(id='tr_#{cnt}')
+                                      td #{item.name}
+                                      td
+                                        a(id='url_#{cnt}' href='#{url.url}' target="_blank") #{url.url}
+                                      td
+                                        div(id='status_#{cnt}')
+                                    - cnt=cnt+1
+                      tr
+                        td
+                        td
+                        td
+                        td
+                        td
+  // scripts loaded here
+  script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+  script(src='/bootstrap/js/bs-min.js')
+  script.
+    $( document ).ready(function() {
+      callUrl()
+      setTimeout("ReloadPage()", 10*60000);
+    });
+    function callUrl(){
+      $('[id^=url_]').each(function() {
+        var number = this.id.split('_').pop();
+        $.get('callUrl?url='+this.href)
+        .done(function (data) {
+          $("#tr_"+number).removeClass("success")
+          $("#tr_"+number).removeClass("danger")
+          if(data.status=="SUCCESS"){
+            $("#status_"+number).text(data.status)
+            $("#tr_"+number).addClass("success")
+          }else{
+            $("#status_"+number).text(data.status + "(" + data.statusCode + ")")
+            $("#tr_"+number).addClass("danger")
+          }
+        });
+      });
+      $("#refreshTime").text("Refreshed @ " + new Date())
+      populate()
+    }
+    function ReloadPage() {
+      location.reload();
+    };
+     function populate(){
+    $("#refreshTime").text("")
+    var pickMessage=testJs()
+    if(pickMessage==null){
+      pickMessage="its null"
+    }
+      $("#refreshTime").text(pickMessage)
+
+    }
+    function testJs(){
+      var pickMessage="vyas"
+      return pickMessage
+    }

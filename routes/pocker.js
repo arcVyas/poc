@@ -8,11 +8,11 @@ var agentFile=__dirname+"/../../../poc-files/files/agentJson.json"
 var reservationFile=__dirname+"/../../../poc-files/files/reservationJson.json"
 var agentJson = require(agentFile);
 var reservationJson = require(reservationFile);
-console.log("\n *Start: Files Name* \n");
-console.log("origAgentFile:"+origAgentFile)
-console.log("origReservationFile:"+origReservationFile)
-console.log("agentFile:"+agentFile)
-console.log("reservationFile:"+reservationFile)
+//console.log("\n *Start: Files Name* \n");
+//console.log("origAgentFile:"+origAgentFile)
+//console.log("origReservationFile:"+origReservationFile)
+//console.log("agentFile:"+agentFile)
+//console.log("reservationFile:"+reservationFile)
 /*console.log(content.agents.availableNow[0].name)
 content.agents.availableNow[0].name = "Vyas Mohan"
 console.log("Output Content : \n"+ JSON.stringify(content));
@@ -21,7 +21,7 @@ fs.writeFile('/Users/vyas/workspace/projects/vyas-node/poc/public/files/agentJso
 });*/
 
 pocker.writeFile = function(file, jsonObj){
-  console.log("writing file")
+  //console.log("writing file")
   fs.writeFile(file,JSON.stringify(jsonObj,null,4), function(err){
       if(err){console.log(err);}
   });
@@ -30,12 +30,12 @@ pocker.writeFile = function(file, jsonObj){
 }
 
 pocker.getAgents = function(serviceId){
-  console.log("pulling agent details for "+ serviceId)
+  //console.log("pulling agent details for "+ serviceId)
   //return JSON.stringify(agentJson)
   return agentJson
 }
 pocker.getAgentsSorted = function(serviceId){
-  console.log("pulling agent details for "+ serviceId)
+  //console.log("pulling agent details for "+ serviceId)
   var data={}
   var agents={}
   var favorites=[]
@@ -62,25 +62,25 @@ pocker.getAgentsSorted = function(serviceId){
   return data
 }
 pocker.getReservations = function(customerId){
-  console.log("pulling reservation details for "+ customerId)
+  //console.log("pulling reservation details for "+ customerId)
   //return JSON.stringify(agentJson)
   return reservationJson
 }
 pocker.getReservation = function(id){
-  console.log("pulling reservation details for "+ id)
+  //console.log("pulling reservation details for "+ id)
   var reservation = reservationJson.filter(function(r) {
     return r.id == id;
   });
   return reservation[0]
 }
 pocker.createReservation = function(serviceId,agentId){
-  console.log(serviceId + ":" + agentId)
-  console.log(reservationJson)
+  //console.log(serviceId + ":" + agentId)
+  //console.log(reservationJson)
   var agent = agentJson.filter(function(r) {
     return r.id == agentId;
   });
 
-  console.log("found agent" + agent[0].name)
+  //console.log("found agent" + agent[0].name)
 
   var appointment={}
   var now = moment()
@@ -129,7 +129,7 @@ pocker.updateReservation = function(id,status){
 
 pocker.updateAgentWait = function(agentId,wait){
   console.log(agentId + ":" + wait)
-  
+
   var agent = agentJson.filter(function(r) {
     return r.id == agentId;
   });
