@@ -100,7 +100,7 @@ function writeToMongo(doc,callback){
   var collection = db.collection("ais_metrics_report_data");
   doc["insertTime"]= moment().format('YYYY-MM-DD HH:mm:ss.SSS')
   collection.insert(doc, function(err, result) {
-    console.log("Inserted " + rowInserted + "of " + rowRead + " read")
+    //console.log("Inserted " + rowInserted + "of " + rowRead + " read")
     rowInserted++;
     if(filesRead==expectedFiles && rowRead == rowInserted){
         console.log("Done. Inserted " + rowInserted + "of " + rowRead + " read")

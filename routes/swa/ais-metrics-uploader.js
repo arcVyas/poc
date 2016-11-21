@@ -47,9 +47,9 @@ router.post('/generate-and-upload',function(req, res) {
     for(var i=0;i<fileList.length;i++){
       var fileName = fileList[i]
       fileName=fileName.replace('.csv','')
-      console.log(fileName)
+      //console.log(fileName)
       var url = '/swa/ais/metrics/reports/'+fileName
-      console.log(url)
+      //console.log(url)
       var anchor={}
       anchor["text"]=fileName
       anchor["url"]=url
