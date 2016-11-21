@@ -1,0 +1,170 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title AIS Metrics Collector
+    link(href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css')
+    link(rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+    link(rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.12/af-2.1.2/b-1.2.1/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.0/se-1.2.0/datatables.min.css")
+    link(rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.css")
+
+    style.
+
+  body
+    - var cnt =1
+    #wrapper
+      br
+      .row
+        .col-lg-12
+          form(action="/pm/search")
+            .col-lg-3
+              .form-group
+                input#criteria.form-control(type='text' name="criteria" placeholder="Criteria")
+            .col-lg-3
+              #from.input-group.date
+                input.form-control(type='text' name='from' placeholder="From")
+                span.input-group-addon
+                    span.glyphicon.glyphicon-calendar
+            .col-lg-3
+              #until.input-group.date
+                input.form-control(type='text' name='until' placeholder="Until")
+                span.input-group-addon
+                    span.glyphicon.glyphicon-calendar
+            .col-lg-3
+              .form-group
+                button.btn.btn-success(type='submit') Search
+      - if(data != null) {
+        .row
+          .col-lg-8
+            .panel.panel-info
+              .panel-heading
+                h3.panel-title
+                  .row
+                    .col-lg-6
+                      i.fa.fa-money.fa-fw
+                      |  Metrics
+                    .col-lg-6(align="right")
+                      span(id="refreshTime" textalign="right" style="font-size:10px;")
+              .panel-body
+                .table-responsive
+                  table.table.table-bordered.table-hover.table-striped(id="metrics-table")
+                    thead
+                      tr
+                        th Time
+                        th Server
+                        th Data Point
+                    tbody
+                      each row in data
+                          tr
+                            td(id='row_#{row.epochTime}') #{row.time}
+                            td #{row.server}
+                            td #{row.value}
+                br
+          .col-lg-4(style="padding-left:20px;padding-right:20px;align=center")
+            canvas(id="myChart" height="400")
+      - }
+
+  // scripts loaded here
+  script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+  script(type="text/javascript" src="https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.12/af-2.1.2/b-1.2.1/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.0/se-1.2.0/datatables.min.js")
+  script(src='/bootstrap/js/bs-min.js')
+  script(src='/bootstrap/js/moment.js')
+  script(src='/bootstrap/js/collapse.js')
+  script(src='/bootstrap/js/transition.js')
+  script(src='/bootstrap/js/bootstrap-datetimepicker.min.js')
+  script(src="/js/Chart.min.js")
+  script.
+    var chartDataA11=[]
+    var chartDataA12=[]
+    var chartLabels=[]
+    $( document ).ready(function() {
+      var table = $('#metrics-table').DataTable({
+        "iDisplayLength": 100,
+        "order": [[ 0, "asc" ]]
+      });
+      $(function () {
+          $('#from').datetimepicker();
+          $('#until').datetimepicker();
+      });
+
+      if(document.getElementById("myChart") !== null){
+
+        var rows = table.rows().data();
+        console.log(rows.length)
+        for(i=0;i<rows.length;i++){
+          if(rows[i][1].startsWith('a11')){
+            chartDataA11.push(rows[i][2])
+          }else if(rows[i][1].startsWith('a12')){
+            chartDataA12.push(rows[i][2])
+          }
+          chartLabels.push(rows[i][0])
+        }
+
+        drawChart()
+        console.log(chartLabels.length)
+        console.log(chartDataA12.length)
+        console.log(chartDataA11.length)
+      }
+
+      table.on('search.dt', function() {
+          //number of filtered rows
+          //console.log(table.rows( { filter : 'applied'} ).nodes().length);
+          //filtered rows data as arrays
+          //console.log(table.rows( { filter : 'applied'} ).data());
+          var rows = table.rows( { filter : 'applied'} ).data();
+          chartDataA11=[]
+          chartDataA12=[]
+          chartLabels=[]
+          for(i=0;i<rows.length;i++){
+            if(rows[i][1].startsWith('a11')){
+              chartDataA11.push(rows[i][2])
+            }else if(rows[i][1].startsWith('a12')){
+              chartDataA12.push(rows[i][2])
+            }
+            chartLabels.push(rows[i][0])
+          }
+          drawChart()
+      })
+    });
+    function drawChart(){
+
+      var chartLabelsUnique = chartLabels.filter(function(elem, index, self) {
+          return index == self.indexOf(elem);
+      })
+      var ctx = $("#myChart");
+
+      var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartLabelsUnique,
+                datasets: [{
+                    label: 'A11',
+                    data: chartDataA11,
+                    backgroundColor:['rgba(54, 162, 235, 0.2)'],
+                    borderWidth: 1
+                },
+                {
+                    label: 'A12',
+                    data: chartDataA12,
+                    backgroundColor:['rgba(255, 206, 86, 0.2)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+      }

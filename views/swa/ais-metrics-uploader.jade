@@ -1,0 +1,142 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title AIS Metrics Uploader
+    link(href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css')
+    link(rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+    link(rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.12/af-2.1.2/b-1.2.1/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.0/se-1.2.0/datatables.min.css")
+    link(rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.css")
+    link(rel="stylesheet" href="/font-awesome/css/font-awesome.min.css")
+
+    style.
+
+  body(style="padding-left: 10px;padding-right: 10px;")
+    - var cnt =1
+    #wrapper
+      br
+      .row
+        .col.lg-12(align="right" style="padding-right: 30px;")
+          a(href="http://172.18.94.223:8080/Project-AIS/ais-qa.html" target="_blank") findVersion
+      .row
+        .col-lg-12
+          form
+            .col-lg-2
+              .form-group
+                input#container.form-control(type='text' name="container" placeholder="Container" value=req.query.container)
+            .col-lg-2
+              .form-group
+                input#serviceName.form-control(type='text' name="serviceName" placeholder="ServiceName" value=req.query.serviceName)
+            .col-lg-2
+              .form-group
+                input#version.form-control(type='text' name="version" placeholder="Version" value=req.query.version)
+            .col-lg-6
+              .form-group
+                input#sStrings.form-control(type='text' name="sStrings" placeholder="sStrings" value=req.query.sStrings)
+            .col-lg-2
+              .form-group
+                input#metrics.form-control(type='text' name="metrics" placeholder="Metrics" value=req.query.metrics)
+            .col-lg-2
+              .form-group
+                input#env.form-control(type='text' name="env" placeholder="Environment" value=req.query.env)
+            .col-lg-2
+              .form-group
+                input#dateLocal.form-control(type='text' name="dateLocal" placeholder="Local Date From Email")
+            .col-lg-2
+              .form-group
+                input#date.form-control(type='text' name="date" placeholder="Date" value=req.query.date)
+            .col-lg-2
+              .form-group
+                input#stTime.form-control(type='text' name="stTime" placeholder="Start Time" value=req.query.stTime)
+            .col-lg-2
+              .form-group
+                input#endTime.form-control(type='text' name="endTime" placeholder="End Time" value=req.query.endTime)
+
+        .col-lg-12
+            button#generateReport.btn.btn-success(style="margin-left: 15px;") Generate Reports
+
+      .row(style="padding-top:5px;")
+        .col-lg-8.well(style="margin-left: 30px")
+          i#statusIcon(class="fa fa-cog fa-spin fa-3x fa-fw" )
+          span#reportStatus
+      .row(style="height:15px;")
+
+    #footer
+
+  // scripts loaded here
+
+  script(type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.6/jq-2.2.3/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/fh-3.1.2/kt-2.1.3/r-2.1.0/rr-1.1.2/se-1.2.0/datatables.min.js")
+  script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+  script(src='/bootstrap/js/bs-min.js')
+  script(src="/js/moment.js")
+  script(src="/files/dnc/sstrings.js")
+  script.
+    var chartDataA11=[]
+    var chartDataA12=[]
+    var chartLabels=[]
+    $( document ).ready(function() {
+      $("#statusIcon").hide();
+      var table = $('#metrics-table').DataTable({
+        "buttons": ['copy','pdf'],
+        "iDisplayLength": 100,
+        "order": [[ 0, "asc" ]],
+        dom: 'Bfrtlip'
+      });
+      $("#generateReport").click(function(){
+
+        var data = {}
+        data["container"]=$("#container").val()
+        data["serviceName"]=$("#serviceName").val()
+        data["version"]=$("#version").val()
+        data["sStrings"]=$("#sStrings").val()
+        data["metrics"]=$("#metrics").val()
+        data["env"]=$("#env").val()
+        data["date"]=$("#date").val()
+        data["stTime"]=$("#stTime").val()
+        data["endTime"]=$("#endTime").val()
+        $("#reportStatus").text("Generating Reports.. Please wait")
+        $("#statusIcon").show()
+        $.ajax({
+          method: "POST",
+          url: "/swa/ais/metrics/uploader/generate-and-upload",
+          data: data
+        })
+          .done(function( msg ) {
+            var urls=''
+            $.each(msg,function(index){
+              urls = urls + "<br><a href='"+msg[index].url+"' target='_blank'>"+msg[index].text+"</a>"
+            })
+            $("#reportStatus").html(urls)
+          })
+          .fail(function(){
+            $("#reportStatus").text("Oops.. something went wrong. Try again or call vyas")
+          })
+          .always(function(){
+            $("#statusIcon").hide();
+          });
+      })
+      $("#dateLocal").focusout(function(){
+        var datesIn = $("#dateLocal").val().split('–');
+        //console.log(datesIn)
+        //console.log(datesIn[0])
+        //console.log(datesIn[1])
+        var dateIn = datesIn[0].trim()
+        var dateObj = moment(dateIn, "MM/DD/YYYY HH:mm:ss")
+        var datePart = moment.utc(dateObj).format('YYYY-MM-DD')
+        $("#date").val(datePart)
+        autoTime(datesIn[0].trim(), "stTime")
+        autoTime(datesIn[1].trim(), "endTime")
+      });
+      var x = $("#sStrings")
+      x.autocomplete({
+        source: sStringsArr
+      });
+      $("#env").autocomplete({
+        source: ['MIG']
+      });
+      function autoTime(dateIn, control){
+        var dateObj = moment(dateIn, "MM/DD/YYYY HH:mm:ss")
+        var timePart = moment.utc(dateObj).format('HH:mm')
+        $("#"+control).val(timePart)
+      }
+    });
