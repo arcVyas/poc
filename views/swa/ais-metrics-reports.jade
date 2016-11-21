@@ -71,12 +71,12 @@ html
         "order": [[ 0, "asc" ]],
         dom: 'Bfrtlip'
       });
-
       var x = $("#sString")
       console.log(x)
       x.autocomplete({
         source: sStringsArr
       });
+
       $("#generateChart").click(function(){
         datasets=[]
         colorCnt=0
@@ -166,6 +166,4 @@ html
 
         $('html, body').animate({ scrollTop: $('#canvasDiv').offset().top }, 'slow');
       }
-
-
     });

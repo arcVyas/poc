@@ -7,6 +7,7 @@ var moment = require('moment');
 var mongoUtil = require( '../../public/js/mongoutil.js' );
 var ssh = require( './ssh.js' );
 
+
 router.get('/',function(req, res, next) {
   mongoUtil.connectToServer( function( err ) {
     searchMongo("ais_metrics_report_meta",{}, function(result){
@@ -65,4 +66,5 @@ function searchMongo(collection, query, callback){
       callback(result)
     });
 }
+
 module.exports = router;

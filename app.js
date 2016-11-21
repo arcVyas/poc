@@ -45,9 +45,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/swa/pm', perfMetricsAppRouter);
 app.use('/swa/ais/metrics/reports', aisMetricsReports);
 app.use('/swa/ais/metrics/uploader', aisMetricsUploader);
+
 app.get('/swa/ais/metrics', function (req, res) {
   res.render('./swa/ais-metrics-home');
 })
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
