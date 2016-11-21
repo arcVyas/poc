@@ -13,6 +13,7 @@ html
 
   body(style="padding-left: 10px;padding-right: 10px;")
     - var cnt =1
+    include ais-metrics-nav-bar
     #wrapper
       br
       .row
@@ -41,7 +42,7 @@ html
                 input#env.form-control(type='text' name="env" placeholder="Environment" value=req.query.env)
             .col-lg-2
               .form-group
-                input#dateLocal.form-control(type='text' name="dateLocal" placeholder="Local Date From Email")
+                input#dateLocal.form-control(type='text' name="dateLocal" placeholder="Dates From Email (CST)")
             .col-lg-2
               .form-group
                 input#date.form-control(type='text' name="date" placeholder="Date" value=req.query.date)
