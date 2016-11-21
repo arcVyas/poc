@@ -31,23 +31,19 @@ html
                 table.table.table-bordered.table-hover.table-striped(id="results-table")
                   thead
                     tr
-                      th Link
                       th Report Id
                       th Upload Time
                   tbody
                     each row in data
                         tr
                           td
-                            a(href='/swa/ais/metrics/reports/#{row["id"]}', target="_blank") Open
-                          td #{row["id"]}
+                            a(href='/swa/ais/metrics/reports/#{row["id"]}', target="_blank") #{row["id"]}
                           td #{row["insertTime"]}
             .panel-footer
-              a(href='/swa/ais/metrics/uploader' class="btn btn-success" role="button") Upload new test results
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               button#generateChart(class="btn btn-success") Generate Charts
-      .row
-        .col-lg-12(id="canvasDiv")
-          canvas(id="myChart" height="400px")
+        .row
+          .col-lg-12
+            canvas(id="myChart")
     #footer
 
   // scripts loaded here
@@ -61,9 +57,7 @@ html
   script(src="/js/Chart.min.js")
   script(src="/files/dnc/sStrings.js")
   script.
-    var datasets=[]
-    var bgColors = ['red','blue','green','magenta','orange','yellow','brown','purple','pink','cyan']
-    var colorCnt=0
+
     $( document ).ready(function() {
       var table = $('#results-table').DataTable({
         "buttons": ['copy','excel', 'pdf'],
@@ -71,78 +65,33 @@ html
         "order": [[ 0, "asc" ]],
         dom: 'Bfrtlip'
       });
-
       var x = $("#sString")
       console.log(x)
       x.autocomplete({
         source: sStringsArr
       });
       $("#generateChart").click(function(){
-        datasets=[]
-        colorCnt=0
-        var rows = table.rows( { filter : 'applied'} ).data();
-        console.log(rows)
-        var reportList=[]
-        for(var i=0;i<rows.length;i++){
-          reportList.push(rows[i][1])
-        }
-        getDataForReports(reportList,0)
-      })
-
-      function createDataset(reportName,result){
+        var datasets=[]
         var dataset={}
-        dataset["type"]="line"
-        dataset["fill"]=false
-        dataset["multiTooltipTemplate"]="<%= datasetLabel %> - <%= value %>"
-        addDynamicData(dataset,reportName,result)
-        return dataset
-      }
-      function addDynamicData(dataset,reportName, result){
-        dataset["label"]=reportName
-        var reportData=[]
-        for(var i=0;i<result.length;i++){
-          reportData.push(result[i]['Average Response Time (ms)'])
-        }
-        dataset["data"]=reportData
-        dataset["borderColor"]=bgColors[colorCnt]
-        dataset["backgroundColor"]=bgColors[colorCnt]
-        colorCnt=colorCnt+1
-      }
-      function getDataForReports(reportList,cnt){
-        $.ajax({
-          method: "GET",
-          url: "/swa/ais/metrics/reports/"+reportList[cnt]+"/data"
+        dataset["label"]="1"
+        dataset["data"]=[1,2,3,4,5,6,7,8,9,10]
+        datasets.push(dataset)
+        var dataset2={}
+        dataset2["label"]="2"
+        dataset2["data"]=[4,8,3,2,1,5,7,6,10,9]
+        datasets.push(dataset2)
+        drawChart(datasets)
+      })
+      function drawChart(datasets){
+
+        var chartLabelsUnique = chartLabels.filter(function(elem, index, self) {
+            return index == self.indexOf(elem);
         })
-          .done(function( msg ) {
-            datasets.push(createDataset(reportList[cnt],msg.data))
-            if(cnt>=reportList.length-1){
-              var labels=[]
-              for(var i=0;i<msg.data.length;i++){
-                labels.push(i)
-              }
-              drawChart(labels)
-            }else{
-              cnt=cnt+1
-              getDataForReports(reportList,cnt)
-            }
-          })
-          .fail(function(){
-            $("#reportStatus").text("Oops.. something went wrong. Try again or call vyas")
-          })
-          .always(function(){
-
-          });
-      }
-      function drawChart(labels){
-
-
         var ctx = $("#myChart");
-        console.log(datasets)
+
         var myChart = new Chart(ctx, {
-              type: 'bar',
-              fill:false,
+              type: 'line',
               data: {
-                  labels:labels,
                   datasets: datasets
               },
               options: {
@@ -158,14 +107,10 @@ html
                           }
                       }]
                   },
-
                   responsive: true,
                   maintainAspectRatio: false
               }
           });
-
-        $('html, body').animate({ scrollTop: $('#canvasDiv').offset().top }, 'slow');
-      }
-
+        }
 
     });
