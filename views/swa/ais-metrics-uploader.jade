@@ -4,10 +4,11 @@ html
     meta(charset='utf-8')
     title AIS Metrics Uploader
     link(href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css')
-    link(rel="stylesheet" type="text/css" href="https://bootswatch.com/slate/bootstrap.min.css")
     link(rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.12/af-2.1.2/b-1.2.1/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.0/se-1.2.0/datatables.min.css")
     link(rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.css")
     link(rel="stylesheet" href="/font-awesome/css/font-awesome.min.css")
+    link(rel="stylesheet" type="text/css" href="https://bootswatch.com/slate/bootstrap.min.css")
+    link(rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css")
 
     style.
 
@@ -84,7 +85,6 @@ html
         dom: 'Bfrtlip'
       });
       $("#generateReport").click(function(){
-
         var data = {}
         data["container"]=$("#container").val()
         data["serviceName"]=$("#serviceName").val()
@@ -95,27 +95,70 @@ html
         data["date"]=$("#date").val()
         data["stTime"]=$("#stTime").val()
         data["endTime"]=$("#endTime").val()
-        $("#reportStatus").text("Generating Reports.. Please wait")
-        $("#statusIcon").show()
+        var sStrings = data["sStrings"].split(',')
+        var metrics = data["metrics"].split(',')
+        var reports=[]
+        for(var i=0; i< sStrings.length; i++){
+          for(var j=0;j< metrics.length; j++){
+            var sString= sStrings[i]
+            var metric = metrics[j]
+            var id = data["container"]+"_"+data["env"]+"_"+data["serviceName"]+"_"+sString+"_"+metric+"_"+data["date"]+"_"+data["stTime"]+"_"+data["endTime"]
+            reports.push(id)
+          }
+        }
+        checkReportsExist(reports, 0, data, generateReport)
+      })
+
+      function checkReportsExist(reports,cnt,data, callback){
         $.ajax({
-          method: "POST",
-          url: "/swa/ais/metrics/uploader/generate-and-upload",
-          data: data
+          method: "GET",
+          url: "/swa/ais/metrics/reports/"+reports[cnt]+"?jsonMode=true"
         })
           .done(function( msg ) {
-            var urls=''
-            $.each(msg,function(index){
-              urls = urls + "<br><a href='"+msg[index].url+"' target='_blank'>"+msg[index].text+"</a>"
-            })
-            $("#reportStatus").html(urls)
+            if(msg.length<=0){
+              cnt=cnt+1
+              if(cnt < reports.length){
+                checkReportsExist(reports,cnt,data,callback)
+              }else{
+                callback(data)
+              }
+            }else{
+              $("#reportStatus").text(reports[cnt] + " already exists in mongo. Remove it from the list")
+            }
           })
           .fail(function(){
             $("#reportStatus").text("Oops.. something went wrong. Try again or call vyas")
           })
           .always(function(){
-            $("#statusIcon").hide();
+
           });
-      })
+      }
+
+      function generateReport(data){
+        if (confirm('This will run grep scripts and generate reports. Are you sure about doing this?')) {
+
+          $("#reportStatus").text("Generating Reports.. Please wait")
+          $("#statusIcon").show()
+          $.ajax({
+            method: "POST",
+            url: "/swa/ais/metrics/uploader/generate-and-upload",
+            data: data
+          })
+            .done(function( msg ) {
+              var urls=''
+              $.each(msg,function(index){
+                urls = urls + "<br><a href='"+msg[index].url+"' target='_blank'>"+msg[index].text+"</a>"
+              })
+              $("#reportStatus").html(urls)
+            })
+            .fail(function(){
+              $("#reportStatus").text("Oops.. something went wrong. Try again or call vyas")
+            })
+            .always(function(){
+              $("#statusIcon").hide();
+            });
+        }
+      }
       $("#dateLocal").focusout(function(){
         var datesIn = $("#dateLocal").val().split('–');
         //console.log(datesIn)
@@ -130,10 +173,14 @@ html
       });
       var x = $("#sStrings")
       x.autocomplete({
-        source: sStringsArr
+        source: sStringsArr,
+        autoFocus: true,
+        min_length: 0
       });
       $("#env").autocomplete({
-        source: ['MIG']
+        source: ['MIG'],
+        autoFocus: true,
+        min_length: 0
       });
       function autoTime(dateIn, control){
         var dateObj = moment(dateIn, "MM/DD/YYYY HH:mm:ss")

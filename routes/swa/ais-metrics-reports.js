@@ -26,7 +26,11 @@ router.get('/:id',function(req, res, next) {
       mongoUtil.closeConnection(function(){
         //console.log("Connection Closed")
       });
-      res.render('./swa/ais-metrics-report', {data:result});
+      if(req.query.jsonMode){
+        res.send(result);
+      }else{
+        res.render('./swa/ais-metrics-report', {data:result});
+      }
     });
   });
 });
