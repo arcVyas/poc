@@ -5,19 +5,28 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+/*var routes = require('./routes/index');
 var users = require('./routes/users');
 var jcp = require('./routes/jcp');
 var envValidatorRouter = require('./routes/env-validator-router');
 var prAnalyzerRouter = require('./routes/pr-analyzer-router');
 var jiraAppRouter = require('./routes/jira-app-router');
 var cacheAppRouter = require('./routes/cache-app/cache-router');
+*/
+var perfMetricsAppRouter = require('./routes/swa/perf-metrics');
+
+var aisMetricsReports = require('./routes/swa/ais-metrics-reports')
+var aisMetricsUploader = require('./routes/swa/ais-metrics-uploader')
+var aisJira = require('./routes/swa/ais-jira')
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -27,13 +36,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/poc', routes);
-app.use('/users', users);
-app.use('/jcp-app', jcp);
-app.use('/env-validator', envValidatorRouter);
-app.use('/pr-analyzer', prAnalyzerRouter);
-app.use('/jira-app', jiraAppRouter);
-app.use('/cache-app', cacheAppRouter);
+//app.use('/poc', routes);
+//app.use('/users', users);
+//app.use('/jcp-app', jcp);
+//app.use('/env-validator', envValidatorRouter);
+//app.use('/pr-analyzer', prAnalyzerRouter);
+//app.use('/jira-app', jiraAppRouter);
+//app.use('/cache-app', cacheAppRouter);
+app.use('/swa/pm', perfMetricsAppRouter);
+app.use('/swa/ais/metrics/reports', aisMetricsReports);
+app.use('/swa/ais/metrics/uploader', aisMetricsUploader);
+app.use('/swa/ais/jira', aisJira);
+
+app.get('/swa/ais/metrics', function (req, res) {
+  res.render('./swa/ais-metrics-home');
+})
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -66,7 +84,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.set('port', 9080);
+app.set('port', 80);
 var server = app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + server.address().port);
 });

@@ -1,0 +1,37 @@
+Person = User | A user of DOPS | | 3140,665
+Person = Admin | Admins DOPS | | 3120,100
+SoftwareSystem = DOPS | DOPS | | 
+SoftwareSystem = JIRA | Jira | | 320,55
+SoftwareSystem = STASH | Stash | | 320,335
+SoftwareSystem = ALM | ALM | | 315,635
+SoftwareSystem = SONAR | Sonar | | 320,945
+Container = DOPS | DOPS-DS | Stores DOPS data | Mongo DB | Database | 1575,365
+Container = DOPS | DOPS-JIRA-INTEGRATOR | Integrates Jira into DOPS | Spring Batch | Integrator | 895,45
+Container = DOPS | DOPS-ALM-INTEGRATOR | Integrates Stash into DOPS | Spring Batch | Integrator | 900,640
+Container = DOPS | DOPS-STASH-INTEGRATOR | Integrates ALM into DOPS | Spring Batch | Integrator | 900,335
+Container = DOPS | DOPS-SONAR-INTEGRATOR | Integrates Sonar into DOPS | Spring Batch | Integrator | 905,945
+Container = DOPS | DOPS Web App | Visualize statistics and reports | NodeJs | WebApp | 2200,370
+
+Relationship = DOPS-JIRA-INTEGRATOR | queries | HTTPS | JIRA | | 
+Relationship = DOPS-JIRA-INTEGRATOR | dumps data | | DOPS-DS | | 
+Relationship = DOPS-STASH-INTEGRATOR | queries | HTTPS | STASH | | 
+Relationship = DOPS-STASH-INTEGRATOR | dumps data | | DOPS-DS | | 
+Relationship = DOPS-ALM-INTEGRATOR | queries | SQL | ALM | | 
+Relationship = DOPS-ALM-INTEGRATOR | dumps data | | DOPS-DS | | 
+Relationship = DOPS-SONAR-INTEGRATOR | queries | SQL | SONAR | | 
+Relationship = DOPS-SONAR-INTEGRATOR | dumps data | | DOPS-DS | | 
+Relationship = DOPS Web App | CRUDs | | DOPS-DS | | 
+Relationship = User | Uses | HTTPs | DOPS Web App | | 
+Relationship = Admin | Manages | HTTPs | DOPS Web App | | 
+
+Diagram = Container | DOPS | A description of this diagram. | Slide_16_9
+
+ElementStyle = Element         |  500 |  200 |         | #ffffff |  36 |            
+ElementStyle = Software System |  250 |  250 | #808080 |         |  30 | Circle     
+ElementStyle = Container       |      |      | #438dd5 |         |     |            
+ElementStyle = Database        |  300 |  300 |         |         |  25 | Cylinder   
+ElementStyle = Integrator      |  300 |  300 |         |         |  20 | Hexagon    
+ElementStyle = WebApp          |  500 |  300 |         |         |  30 |            
+ElementStyle = Person          |  300 |  300 | #08427b |         |  20 | Person     
+
+RelationshipStyle = Relationship |  5 |         |       | Direct     |  36 |  400 |     

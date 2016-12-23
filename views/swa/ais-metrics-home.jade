@@ -1,0 +1,48 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title AIS Metrics Archive
+    link(rel="stylesheet" type="text/css" href="https://bootswatch.com/slate/bootstrap.min.css")
+    link(href='/bootstrap/css/full-width-pics.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+  body
+    header.image-bg-fluid-height
+      img.img-responsive.img-center(src='/img/archive.gif', title='Museum archive - From Paddington movie ;)')
+    // Content Section
+    section
+      .container
+        .row
+          .col-lg-12
+            h1.section-heading AIS Metrics Archive
+            p.lead.section-lead Data store to dump performance test reports
+            p.section-paragraph
+              | This app stores the performance test reports pulled from syslog servers. Based on the test date time, it invokes the existing log parsing scripts in syslog servers and downloads the generated reports into a local MongoDB data store.
+              li VIEW/EXPORT: Stored reports can be searched, viewed, exported to excel/pdf/clipboard anytime using the UI.
+              li GRAPHS: There is an option to select different reports and compare them on <b>line charts</b>.
+            p.section-paragraph
+              | App has 2 main sections: Reports and Uploader. Reports section can be used to browse stored reports, while uploader is used to generate the reports and save them.
+          .col-lg-6
+            a(href='/swa/ais/metrics/reports' class="btn btn-info" role="button") Reports
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            a(href='/swa/ais/metrics/uploader' class="btn btn-info" role="button") Uploader
+    // Footer
+    footer
+      .container
+        .row
+          .col-lg-12
+            p Copyright © vM
+        // /.row
+      // /.container
+    // jQuery
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='/bootstrap/js/bs-min.js')

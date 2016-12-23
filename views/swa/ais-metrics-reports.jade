@@ -1,0 +1,220 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title AIS Metrics Reports
+    link(href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css')
+    link(rel="stylesheet" type="text/css" href="https://bootswatch.com/slate/bootstrap.min.css")
+    link(rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.1.3/r-2.1.0/rr-1.1.2/se-1.2.0/datatables.min.css")
+    link(rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.css")
+    link(rel="stylesheet" href="/font-awesome/css/font-awesome.min.css")
+
+    style.
+
+  body(style="padding-left: 10px;padding-right: 10px;")
+    - var cnt =1
+    include ais-metrics-nav-bar
+    #wrapper
+      br
+      .row
+        .col-lg-12
+          .panel.panel-info
+            .panel-heading
+              h3.panel-title
+                .row
+                  .col-lg-6
+                    i.fa.fa-book.fw
+                    |  Reports
+                  .col-lg-6(align="right")
+                    span(id="refreshTime" textalign="right" style="font-size:10px;")
+            .panel-body
+              .table-responsive
+                table.table.table-bordered.table-hover.table-striped(id="results-table")
+                  thead
+                    tr
+                      th
+                      th Report Id
+                      th Upload Time
+                  tbody
+                    each row in data
+                        tr
+                          td(align="center")
+                            a(href='/swa/ais/metrics/reports/#{row["id"]}', target="_blank")
+                              i(id='openReport_#{row["id"]}' class="fa fa-file-o" title="Open Report" style="cursor: pointer;")
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            i(id='addToChart_#{row["id"]}' class="fa fa-line-chart" title="Click to add report for chart input" style="cursor: pointer;")
+                          td #{row["id"]}
+                          td #{row["insertTime"]}
+            .panel-footer
+              a(href='/swa/ais/metrics/uploader' class="btn btn-success" role="button") Upload new test results
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      .row
+        .col-lg-12
+          .panel.panel-info
+            .panel-heading
+              h3.panel-title
+                .row
+                  .col-lg-6
+                    i.fa.fa-line-chart.fw
+                    |  Graphs
+                  .col-lg-6(align="right")
+                    span(id="refreshTime" textalign="right" style="font-size:10px;")
+            .panel-body
+              .row
+                .col-lg-12
+                  label(for="reportsForChart") Chart Input (Reports)
+                  textarea#reportsForChart(class="form-control" rows="3")
+                .col-lg-12
+                  button#generateChart(class="btn btn-success") Generate Charts
+                  &nbsp;&nbsp;&nbsp;
+                  button#clearChartInput(class="btn btn-success") Clear Chart Input
+                .col-lg-12(id="canvasDiv")
+                  canvas(id="myChart" height="400px")
+    #footer
+
+  // scripts loaded here
+  script(type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.6/jq-2.2.3/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/fh-3.1.2/kt-2.1.3/r-2.1.0/rr-1.1.2/se-1.2.0/datatables.min.js")
+  script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+  script(src='/bootstrap/js/bs-min.js')
+  script(src='/bootstrap/js/moment.js')
+  script(src='/bootstrap/js/collapse.js')
+  script(src='/bootstrap/js/transition.js')
+  script(src='/bootstrap/js/bootstrap-datetimepicker.min.js')
+  script(src="/js/Chart.min.js")
+  script(src="/files/dnc/sStrings.js")
+  script.
+    var datasets=[]
+    var bgColors = ['red','blue','green','magenta','orange','yellow','brown','purple','pink','cyan']
+    var colorCnt=0
+    $( document ).ready(function() {
+
+      $("[id^=addToChart]").click(function(){
+        var reportId = this.id.split('addToChart_')[1]
+        var chartInput = $("#reportsForChart").val().trim()
+        if(chartInput.length<=0){
+          $("#reportsForChart").val(reportId)
+        }else{
+          $("#reportsForChart").val(chartInput+"\n"+reportId)
+        }
+      });
+
+      $("#clearChartInput").click(function(){
+        $("#reportsForChart").val("")
+      });
+
+      var table = $('#results-table').DataTable({
+        "aoColumnDefs": [
+          { 'bSortable': false, 'aTargets': [ 0 ] }
+        ],
+        "buttons": ['copy','excel', 'pdf'],
+        "iDisplayLength": 100,
+        "order": [[ 2, "desc" ]],
+        dom: 'Bfrtlip'
+      });
+      var x = $("#sString")
+      console.log(x)
+      x.autocomplete({
+        source: sStringsArr
+      });
+
+      $("#generateChart").click(function(){
+
+        var chartInput = $("#reportsForChart").val().trim()
+        if(chartInput.length<=0){
+          alert("Please add some reports in Chart Input..")
+          return
+        }
+        datasets=[]
+        colorCnt=0
+        //var rows = table.rows( { filter : 'applied'} ).data();
+        var rows = $("#reportsForChart").val().split('\n')
+        console.log(rows)
+        var reportList=[]
+        for(var i=0;i<rows.length;i++){
+          //reportList.push(rows[i][1])
+          reportList.push(rows[i].trim())
+        }
+        //alert(reportList)
+        getDataForReports(reportList,0)
+      });
+
+
+
+      function createDataset(reportName,result){
+        var dataset={}
+        dataset["type"]="line"
+        dataset["fill"]=false
+        dataset["multiTooltipTemplate"]="<%= datasetLabel %> - <%= value %>"
+        addDynamicData(dataset,reportName,result)
+        return dataset
+      }
+      function addDynamicData(dataset,reportName, result){
+        dataset["label"]=reportName
+        var reportData=[]
+        for(var i=0;i<result.length;i++){
+          reportData.push(result[i]['Average Response Time (ms)'])
+        }
+        dataset["data"]=reportData
+        dataset["borderColor"]=bgColors[colorCnt]
+        dataset["backgroundColor"]=bgColors[colorCnt]
+        colorCnt=colorCnt+1
+      }
+      function getDataForReports(reportList,cnt){
+        $.ajax({
+          method: "GET",
+          url: "/swa/ais/metrics/reports/"+reportList[cnt]+"/data"
+        })
+          .done(function( msg ) {
+            datasets.push(createDataset(reportList[cnt],msg.data))
+            if(cnt>=reportList.length-1){
+              var labels=[]
+              for(var i=0;i<msg.data.length;i++){
+                labels.push(i)
+              }
+              drawChart(labels)
+            }else{
+              cnt=cnt+1
+              getDataForReports(reportList,cnt)
+            }
+          })
+          .fail(function(){
+            $("#reportStatus").text("Oops.. something went wrong. Try again or call vyas")
+          })
+          .always(function(){
+
+          });
+      }
+      function drawChart(labels){
+
+
+        var ctx = $("#myChart");
+        console.log(datasets)
+        var myChart = new Chart(ctx, {
+              type: 'bar',
+              fill:false,
+              data: {
+                  labels:labels,
+                  datasets: datasets
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero:true
+                          }
+                      }],
+                      xAxes: [{
+                          ticks: {
+                              beginAtZero:true
+                          }
+                      }]
+                  },
+
+                  responsive: true,
+                  maintainAspectRatio: false
+              }
+          });
+
+        $('html, body').animate({ scrollTop: $('#canvasDiv').offset().top }, 'slow');
+      }
+    });

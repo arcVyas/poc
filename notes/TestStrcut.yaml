@@ -1,0 +1,124 @@
+---
+  id: 1
+  release : "R2"
+  name: "Through put test"
+  component: "ais-ticketing"
+  version: "1.2"
+  jira: "AIS-6146"
+  goal: "As per the new ticketing design, booking app will publish ticketing messages to a topic Q, which will then be routed to appropriate subscriber queues based on JMX selector configuration. Developer test on MQ side showed a 50% reduction in throughput when the JMX selector is applied.
+Need to run a peformance test on AIS is to validate that we don't have a drastic impact in the overall throughput with the new design"
+  acceptanceCriteria: "Validate that the JMX selector configuration on MQ side is not degrading the ticketing throughput."
+  dueDate: 2016-12-21
+  dueDateAudit:
+      -
+        previousDate: 2016-12-08
+        newDate: 2016-12-21
+        note: "blah blah blah"
+  owner: "Gripher"
+  notifications:
+    -
+      notify: true
+      notifyBy: "email"
+      notifiers: 
+        - vy.mo
+        - jk.pi
+  runDate: 2016-12-10
+  runBy: "Timo"
+  status: "COMPLETE"
+  testDuration: 
+    in: "HOURS"
+    value: 2
+  notes: "See the results"
+  results:
+    -
+      dataType: "someMetrics"
+      dataSource: "graphite"
+      dataQuery: ""
+      dataDesc: ""
+      comments : ""      
+      saveLocal: false
+      result: "differs based on the dataType"
+      resultGraph:
+        -
+          graphTitle: "Graph Title"
+          xAxis: 
+            field: "x-axis field"
+            label: "x-axis label"
+          yAxis: 
+            field: "y-axis field"
+            label: "y-axis label"
+    -
+      dataType: "sessionUsage"
+      dataSource: "logInsight"
+      dataQuery: ""
+      dataDesc: ""
+      comments : ""
+      saveLocal: false
+      result: "differs based on the dataType"
+      resultGraph:
+        -
+          graphTitle: "Graph Title"
+          xAxis: 
+            field: "x-axis field"
+            label: "x-axis label"
+          yAxis: 
+            field: "y-axis field"
+            label: "y-axis label"
+    -
+      dataType: "responseTime"
+      dataSource: "mongoDS"
+      dataQuery: ""
+      dataDesc: ""
+      comments : ""
+      result: "differs based on the dataType"
+      resultGraph:
+        -
+          graphTitle: "Graph Title"
+          xAxis: 
+            field: "x-axis field"
+            label: "x-axis label"
+          yAxis: 
+            field: "y-axis field"
+            label: "y-axis label"
+    -
+      dataType: "screenGrab"
+      dataSource: "mongoIS"
+      dataQuery: ""
+      dataDesc: ""
+      comments : ""
+      result: "differs based on the dataType"
+    -
+      dataType: "files"
+      dataSource: "mongoFS"
+      dataQuery: ""
+      dataDesc: ""
+      comments : ""
+      result: "differs based on the dataType"
+  followUps:   
+    -
+      type : "story"
+      system: "JIRA"
+      uri: "/AIS-6146"
+      status: "IN PROGRESS"
+      suppress: false
+      suppressReason: "" 
+    -
+      type : "defect"
+      system: "ALM"
+      uri: "/RISE29832839"
+      status: "FIXED"
+      suppress: true
+      suppressReason: "This will take some time and not a must"
+    -
+      type: "actionItem"
+      desc: "Follow up with network team"
+      assignedTo: "A802038"
+      dueDate: 2016-12-23
+      status: "IN PROGRESS"
+      notes : "Last notes will be here.."
+      notesAudit:
+        -
+          date: 2016-12-08
+          note: "blah blah blah"
+      suppress: false
+      suppressReason: "" 
