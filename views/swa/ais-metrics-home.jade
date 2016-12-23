@@ -25,7 +25,9 @@ html(lang='en')
             h1.section-heading AIS Metrics Archive
             p.lead.section-lead Data store to dump performance test reports
             p.section-paragraph
-              | This app stores the performance test reports pulled from syslog servers. Based on the test date time, it invokes the existing log parsing scripts in syslog servers and downloads the generated reports into a local MongoDB data store. Stored reports can be searched, viewed, exported to excel, pdf or clipboard anytime using the UI. An enhanced feature in coming days would allow selected reports to be compared on a line / bar chart
+              | This app stores the performance test reports pulled from syslog servers. Based on the test date time, it invokes the existing log parsing scripts in syslog servers and downloads the generated reports into a local MongoDB data store.
+              li VIEW/EXPORT: Stored reports can be searched, viewed, exported to excel/pdf/clipboard anytime using the UI.
+              li GRAPHS: There is an option to select different reports and compare them on <b>line charts</b>.
             p.section-paragraph
               | App has 2 main sections: Reports and Uploader. Reports section can be used to browse stored reports, while uploader is used to generate the reports and save them.
           .col-lg-6

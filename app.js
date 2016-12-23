@@ -17,6 +17,7 @@ var perfMetricsAppRouter = require('./routes/swa/perf-metrics');
 
 var aisMetricsReports = require('./routes/swa/ais-metrics-reports')
 var aisMetricsUploader = require('./routes/swa/ais-metrics-uploader')
+var aisJira = require('./routes/swa/ais-jira')
 
 var app = express();
 
@@ -45,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/swa/pm', perfMetricsAppRouter);
 app.use('/swa/ais/metrics/reports', aisMetricsReports);
 app.use('/swa/ais/metrics/uploader', aisMetricsUploader);
+app.use('/swa/ais/jira', aisJira);
 
 app.get('/swa/ais/metrics', function (req, res) {
   res.render('./swa/ais-metrics-home');
@@ -82,7 +84,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.set('port', 9080);
+app.set('port', 80);
 var server = app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + server.address().port);
 });

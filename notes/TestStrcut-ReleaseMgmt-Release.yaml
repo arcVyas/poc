@@ -1,0 +1,113 @@
+---
+releaseId: "R2"
+releaseDate: 2016-12-31
+  audit:
+    -
+      date: 2016-12-08
+      changeIn : "RELEASE_DATE"
+      oldValue: 2016-12-29
+      newValue: 2016-12-31
+      comments: "Had to move"
+      by: "A802038"   
+features:
+  externalLink: "./r2-features.md"
+  featureSet:
+    -
+      id: 123
+      feature: ""
+      businessBenefit: ""
+tracks:
+  -
+    id: 123
+    name: "R2-PerfTest"
+    status: 
+      current: "GREEN(0)"
+      audit:
+        -
+          date: 2016-12-08
+          changeIn : "status"
+          oldValue: "YELLOW(1)"
+          newValue: "GREEN(0)"
+          comments: ""
+          by: "A802038"
+    alerts:
+      -
+        id: 123
+        type: "PLANNED_VS_ACTUAL_LOW/IMPACTFUL_ACTION_ITEM"
+        alert: ""
+        risk:
+          impact: true
+          level: LOW
+        status: ""
+        openedBy: ""
+        openedOn: 2016-12-12
+        closedBy: ""
+        closedOn: 2016-12-13
+        closureNotes: ""
+    jiraData:
+      sprints:
+        -
+          sprintId: 123
+          startDate: 2016-12-13
+          endDate: 2016-12-24
+          status: "IN PROGRESS"
+          planned: 
+            stories: 5
+            points : 64
+          soFar:
+            stories : 4
+            points : 51
+          actual:
+            stories: 4
+            points : 51
+          storyAudit:
+            -
+              id: 123
+              dateTime: 2016-12-08T11:00
+              auditType: auto
+              changeIn : "PLANNED"
+              oldCount: "5"
+              newCount: "4"
+              oldPoints: "5"
+              newPoints: "4"
+              highlighter:
+                highlight: true
+                suppressedBy: A802038
+                suppressReason: "It was a mistake"
+    followUps:
+      -
+        type: "actionItem/alert"
+        desc: "Follow up with network team"
+        assignedTo: "A802038"
+        dueDate: 2016-12-23
+        status: "IN PROGRESS"
+        notes : "Last notes will be here.."
+        escalationLevel: "0(green),1(yellow),2(red)"
+        escalationSuppressed: true
+        audit:
+          -
+            date: 2016-12-08
+            changeIn : "notes"
+            oldValue: "blah blah blah"
+            newValue: "sfkjafj jksd  dakjsd"
+            comments: ""
+            by: "A802038"        
+    dependantApps:
+      -
+        id: 123
+        name: RMS
+        deployDate: 2016-12-27
+        currentStatus: "GREEN"
+        deployDependency: "SHOULD_BE_BEFORE/SHOULD_BE_SAME/SHOULD_BE_LATER/DOESNT_MATTER"
+        dependencies:
+          -
+            id: 123
+            type: "IN_FEED"
+            component: ""
+            changes: ""
+            documentedBy: ""
+            upDatedBy: ""
+
+
+
+  

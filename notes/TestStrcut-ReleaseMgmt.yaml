@@ -1,0 +1,81 @@
+---
+id: 123
+startDate: 2016-12-13
+endDate: 2016-12-16
+title : ""
+owner : ""
+releases:
+  -
+    releaseId: "R2"
+    tracks:
+      -
+        track: "PerfTest"
+        status: 
+          current: "GREEN(0)"
+          audit:
+            -
+              date: 2016-12-08
+              changeIn : "status"
+              oldValue: "YELLOW(1)"
+              newValue: "GREEN(0)"
+              comments: ""
+              by: "A802038"
+        jiraData:
+          activeSprints:
+            -
+              sprintId: 123
+              startDate: 2016-12-13
+              endDate: 2016-12-24
+              planned: 
+                stories: 5
+                points : 64
+              soFar:
+                stories : 4
+                points : 51
+          completedSprints:
+            -
+              sprintId: 123
+              startDate: 2016-12-13
+              endDate: 2016-12-24
+              planned: 
+                stories: 5
+                points : 64
+              actual:
+                stories: 4
+                points : 51
+                leftOver: 1
+                leftOverPoints : 13
+          futureSprints:
+            -
+              sprintId: 123
+              startDate: 2016-12-13
+              endDate: 2016-12-24
+              planned: 
+                stories: 5
+                points : 64
+          backLog:
+            stories : 15
+            groomed : 10
+            points : 120
+        followUps:
+          -
+            type: "actionItem"
+            desc: "Follow up with network team"
+            assignedTo: "A802038"
+            dueDate: 2016-12-23
+            status: "IN PROGRESS"
+            notes : "Last notes will be here.."
+            audit:
+              -
+                date: 2016-12-08
+                changeIn : "notes"
+                oldValue: "blah blah blah"
+                newValue: "sfkjafj jksd  dakjsd"
+                comments: ""
+                by: "A802038"
+            suppress: false
+            suppressReason: "" 
+
+
+
+  

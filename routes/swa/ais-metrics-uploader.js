@@ -14,7 +14,7 @@ router.get('/',function(req, res, next) {
 
 //POST needs body-parser (Install it from npm install body-parser)
 router.post('/generate-and-upload',function(req, res) {
-  var switchOff=true;
+  var switchOff=false;
   if(switchOff){
     var urlList=[]
     var anchor={}
