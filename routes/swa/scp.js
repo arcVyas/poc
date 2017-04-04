@@ -2,7 +2,7 @@ var client = require('scp2')
 var pass = require("../../public/files/dnc/pass.js")
 var scp = module.exports
 var readCsv = require("./readCsv.js")
-scp.downloadReports = function(server,fileList,callback){
+scp.downloadReports = function(server,fileList,type,callback){
   var executed=0
   for(var i=0; i< fileList.length; i++){
     client.scp(pass.uid+':'+pass.pwd+'@'+server+':'+pass.unixHome+fileList[i], 'c:/vyas/downloaded-reports/', function(err) {
@@ -14,7 +14,7 @@ scp.downloadReports = function(server,fileList,callback){
       if(executed>=fileList.length){
         console.log("all files are downloaded")
         console.log("loading to mongo..")
-        readCsv.readCSVAndLoad(fileList,callback);
+        readCsv.readCSVAndLoad(fileList,type,callback);
       }
     })
   }

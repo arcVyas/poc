@@ -17,6 +17,8 @@ var perfMetricsAppRouter = require('./routes/swa/perf-metrics');
 
 var aisMetricsReports = require('./routes/swa/ais-metrics-reports')
 var aisMetricsUploader = require('./routes/swa/ais-metrics-uploader')
+var aisSessionReports = require('./routes/swa/ais-session-data-reports')
+var aisSessionDataUploader = require('./routes/swa/ais-session-data-uploader')
 var aisJira = require('./routes/swa/ais-jira')
 
 var app = express();
@@ -45,7 +47,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/cache-app', cacheAppRouter);
 app.use('/swa/pm', perfMetricsAppRouter);
 app.use('/swa/ais/metrics/reports', aisMetricsReports);
+app.use('/swa/ais/sessiondata/reports', aisSessionReports);
 app.use('/swa/ais/metrics/uploader', aisMetricsUploader);
+app.use('/swa/ais/sessiondata/uploader', aisSessionDataUploader);
 app.use('/swa/ais/jira', aisJira);
 
 app.get('/swa/ais/metrics', function (req, res) {
@@ -64,7 +68,7 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-/*if (app.get('env') === 'development') {
+if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -72,17 +76,17 @@ app.use(function(req, res, next) {
       error: err
     });
   });
-}*/
+}
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+/*app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
     error: err
   });
-});
+});*/
 
 app.set('port', 80);
 var server = app.listen(app.get('port'), function() {

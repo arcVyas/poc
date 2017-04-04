@@ -67,6 +67,8 @@ html
                 .col-lg-12
                   button#generateChart(class="btn btn-success") Generate Charts
                   &nbsp;&nbsp;&nbsp;
+                  button#generateSessionUsageChart(class="btn btn-success") Generate Session Usage Chart
+                  &nbsp;&nbsp;&nbsp;
                   button#clearChartInput(class="btn btn-success") Clear Chart Input
                 .col-lg-12(id="canvasDiv")
                   canvas(id="myChart" height="400px")
@@ -138,7 +140,26 @@ html
         getDataForReports(reportList,0)
       });
 
+      $("#generateSessionUsageChart").click(function(){
 
+        var chartInput = $("#reportsForChart").val().trim()
+        if(chartInput.length<=0){
+          alert("Please add some reports in Chart Input..")
+          return
+        }
+        datasets=[]
+        colorCnt=0
+        //var rows = table.rows( { filter : 'applied'} ).data();
+        var rows = $("#reportsForChart").val().split('\n')
+        console.log(rows)
+        var reportList=[]
+        for(var i=0;i<rows.length;i++){
+          //reportList.push(rows[i][1])
+          reportList.push(rows[i].trim())
+        }
+        //alert(reportList)
+        getDataForReports(reportList,0)
+      });
 
       function createDataset(reportName,result){
         var dataset={}
@@ -159,6 +180,25 @@ html
         dataset["backgroundColor"]=bgColors[colorCnt]
         colorCnt=colorCnt+1
       }
+      function createSessionDataset(reportName,result){
+        var dataset={}
+        dataset["type"]="line"
+        dataset["fill"]=false
+        dataset["multiTooltipTemplate"]="<%= datasetLabel %> - <%= value %>"
+        addDynamicData(dataset,reportName,result)
+        return dataset
+      }
+      function addSessionDynamicData(dataset,reportName, result){
+        dataset["label"]=reportName
+        var reportData=[]
+        for(var i=0;i<result.length;i++){
+          reportData.push(result[i]['Total'])
+        }
+        dataset["data"]=reportData
+        dataset["borderColor"]=bgColors[colorCnt]
+        dataset["backgroundColor"]=bgColors[colorCnt]
+        colorCnt=colorCnt+1
+      }
       function getDataForReports(reportList,cnt){
         $.ajax({
           method: "GET",
@@ -166,6 +206,32 @@ html
         })
           .done(function( msg ) {
             datasets.push(createDataset(reportList[cnt],msg.data))
+            if(cnt>=reportList.length-1){
+              var labels=[]
+              for(var i=0;i<msg.data.length;i++){
+                labels.push(i)
+              }
+              drawChart(labels)
+            }else{
+              cnt=cnt+1
+              getDataForReports(reportList,cnt)
+            }
+          })
+          .fail(function(){
+            $("#reportStatus").text("Oops.. something went wrong. Try again or call vyas")
+          })
+          .always(function(){
+
+          });
+      }
+
+      function getDataForSessionReports(reportList,cnt){
+        $.ajax({
+          method: "GET",
+          url: "/swa/ais/sessiondata/reports/"+reportList[cnt]+"/data"
+        })
+          .done(function( msg ) {
+            datasets.push(createSessionDataset(reportList[cnt],msg.data))
             if(cnt>=reportList.length-1){
               var labels=[]
               for(var i=0;i<msg.data.length;i++){

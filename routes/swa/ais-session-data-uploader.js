@@ -9,11 +9,11 @@ var ssh = require( './ssh.js' );
 var pass=require('../../public/files/dnc/pass.js')
 
 router.get('/',function(req, res, next) {
-  res.render('./swa/ais-metrics-uploader', {data:null, req: req});
+  res.render('./swa/ais-session-data-uploader', {data:null, req: req});
 });
 
 //POST needs body-parser (Install it from npm install body-parser)
-router.post('/generate-and-upload',function(req, res) {
+router.post('/generate-and-upload-session-data',function(req, res) {
   var switchOff=false;
   if(switchOff){
     var urlList=[]
@@ -23,13 +23,12 @@ router.post('/generate-and-upload',function(req, res) {
     urlList.push(anchor);
     res.send(urlList);
   }else{
+    console.log('starting...')
     var container = req.body.container
     var date = req.body.date
     var stTime= req.body.stTime
     var endTime=req.body.endTime
     var serviceName = req.body.serviceName
-    var sStrings = req.body.sStrings.split(',')
-    var metrics = req.body.metrics.split(',')
     var env = req.body.env
     var servers = '*ais3*'
     if(env=="MIG"){
@@ -39,24 +38,20 @@ router.post('/generate-and-upload',function(req, res) {
     var yearOfDate = date.split('-')[0]
     var monthOfDate = date.split('-')[1]
     var dayOfDate = date.split('-')[2]
-    var fileName = sString+"_"+metric+"_"+date+"_"+stTime+"_"+endTime+".csv"
+    //var fileName = sString+"_"+metric+"_"+date+"_"+stTime+"_"+endTime+".csv"
 
     var searchStrings=[]
-
-    for(var i=0; i< sStrings.length; i++){
-      var sString = sStrings[i]
-      for(var j=0; j< metrics.length; j++){
-        var metric = metrics[j]
-        searchStrings.push(pass.reportCommand+' -d ' + date +' -s '+stTime+' -e '+endTime+' -g "'+sString+'" -t "'+metric+'" -r '+servers+' -p '+pass.logPath+serviceName+'-'+version+'/'+yearOfDate+'/'+monthOfDate+'/'+dayOfDate+'/ -a > ./reports/'+container+'#'+env+'#'+serviceName+'#'+sString+'#'+metric+'#'+date+'#'+stTime.replace(':','-')+'#'+endTime.replace(':','-')+'.csv &');
-      }
-    }
-    ssh.execSsh(container+pass.containerPart,searchStrings,"METRICS",function(fileList){
+    var lLogPath='/SWAdata/logs/syslog/Application/Log/AIS/'
+    searchStrings.push(pass.sessionReportCommand+ ' -d '+ date + ' -s ' + stTime + ' -e ' + endTime + ' -i 1 -p '+lLogPath+serviceName+'-'+version+'/'+yearOfDate+'/'+monthOfDate+'/'+dayOfDate+' -t  \\".*createSessionResponse\\" -r \\"*.SOAP.gz\\" > ./reports/'+container+'#'+env+'#'+serviceName+'#sessionsCreated'+'#'+date+'#'+stTime.replace(':','-')+'#'+endTime.replace(':','-')+'.csv &')
+    searchStrings.push(pass.sessionReportCommand+ ' -d '+ date + ' -s ' + stTime + ' -e ' + endTime + ' -i 1 -p '+lLogPath+serviceName+'-'+version+'/'+yearOfDate+'/'+monthOfDate+'/'+dayOfDate+' -t  \\".*closeSessionRequest\\" -r \\"*.SOAP.gz\\" > ./reports/'+container+'#'+env+'#'+serviceName+'#sessionsClosed'+'#'+date+'#'+stTime.replace(':','-')+'#'+endTime.replace(':','-')+'.csv &')
+    console.log(searchStrings)
+    ssh.execSsh(container+pass.containerPart,searchStrings,"SESSION",function(fileList){
       var urlList=[]
       for(var i=0;i<fileList.length;i++){
         var fileName = fileList[i]
         fileName=fileName.replace('.csv','')
         //console.log(fileName)
-        var url = '/swa/ais/metrics/reports/'+fileName
+        var url = '/swa/ais/sessiondata/reports/'+fileName
         //console.log(url)
         var anchor={}
         anchor["text"]=fileName
