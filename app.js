@@ -21,6 +21,8 @@ var aisSessionReports = require('./routes/swa/ais-session-data-reports')
 var aisSessionDataUploader = require('./routes/swa/ais-session-data-uploader')
 var aisJira = require('./routes/swa/ais-jira')
 
+var swaJira = require('./routes/swa/swa-jira-app-router')
+
 var app = express();
 
 // view engine setup
@@ -51,6 +53,7 @@ app.use('/swa/ais/sessiondata/reports', aisSessionReports);
 app.use('/swa/ais/metrics/uploader', aisMetricsUploader);
 app.use('/swa/ais/sessiondata/uploader', aisSessionDataUploader);
 app.use('/swa/ais/jira', aisJira);
+app.use('/swa/jira', swaJira);
 
 app.get('/swa/ais/metrics', function (req, res) {
   res.render('./swa/ais-metrics-home');
@@ -88,7 +91,7 @@ if (app.get('env') === 'development') {
   });
 });*/
 
-app.set('port', 80);
+//app.set('port', 8080);
 var server = app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + server.address().port);
 });
