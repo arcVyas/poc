@@ -6,10 +6,10 @@ var request = require('request');
 var propHandler = require('../prop-handler.js')
 var props = propHandler.properties()
 
-var statusMap = {"Open":"Open",
+var statusMap = {"Open":"Open/WIP",
 "Closed":"Closed",
-"In Progress" : "In Progress",
-"In Analysis": "In Progress",
+"In Progress" : "Open/WIP",
+"In Analysis": "Open/WIP",
 "Ready for Sign Off"  : "Ready",
 "Resolved"  : "Closed",
 "Ready for QA"  : "Ready",
@@ -25,9 +25,22 @@ router.get('/stories', function(req, res, next) {
       filter = " and assignee in ("+req.query.ass+")"
     }
     if(req.query.status){
-      if(req.query.status == 'open')
-        filter = filter+ " and status in (\"Open\",\"In Progress\",\"In Analysis\")"
+      var statusToFilter=[]
+      Object.keys(statusMap).forEach(function(key){
+        if(statusMap[key]==req.query.status){
+          statusToFilter.push(key)
+        }
+      })
+      filter = filter+ " and status in ("
+      for(var i in statusToFilter){
+        filter = filter+"\""+statusToFilter[i]+"\","
+      }
+      filter = filter.slice(0,-1)
+      filter=filter+")"
     }
+      //if(req.query.status == 'open')
+        //filter = filter+ " and status in (\"Open\",\"In Progress\",\"In Analysis\")"
+    
     var _url = "https://"+props.get('uid')+":"+props.get('pwd')+"@"+props.get('jira-host')+"/rest/api/2/search?jql=project in (\"Service Virtualization\") and Team in (\"Service Virtualization CoE\",\"SV Product Support\")"+filter+"+order+by+status&fields=id,key,issuetype,customfield_10006,summary,status,assignee&maxResults=100"
     console.log(_url);
     async.parallel([
@@ -57,6 +70,7 @@ router.get('/stories', function(req, res, next) {
       var resourcePivot={}
       jiraResponse.issues.forEach(function(issue){
         var story={}
+        story["id"]= issue.id
         if(!issue.fields.customfield_10006){
           story["key"]=issue.key
           story["subTaskKey"]=""
@@ -70,8 +84,10 @@ router.get('/stories', function(req, res, next) {
         story["status"]=issue.fields.status.name
         if(!issue.fields.assignee){
           story["assignee"]="Unassigned"
+          story["assigneeKey"]="Unassigned"  
         }else{
-          story["assignee"]=issue.fields.assignee.displayName   
+          story["assignee"]=issue.fields.assignee.displayName 
+          story["assigneeKey"]=issue.fields.assignee.key   
         }
         story["sprint"]= "None";//getSprintName(issue.fields.customfield_10900[0])
         story["points"]="0";//issue.fields.customfield_10102
@@ -97,7 +113,7 @@ router.get('/stories', function(req, res, next) {
         }else{
             statusGrpPivot[grpStatus]=statusGrpPivot[grpStatus]+1
         }
-        var resource =  story["assignee"]//+"_"+grpStatus
+        var resource =  story["assignee"]+"_"+story["assigneeKey"]+"_"+grpStatus
         if(!resourcePivot[resource]){
             resourcePivot[resource]=1
         }else{
@@ -116,6 +132,40 @@ router.get('/stories', function(req, res, next) {
   );
 });
 
+router.get('/stories/:id/peep', function(req, res, next) {
+    var story={}
+    var _id = req.params.id
+    var _url = "https://"+props.get('uid')+":"+props.get('pwd')+"@"+props.get('jira-host')+"/rest/api/2/issue/"+_id
+    console.log(_url);
+    async.parallel([
+    function(callback) {
+      request(
+        {
+          "url": _url,
+          "timeout": 10000,
+          "rejectUnauthorized": false
+        },
+        function(err, response, body) {
+          if(err) { console.log(err); callback(true); return; }
+          console.log("statusCode: "+ response.statusCode)
+          //console.log("data: "+ body)
+          callback(false, body);
+        }
+      );
+    }],
+    function(err, results) {
+      //console.log("response from jira: "+ results[0])
+      if(err) { console.log(err); callback(true); return; }
+      var jiraResponse = JSON.parse(results[0])
+      story["id"]=jiraResponse.id;
+      story["key"]=jiraResponse.key;
+      story["summary"]= jiraResponse.fields.summary
+      story["desc"]=jiraResponse.fields.description
+      story["acceptance"]=jiraResponse.fields.customfield_10400
+      res.send(story);
+    }
+  );
+});
 function getSprintName(customField){
   var fields = customField.split(",")
   //console.log(fields)
