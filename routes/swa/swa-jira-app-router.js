@@ -16,12 +16,14 @@ var statusMap = {"Open":"Open/WIP",
 "Ready for Dev" : "Ready",
 "In QA" :"Ready"}
 
-router.get('/stories', function(req, res, next) {
-    var results={}
-    var stories=[]
-    var filter=""
+router.get('/', function(req, res, next) {
+  res.render('./swa/swa-jira-home', {});
+});
 
-    if(req.query.ass){
+router.get('/stories', function(req, res, next) {
+
+  var filter=""
+  if(req.query.ass){
       filter = " and assignee in ("+req.query.ass+")"
     }
     if(req.query.status){
@@ -38,10 +40,76 @@ router.get('/stories', function(req, res, next) {
       filter = filter.slice(0,-1)
       filter=filter+")"
     }
-      //if(req.query.status == 'open')
-        //filter = filter+ " and status in (\"Open\",\"In Progress\",\"In Analysis\")"
-    
-    var _url = "https://"+props.get('uid')+":"+props.get('pwd')+"@"+props.get('jira-host')+"/rest/api/2/search?jql=project in (\"Service Virtualization\") and Team in (\"Service Virtualization CoE\",\"SV Product Support\")"+filter+"+order+by+status&fields=id,key,issuetype,customfield_10006,summary,status,assignee&maxResults=100"
+
+  var _jql="project in (\"Service Virtualization\") and Team in (\"Service Virtualization CoE\",\"SV Product Support\")"+filter+"+order+by+status&fields=id,key,issuetype,customfield_10006,summary,status,assignee&maxResults=100"
+
+   getBoards("SV COE Deliverables",_jql,req,res,next) 
+});
+
+router.get('/stories/:id/peep', function(req, res, next) {
+    var story={}
+    var _id = req.params.id
+    var _url = "https://"+props.get('uid')+":"+props.get('pwd')+"@"+props.get('jira-host')+"/rest/api/2/issue/"+_id
+    console.log(_url);
+    async.parallel([
+    function(callback) {
+      request(
+        {
+          "url": _url,
+          "timeout": 10000,
+          "rejectUnauthorized": false
+        },
+        function(err, response, body) {
+          if(err) { console.log(err); callback(true); return; }
+          console.log("statusCode: "+ response.statusCode)
+          //console.log("data: "+ body)
+          callback(false, body);
+        }
+      );
+    }],
+    function(err, results) {
+      //console.log("response from jira: "+ results[0])
+      if(err) { console.log(err); callback(true); return; }
+      var jiraResponse = JSON.parse(results[0])
+      story["id"]=jiraResponse.id;
+      story["key"]=jiraResponse.key;
+      story["summary"]= jiraResponse.fields.summary
+      story["desc"]=jiraResponse.fields.description
+      story["acceptance"]=jiraResponse.fields.customfield_10400
+      res.send(story);
+    }
+  );
+});
+
+router.get('/boards/:name', function(req, res, next) {
+  var _jql
+  var filter="";
+  if(!req.query.status || req.query.status!="all"){
+    var statusToFilter=[]
+    Object.keys(statusMap).forEach(function(key){
+      if(statusMap[key]=="Closed"){
+        statusToFilter.push(key)
+      }
+    })
+    filter = filter+ " and status not in ("
+    for(var i in statusToFilter){
+      filter = filter+"\""+statusToFilter[i]+"\","
+    }
+    filter = filter.slice(0,-1)
+    filter=filter+")"
+  }
+  if(req.params.name == "sv-consumer-board"){
+    _jql= "project = SVIRT AND Team = \"VSI Dev Team\"" +filter+"+&maxResults=500"
+  }
+
+  getBoards(req.params.name,_jql,req,res,next)
+});
+
+function getBoards(name,_jql, req, res, next) {
+    var results={}
+    var stories=[]
+
+    var _url = "https://"+props.get('uid')+":"+props.get('pwd')+"@"+props.get('jira-host')+"/rest/api/2/search?jql="+_jql
     console.log(_url);
     async.parallel([
     function(callback) {
@@ -121,6 +189,7 @@ router.get('/stories', function(req, res, next) {
         }
         stories.push(story)
       })
+      results["boardName"]= name
       results["totalPoints"]=totalPoints
       results["stories"]=stories
       results["pointPivot"]=pointPivot
@@ -130,42 +199,8 @@ router.get('/stories', function(req, res, next) {
       res.render('./swa/swa-jira-app', {data:results,jiraHost:props.get('jira-host')});
     }
   );
-});
+}
 
-router.get('/stories/:id/peep', function(req, res, next) {
-    var story={}
-    var _id = req.params.id
-    var _url = "https://"+props.get('uid')+":"+props.get('pwd')+"@"+props.get('jira-host')+"/rest/api/2/issue/"+_id
-    console.log(_url);
-    async.parallel([
-    function(callback) {
-      request(
-        {
-          "url": _url,
-          "timeout": 10000,
-          "rejectUnauthorized": false
-        },
-        function(err, response, body) {
-          if(err) { console.log(err); callback(true); return; }
-          console.log("statusCode: "+ response.statusCode)
-          //console.log("data: "+ body)
-          callback(false, body);
-        }
-      );
-    }],
-    function(err, results) {
-      //console.log("response from jira: "+ results[0])
-      if(err) { console.log(err); callback(true); return; }
-      var jiraResponse = JSON.parse(results[0])
-      story["id"]=jiraResponse.id;
-      story["key"]=jiraResponse.key;
-      story["summary"]= jiraResponse.fields.summary
-      story["desc"]=jiraResponse.fields.description
-      story["acceptance"]=jiraResponse.fields.customfield_10400
-      res.send(story);
-    }
-  );
-});
 function getSprintName(customField){
   var fields = customField.split(",")
   //console.log(fields)

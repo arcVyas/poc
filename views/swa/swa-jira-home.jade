@@ -1,0 +1,69 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Get Me Coffeee - Jira Wrap
+    link(rel="stylesheet" type="text/css" href="http://bootswatch.com/flatly/bootstrap.css")
+    link(href='/bootstrap/css/full-width-pics.css', rel='stylesheet')
+    link(rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
+
+  body
+    header.image-bg-fluid-height
+      //img.img-responsive.img-center(src='/img/archive.gif', title='Jira Wrapper')
+    // Content Section
+    section
+      .container
+        .row
+          .col-lg-12
+            h1.section-heading Jira Wrap
+            p.section-paragraph
+              | Wrapper UI for Jira
+            hr
+            p.lead.section-lead Jira Boards
+            p.section-paragraph
+              | 
+            
+          .col-lg-6
+            a(href='/gmc/jiraw/stories' class="btn btn-info" role="button") SV COE Deliverables Board
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            a(href='javascript:alert("Pending")' class="btn btn-default" role="button") SV Consumer Board
+    #dialog
+      p
+        | If you like the app, buy me a coffee (until I decide to sell it) :) - vYas
+    // Footer
+    footer
+      .container
+        .row
+          .col-lg-12(align="right")
+            a(href="javascript:openD()") a getMeCoffeee app 
+            br
+            span(style="font-size:11px") Copyright © vM
+        // /.row
+      // /.container
+
+    // jQuery
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='/bootstrap/js/bs-min.js')
+    script(src='http://code.jquery.com/ui/1.12.1/jquery-ui.js')
+    script.
+      function openD() {
+          $( "#dialog" ).dialog( "open" );
+      };
+      $(document).ready( function () {
+        $( "#dialog" ).dialog({
+            autoOpen: false,
+            show: {
+              effect: "bounce",
+              duration: 1000
+            },
+            hide: {
+              effect: "explode",
+              duration: 1000
+            }
+          });
+      });

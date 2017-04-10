@@ -53,7 +53,7 @@ app.use('/swa/ais/sessiondata/reports', aisSessionReports);
 app.use('/swa/ais/metrics/uploader', aisMetricsUploader);
 app.use('/swa/ais/sessiondata/uploader', aisSessionDataUploader);
 app.use('/swa/ais/jira', aisJira);
-app.use('/swa/jira', swaJira);
+app.use('/gmc/jiraw', swaJira);
 
 app.get('/swa/ais/metrics', function (req, res) {
   res.render('./swa/ais-metrics-home');

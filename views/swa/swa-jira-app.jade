@@ -2,10 +2,11 @@ doctype html
 html
   - var cnt =1
   head
-    title Jira App
-    link(rel="stylesheet" type="text/css" href="https://bootswatch.com/flatly/bootstrap.css")
-    link(rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.12/af-2.1.2/b-1.2.1/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.0/se-1.2.0/datatables.min.css")
+    title Get Me Coffeee - Jira Wrap
+    link(rel="stylesheet" type="text/css" href="http://bootswatch.com/flatly/bootstrap.css")
+    link(rel="stylesheet" type="text/css" href="http://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.12/af-2.1.2/b-1.2.1/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.0/se-1.2.0/datatables.min.css")
     link(rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
+    link(rel="stylesheet" href="/font-awesome/css/font-awesome.min.css")
   body
     #wrapper
       .row
@@ -13,10 +14,10 @@ html
           div(class="panel panel-info")
             .panel-heading
               h4.panel-title
-                  span Jira App
+                  span #{data.boardName}
                   //span(style="float:right") Total Story points : #{data.totalPoints}
-                  span(style="float:right") 
-                    a(href="javascript:openD()") a GetMeCoffeee app
+                  span(style="float:right;font-size:12px") 
+                    a(href="javascript:openD()" style="color:white") a GetMeCoffeee app
             .panel-body
               .row.col-lg-12
                   .span
@@ -26,14 +27,14 @@ html
                   table.table.table-bordered.table-hover.table-striped(id="story-table")
                     thead
                       tr
-                        th Sprint
+                        th(style="align:center;width=20px")
                         th Feature
                         th Story
                         th Summary
                         //th Points
                         th Status
                         th Assignee
-                        th 
+                        //th 
                     tbody
                       each ticket in data.stories
                         -var tdColor="transparent"
@@ -45,7 +46,11 @@ html
                         if(ticket.sprint == "Total points")
                           - tdStyle = "font-weight:bold;"
                         tr
-                          td(style='#{tdStyle}') #{ticket.sprint}
+                          //td(style='#{tdStyle}') #{ticket.sprint}
+                          td(align="middle")
+                            span(style="float:middle") 
+                              a(href='javascript:peep(#{ticket.id})') 
+                                i.fa.fa-eye(aria-hidden='true')
                           td
                             a(href='https://#{jiraHost}/browse/#{ticket.key}/overview', target='_blank') #{ticket.key}
                           td
@@ -59,9 +64,7 @@ html
                           //td(style='#{tdStyle}') #{ticket.points}
                           td(bgcolor='#{tdColor}') #{ticket.status}
                           td #{ticket.assignee}
-                          td
-                            span(style="float:middle") 
-                              a(href='javascript:peep(#{ticket.id})') Peep
+                          
                 .row.col-lg-12
                 hr
                 .row.col-lg-12
@@ -80,7 +83,7 @@ html
                             tr
                               td #{status}
                               td 
-                                a(href='/swa/jira/stories?status='+status, target='_blank') #{count}
+                                a(href='/gmc/jiraw/stories?status='+status, target='_blank') #{count}
                   .col-lg-4
                     .table-responsive
                       table.table.table-bordered.table-hover.table-striped(id="story-table-rw")
@@ -93,7 +96,7 @@ html
                             tr
                               td #{status}
                               td 
-                                a(href='/swa/jira/stories?status='+status, target='_blank') #{count}
+                                a(href='/gmc/jiraw/stories?status='+status, target='_blank') #{count}
                   .col-lg-4
                     .table-responsive
                       table.table.table-bordered.table-hover.table-striped(id="story-table-resource")
@@ -111,21 +114,21 @@ html
                               td #{name}
                               td #{status}
                               td 
-                                a(href='/swa/jira/stories?ass='+xid+'&status='+status, target='_blank') #{count}
+                                a(href='/gmc/jiraw/stories?ass='+xid+'&status='+status, target='_blank') #{count}
     #dialog
       p
         | If you like the app, buy me a coffee (until I decide to sell it) :) - vYas
     #peepDialog
-      span Description
+      span(style="font-weight:bold") Description
       #peepDesc
       hr
-      span Acceptance
+      span(style="font-weight:bold") Acceptance
       #peepAcceptance
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
     
     script(src='/bootstrap/js/bs-min.js')
-    script(type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.6/jq-2.2.3/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/fh-3.1.2/kt-2.1.3/r-2.1.0/rr-1.1.2/se-1.2.0/datatables.min.js")
-    script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+    script(type="text/javascript" src="http://cdn.datatables.net/v/bs-3.3.6/jq-2.2.3/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/fh-3.1.2/kt-2.1.3/r-2.1.0/rr-1.1.2/se-1.2.0/datatables.min.js")
+    script(src='http://code.jquery.com/ui/1.12.1/jquery-ui.js')
     script.
       function openD() {
           $( "#dialog" ).dialog( "open" );
@@ -133,13 +136,14 @@ html
       function peep(id) {
         $("#peepDesc").html('')
         $("#peepAcceptance").html('')
+        $( "#peepDialog" ).dialog( "open" );
         $.ajax({
           method: "GET",
-          url: "/swa/jira/stories/"+id+"/peep"
+          url: "/gmc/jiraw/stories/"+id+"/peep"
         })
           .done(function( msg ) {
           //console.log(msg);
-            $("#peepDialog").dialog('option', 'title', msg["key"]+ " " + msg["summary"]);
+            $("#peepDialog").dialog('option', 'title', 'PREVIEW: '+ msg["key"]+ " " + msg["summary"]);
             $("#peepDesc").append(msg["desc"])
             $("#peepAcceptance").append(msg["acceptance"])
           })
@@ -149,7 +153,7 @@ html
             $("#peepAcceptance").append("<p>Peep failed !</p>")
           })
           .always(function(){
-            $( "#peepDialog" ).dialog( "open" );
+            
           });  
           
       };
