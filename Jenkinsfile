@@ -1,30 +1,23 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        sh 'echo \'Build project\''
-      }
+    agent any
+    parameters {
+        choice(
+            // choices are a string of newline separated values
+            // https://issues.jenkins-ci.org/browse/JENKINS-41180
+            choices: 'greeting\nsilence',
+            description: '',
+            name: 'REQUESTED_ACTION')
     }
-    stage('Test') {
-      steps {
-        parallel(
-          "Test": {
-            echo 'Test 1'
-            echo 'Test 2'
-            
-          },
-          "Test 2": {
-            echo 'Parallel Test1'
-            
-          }
-        )
-      }
+
+    stages {
+        stage ('Speak') {
+            when {
+                // Only say hello if a "greeting" is requested
+                expression { params.REQUESTED_ACTION == 'greeting' }
+            }
+            steps {
+                echo "Hello, bitwiseman!"
+            }
+        }
     }
-    stage('Deploy') {
-      steps {
-        echo 'Deployed'
-      }
-    }
-  }
 }
