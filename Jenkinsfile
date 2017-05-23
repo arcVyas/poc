@@ -11,7 +11,9 @@ pipeline {
 
     stages {
         stage ('Init'){
-            echo $env.BRANCH_NAME
+            steps {
+                echo $env.BRANCH_NAME
+            }
         }
         stage ('Speak') {
             when {
