@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Init') {
       steps {
-        echo '$BRANCH_NAME'
+        echo env.BRANCH_NAME
       }
     }
     stage('Speak') {
