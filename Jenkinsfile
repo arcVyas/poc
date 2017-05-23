@@ -10,13 +10,16 @@ pipeline {
     }
 
     stages {
+        stage ('Init'){
+            echo $env.BRANCH_NAME
+        }
         stage ('Speak') {
             when {
                 // Only say hello if a "greeting" is requested
-                expression { params.REQUESTED_ACTION == 'greeting' }
+                expression { env.BRANCH_NAME.contains('master')}
             }
             steps {
-                echo "Hello, bitwiseman!"
+                echo "Hello, Master!"
             }
         }
     }
