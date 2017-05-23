@@ -1,28 +1,25 @@
 pipeline {
-    agent any
-    parameters {
-        choice(
-            // choices are a string of newline separated values
-            // https://issues.jenkins-ci.org/browse/JENKINS-41180
-            choices: 'greeting\nsilence',
-            description: '',
-            name: 'REQUESTED_ACTION')
+  agent any
+  stages {
+    stage('Init') {
+      steps {
+        echo '$env.BRANCH_NAME'
+      }
     }
-
-    stages {
-        stage ('Init'){
-            steps {
-                echo $env.BRANCH_NAME
-            }
+    stage('Speak') {
+      when {
+        expression {
+          env.BRANCH_NAME.contains('master')
         }
-        stage ('Speak') {
-            when {
-                // Only say hello if a "greeting" is requested
-                expression { env.BRANCH_NAME.contains('master')}
-            }
-            steps {
-                echo "Hello, Master!"
-            }
-        }
+        
+      }
+      steps {
+        echo 'Hello, Master!'
+      }
     }
+  }
+  parameters {
+    choice(choices: '''greeting
+silence''', description: '', name: 'REQUESTED_ACTION')
+  }
 }
