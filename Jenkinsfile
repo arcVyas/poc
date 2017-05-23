@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Init') {
       steps {
-        echo '$env.BRANCH_NAME'
+        echo '$BRANCH_NAME'
       }
     }
     stage('Speak') {
@@ -11,15 +11,10 @@ pipeline {
         expression {
           env.BRANCH_NAME.contains('master')
         }
-        
       }
       steps {
         echo 'Hello, Master!'
       }
     }
-  }
-  parameters {
-    choice(choices: '''greeting
-silence''', description: '', name: 'REQUESTED_ACTION')
   }
 }
