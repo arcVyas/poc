@@ -6,15 +6,9 @@ pipeline {
         echo '${env.BRANCH_NAME}'
       }
     }
-    stage('Sanity Check') {
-      when {
-        expression {
-          env.BRANCH_NAME.contains('master')
-        }
-        
-      }
+    stage('init') {
       steps {
-        echo 'Hello, Master!'
+        echo '${env.BRANCH_NAME}'
       }
     }
     stage('Build') {
@@ -38,6 +32,11 @@ pipeline {
       }
     }
     stage('Sonar Quality Gate') {
+      steps {
+        echo 'hi'
+      }
+    }
+    stage('Publish artifacts') {
       steps {
         echo 'hi'
       }
