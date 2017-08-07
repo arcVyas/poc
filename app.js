@@ -12,7 +12,7 @@ var envValidatorRouter = require('./routes/env-validator-router');
 var prAnalyzerRouter = require('./routes/pr-analyzer-router');
 var jiraAppRouter = require('./routes/jira-app-router');
 var cacheAppRouter = require('./routes/cache-app/cache-router');
-*/
+
 var perfMetricsAppRouter = require('./routes/swa/perf-metrics');
 
 var aisMetricsReports = require('./routes/swa/ais-metrics-reports')
@@ -20,8 +20,10 @@ var aisMetricsUploader = require('./routes/swa/ais-metrics-uploader')
 var aisSessionReports = require('./routes/swa/ais-session-data-reports')
 var aisSessionDataUploader = require('./routes/swa/ais-session-data-uploader')
 var aisJira = require('./routes/swa/ais-jira')
+*/
+var anthemJira = require('./routes/anthem/anthem-jira-app-router')
 
-var swaJira = require('./routes/swa/swa-jira-app-router')
+//var swaJira = require('./routes/swa/swa-jira-app-router')
 
 var app = express();
 
@@ -47,17 +49,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/pr-analyzer', prAnalyzerRouter);
 //app.use('/jira-app', jiraAppRouter);
 //app.use('/cache-app', cacheAppRouter);
-app.use('/swa/pm', perfMetricsAppRouter);
+/*app.use('/swa/pm', perfMetricsAppRouter);
 app.use('/swa/ais/metrics/reports', aisMetricsReports);
 app.use('/swa/ais/sessiondata/reports', aisSessionReports);
 app.use('/swa/ais/metrics/uploader', aisMetricsUploader);
 app.use('/swa/ais/sessiondata/uploader', aisSessionDataUploader);
 app.use('/swa/ais/jira', aisJira);
-app.use('/gmc/jiraw', swaJira);
+app.use('/gmc/jiraw', swaJira);*/
+app.use('/gmc/anthem/jiraw',anthemJira);
 
-app.get('/swa/ais/metrics', function (req, res) {
+/*app.get('/swa/ais/metrics', function (req, res) {
   res.render('./swa/ais-metrics-home');
-})
+})*/
 
 
 // catch 404 and forward to error handler
@@ -91,9 +94,9 @@ if (app.get('env') === 'development') {
   });
 });*/
 
-//app.set('port', 8080);
-/*var server = app.listen(app.get('port'), function() {
+app.set('port', 9080);
+var server = app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + server.address().port);
-});*/
+});
 
 module.exports = app;
